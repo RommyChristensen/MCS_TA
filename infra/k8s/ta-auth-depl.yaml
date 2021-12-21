@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ta-auth-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ta-auth
+  template:
+    metadata:
+      labels:
+        app: ta-auth
+    spec:
+      containers:
+        - name: ta-auth
+          image: rommycy00/ta-auth
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: G_CLIENT_ID
+              valueFrom:
+                secretKeyRef:
+                  name: g-client-id
+                  key: G_CLIENT_ID
+            - name: G_CLIENT_SECRET
+              valueFrom:
+                secretKeyRef:
+                  name: g-client-secret
+                  key: G_CLIENT_SECRET
+            - name: G_REDIRECT_URI
+              valueFrom:
+                secretKeyRef:
+                  name: g-redirect-uri
+                  key: G_REDIRECT_URI
+            - name: G_REFRESH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: g-refresh-token
+                  key: G_REFRESH_TOKEN
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://ta-nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: vrilance
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ta-auth-srv
+spec:
+  selector:
+    app: ta-auth
+  ports:
+    - name: ta-auth
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

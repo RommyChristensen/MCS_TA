@@ -1,0 +1,77 @@
+import { app } from './app';
+import admin from 'firebase-admin';
+import * as fireorm from 'fireorm';
+const serviceAccount = require('../ServiceAccountKey.json');
+import { natsWrapper } from './nats-wrapper';
+// let storage = null;
+
+const start = async () => {
+    // ENV VARIABLES
+
+    if(!process.env.JWT_KEY){
+        throw new Error('JWT must be defined');
+    }
+    
+
+    if(!process.env.G_CLIENT_ID){
+        throw new Error('CLIENT ID must be defined');
+    }
+
+    if(!process.env.G_CLIENT_SECRET){
+        throw new Error('CLIENT SECRET must be defined');
+    }
+
+    if(!process.env.G_REDIRECT_URI){
+        throw new Error('REDIRECT URI must be defined');
+    }
+
+    if(!process.env.G_REFRESH_TOKEN){
+        throw new Error('REFRESH TOKEN must be defined');
+    }
+
+    // END ENV VARIABLES
+    // -------------------
+    // DB CONNECITON
+
+    try{
+        admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            storageBucket: 'gs://ta-vrilance-auth.appspot.com'
+        });
+    
+        const firestore = admin.firestore();
+        fireorm.initialize(firestore);
+    
+        console.log("Firebase initiation complete!");
+    }catch(err){
+        console.log(err);
+    }
+
+    // END DB CONNECTION
+    // -------------------
+    // NATS CLIENT & LISTENERS
+
+    try{
+        await natsWrapper.connect('vrilance', 'abcdef', 'http://ta-nats-srv:4222');
+
+        natsWrapper.client.on('close', () => {
+            console.log('NATS connection closed!');
+            process.exit();
+        });
+    
+        process.on('SIGINT', () => natsWrapper.client.close());
+        process.on('SIGTERM', () => natsWrapper.client.close());
+    }catch(err){
+        console.log(err);
+    }
+
+    // END NATS CLIENT
+    // -------------------
+    // LISTEN TO PORT
+    app.listen(3000, () => {
+        console.log('Listening on port 3000');
+    });
+}
+
+start();
+// export default storage;

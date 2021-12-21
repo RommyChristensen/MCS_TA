@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ta-client-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ta-client
+  template:
+    metadata:
+      labels:
+        app: ta-client
+    spec:
+      containers:
+        - name: ta-client
+          image: rommycy00/ta-client
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ta-client-srv
+spec:
+  selector:
+    app: ta-client
+  ports:
+    - name: ta-client
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

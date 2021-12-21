@@ -1,0 +1,13 @@
+express @types/express
+jsonwebtoken @types/jsonwebtoken
+@types/cookie-session
+mongoose
+ts-node-dev
+typescript
+express-validator express-async-errors
+
+dev: buat testing
+mongodb-memory-server
+supertest @types/supertest
+jest @types/jest
+ts-jest

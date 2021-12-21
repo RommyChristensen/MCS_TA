@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ta-orders-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ta-orders
+  template:
+    metadata:
+      labels:
+        app: ta-orders
+    spec:
+      containers:
+        - name: ta-orders
+          image: rommycy00/ta-orders
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://ta-nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: vrilance
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ta-orders-srv
+spec:
+  selector:
+    app: ta-orders
+  ports:
+    - name: ta-orders
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

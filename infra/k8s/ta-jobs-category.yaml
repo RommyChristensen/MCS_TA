@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ta-jobs-category-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ta-jobs-category
+  template:
+    metadata:
+      labels:
+        app: ta-jobs-category
+    spec:
+      containers:
+        - name: ta-jobs-category
+          image: rommycy00/ta-jobs-category
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://ta-nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: vrilance
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ta-jobs-category-srv
+spec:
+  selector:
+    app: ta-jobs-category
+  ports:
+    - name: ta-jobs-category
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

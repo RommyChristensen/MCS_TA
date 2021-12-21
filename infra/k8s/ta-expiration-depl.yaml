@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ta-expiration-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ta-expiration
+  template:
+    metadata:
+      labels:
+        app: ta-expiration
+    spec:
+      containers:
+        - name: ta-expiration
+          image: rommycy00/ta-expiration
+          env: 
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://ta-nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: vrilance
+            - name: REDIS_HOST
+              value: expiration-redis-srv
