@@ -117,6 +117,34 @@ const confirmUser = async (userId: string) => {
     return updatedUser;
 }
 
+const changepp = async (userId: string, path: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    user.auth_profile = path;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+}
+
+interface changeProfileData {
+    firstname: string | null;
+    lastname: string | null;
+    phone: string | null;
+}
+
+const changeProfile = async (userId: string, userData: changeProfileData) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    if(userData.firstname !== null) user.auth_firstname = userData.firstname;
+    if(userData.lastname !== null) user.auth_lastname = userData.lastname;
+    if(userData.phone !== null) user.auth_phone = userData.phone;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class UserDoc singleton
@@ -131,6 +159,8 @@ class UserDoc {
     findByEmail: (email: string) => Promise<User[]>;
     verifyUser: (userId: string) => Promise<User>; 
     confirmUser: (userId: string) => Promise<User>;
+    changepp: (userId: string, path: string) => Promise<User>;
+    changeProfile: (userId: string, userData: changeProfileData) => Promise<User>;
 }
 
 // declare functions
@@ -145,6 +175,8 @@ userDoc.updateUser = updateUser;
 userDoc.findByEmail = findByEmail;
 userDoc.verifyUser = verifyUser;
 userDoc.confirmUser = confirmUser;
+userDoc.changepp = changepp;
+userDoc.changeProfile = changeProfile;
 
 export default userDoc;
 

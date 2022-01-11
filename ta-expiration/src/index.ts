@@ -1,4 +1,5 @@
 import { OrderCreatedListener } from "./events/listeners/order-created-listener";
+import { OrderDoneListener } from "./events/listeners/order-done-listener";
 import { natsWrapper } from "./nats-wrapper";
 const start = async () => {
     // ENV VARIABLES
@@ -32,6 +33,7 @@ const start = async () => {
 
         // LISTENERS
         new OrderCreatedListener(natsWrapper.client).listen();
+        new OrderDoneListener(natsWrapper.client).listen();
 
     }catch(err){
         console.log(err);

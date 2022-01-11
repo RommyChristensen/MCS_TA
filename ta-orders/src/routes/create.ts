@@ -10,7 +10,7 @@ import categoryDoc from "../models/category";
 
 const router = express.Router();
 
-const minutesToExpires = 1 * 60 * 1000;
+const minutesToExpires = 10 * 60 * 1000;
 
 router.post('/api/orders',
 validateHeader, 
@@ -18,30 +18,28 @@ body('job_id').notEmpty().withMessage('Job ID Required'),
 body('orderer').notEmpty().withMessage('User Orderer ID Required'),
 body('price').notEmpty().withMessage('Price is Required'),
 body('price').isNumeric().withMessage('Price must be a number'),
+body('datetime').notEmpty().withMessage('Order Date is Required'),
 validateRequest, 
 async (req: Request, res: Response) => {
-    const { job_id, orderer, price } = req.body;
+    const { job_id, orderer, price, datetime } = req.body;
 
     const user = await userDoc.findById(orderer);
-    console.log(user);
 
     if(user.auth_verified === false){
         throw new BadRequestError('User must be verified!');
     }
 
-    const order = await orderDoc.create(orderer, job_id, price);
+    const date = new Date(datetime);
 
-    console.log(order);
+    const order = await orderDoc.create(orderer, job_id, price, date);
+
 
     const job = await jobDoc.findById(job_id);
-    console.log(job);
     const job_user = await userDoc.findById(job.job_created_by as string);
-    console.log(job_user);
     const category = await categoryDoc.findById(job.job_category as string);
-    console.log(category);
     const timeout = (new Date().getTime() + minutesToExpires) - new Date().getTime();
 
-    //TODO: EMIT OrderCreatedEvent
+    //DONE: EMIT OrderCreatedEvent
     await new OrderCreatedPublisher(natsWrapper.client).publish({
         id: order.id,
         job: {

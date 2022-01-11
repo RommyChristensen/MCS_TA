@@ -7,6 +7,8 @@ deploy:
 build:
   local:
     push: false
+  # googleCloudBuild:
+  #   projectId: ta-vrilance-cluster
   artifacts:
     - image: rommycy00/ta-auth
       context: ta-auth
@@ -48,3 +50,67 @@ build:
         manual:
           - src: '**/*.ts'
             dest: .
+    - image: rommycy00/ta-rating-review
+      context: ta-rating-review
+      docker: 
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.ts'
+            dest: .
+    - image: rommycy00/ta-search-recommendations
+      context: ta-search-recommendations
+      docker: 
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.ts'
+            dest: .
+    # - image: us.gcr.io/ta-vrilance-cluster/ta-auth
+    #   context: ta-auth
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/*.ts'
+    #         dest: .
+    # - image: us.gcr.io/ta-vrilance-cluster/ta-client
+    #   context: ta-client
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: '**/*.js'
+    #         dest: .
+    # - image: us.gcr.io/ta-vrilance-cluster/ta-jobs-category
+    #   context: ta-jobs-category
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: '**/*.ts'
+    #         dest: .
+    # - image: us.gcr.io/ta-vrilance-cluster/ta-expiration
+    #   context: ta-expiration
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: 'src/**/*.ts'
+    #         dest: .
+    # - image: us.gcr.io/ta-vrilance-cluster/ta-orders
+    #   context: ta-orders
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: '**/*.ts'
+    #         dest: .
+    # - image: us.gcr.io/ta-vrilance-cluster/ta-rating-review
+    #   context: ta-rating-review
+    #   docker: 
+    #     dockerfile: Dockerfile
+    #   sync:
+    #     manual:
+    #       - src: '**/*.ts'
+    #         dest: .

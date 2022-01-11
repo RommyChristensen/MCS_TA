@@ -12,6 +12,9 @@ import { completeDataRouter } from './routes/completedata';
 import { getUserRouter } from './routes/admin/get-user';
 import { verifyEmailRouter } from './routes/sendmail';
 import { confirmUserRouter } from './routes/admin/confirm-user';
+import { changeProfilePictureRouter } from './routes/changeprofilepicture';
+import { changeProfileRouter } from './routes/changeprofile';
+import { changePasswordRouter } from './routes/changepassword';
 
 // END IMPORT ROUTERS
 
@@ -35,6 +38,9 @@ app.use(completeDataRouter);
 app.use(getUserRouter);
 app.use(verifyEmailRouter);
 app.use(confirmUserRouter);
+app.use(changeProfilePictureRouter);
+app.use(changeProfileRouter);
+app.use(changePasswordRouter);
 
 // END USE ROUTERS
 

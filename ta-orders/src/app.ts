@@ -7,6 +7,12 @@ import { errorHandler, NotFoundError } from '@ta-vrilance/common';
 // IMPORT ROUTERS
 
 import { createOrderRouter } from './routes/create';
+import { updateOrderRouter } from './routes/update';
+import { acceptOrderRouter } from './routes/accept';
+import { rejectOrderRouter } from './routes/reject';
+import { orderCancelledRouter } from './routes/cancel';
+import { orderDoneRouter } from './routes/done';
+import { orderConfirmedRouter } from './routes/confirmed';
 
 // END IMPORT ROUTERS
 
@@ -25,6 +31,12 @@ app.use(
 // USE ROUTERS
 
 app.use(createOrderRouter);
+app.use(updateOrderRouter);
+app.use(acceptOrderRouter);
+app.use(rejectOrderRouter);
+app.use(orderCancelledRouter);
+app.use(orderDoneRouter);
+app.use(orderConfirmedRouter);
 
 // END USE ROUTERS
 

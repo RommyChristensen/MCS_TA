@@ -6,6 +6,7 @@ import { natsWrapper } from './nats-wrapper';
 import { UserCreatedListener } from './events/listeners/user-created-listener';
 import { UserVerifiedListener } from './events/listeners/user-verified-listener';
 import { UserConfirmedListener } from './events/listeners/user-confirmed-listener';
+import { UserCompletedListener } from './events/listeners/user-completed-listener';
 const start = async () => {
     // ENV VARIABLES
 
@@ -48,6 +49,7 @@ const start = async () => {
         new UserCreatedListener(natsWrapper.client).listen();
         new UserVerifiedListener(natsWrapper.client).listen();
         new UserConfirmedListener(natsWrapper.client).listen();
+        new UserCompletedListener(natsWrapper.client).listen();
 
     }catch(err){
         console.log(err);

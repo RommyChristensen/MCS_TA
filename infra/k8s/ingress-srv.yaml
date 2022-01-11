@@ -22,6 +22,14 @@ spec:
             backend:
               serviceName: ta-orders-srv
               servicePort: 3000
+          - path: /api/ratingreview/?(.*)
+            backend:
+              serviceName: ta-rating-review-srv
+              servicePort: 3000
+          - path: /api/searchrecommendation/?(.*)
+            backend:
+              serviceName: ta-search-recommendations-srv
+              servicePort: 3000
           - path: /?(.*)
             backend:
               serviceName: ta-client-srv

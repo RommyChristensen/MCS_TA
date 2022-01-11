@@ -28,9 +28,10 @@ router.post('/api/auth/signup', [
         .withMessage('Email must be valid'),
     body('password_confirmation')
         .notEmpty(),
-    body('firstname').notEmpty(),
+    body('firstname').notEmpty().withMessage('Firstname must be provided'),
+    body('role').notEmpty().withMessage('Role is required'),
 ], validateRequest,  async (req: Request, res: Response) => {
-    const { username, password, password_confirmation, email, firstname, lastname } = req.body;
+    const { username, password, password_confirmation, email, firstname, lastname, role } = req.body;
 
     if ( !await userDoc.checkUsername(username) ){
         throw new BadRequestError("Username has been used");
@@ -45,7 +46,7 @@ router.post('/api/auth/signup', [
     }
 
     const hashedPassword = await Password.toHash(password);
-    const result = await userDoc.create(username, hashedPassword, email, false, firstname, lastname ? lastname : '');
+    const result = await userDoc.create(username, hashedPassword, email, false, firstname, lastname ? lastname : '', role);
     
     const _token = jwt.sign({
         id: result.id,

@@ -11,7 +11,6 @@ const start = async () => {
     if(!process.env.JWT_KEY){
         throw new Error('JWT must be defined');
     }
-    
 
     if(!process.env.G_CLIENT_ID){
         throw new Error('CLIENT ID must be defined');

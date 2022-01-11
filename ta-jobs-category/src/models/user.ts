@@ -10,7 +10,6 @@ export class User {
     auth_firstname: string;
     auth_lastname: string;
     auth_username: string;
-    auth_password: string;
     auth_email: string;
     auth_verified: Boolean;
     auth_role: string;
@@ -31,12 +30,11 @@ interface UserCompleteData {
 
 // --------------------- Start custom functions ------------------------------ //
 
-const createUser = async (id: string, username: string, password: string, email: string, verified: Boolean, confirmed: Boolean, firstname: string, _v: number, lastname?: string, role?: string) => {
+const createUser = async (id: string, username: string, email: string, verified: Boolean, confirmed: Boolean, firstname: string, _v: number, lastname?: string, role?: string) => {
     const repo = await getRepository(User);
     const user = new User();
     user.id = id;
     user.auth_username = username;
-    user.auth_password = password;
     user.auth_email = email;
     user.auth_verified = verified;
     user.auth_role = role || '';
@@ -123,11 +121,44 @@ const confirmUser = async (userId: string) => {
     return updatedUser;
 }
 
+const changepp = async (userId: string, path: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    user.auth_profile = path;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+}
+
+interface changeProfileData {
+    firstname: string | null;
+    lastname: string | null;
+    address: string | null;
+    bio: string | null;
+    phone: string | null;
+}
+
+const changeProfile = async (userId: string, userData: changeProfileData) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    if(userData.firstname !== null) user.auth_firstname = userData.firstname;
+    if(userData.lastname !== null) user.auth_lastname = userData.lastname;
+    if(userData.address !== null) user.auth_address = userData.address;
+    if(userData.bio !== null) user.auth_bio = userData.bio;
+    if(userData.phone !== null) user.auth_phone = userData.phone;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class UserDoc singleton
 class UserDoc {
-    create: (id: string, username: string, password: string, email: string, verified: Boolean, confirmed: Boolean, firstname: string, _v: number, lastname?: string, role?: string) => Promise<User>;
+    create: (id: string, username: string, email: string, verified: Boolean, confirmed: Boolean, firstname: string, _v: number, lastname?: string, role?: string) => Promise<User>;
     checkUsername: (username: string) => Promise<Boolean>;
     checkEmail: (email: string) => Promise<Boolean>;
     getAll: () => Promise<User[]>;
@@ -137,6 +168,9 @@ class UserDoc {
     findByEmail: (email: string) => Promise<User[]>;
     verifyUser: (userId: string) => Promise<User>; 
     confirmUser: (userId: string) => Promise<User>;
+    changepp: (userId: string, path: string) => Promise<User>;
+    changeProfile: (userId: string, userData: changeProfileData) => Promise<User>;
+    changePassword: (userId: string, oldPassword: string, newPassword: string) => Promise<Object>;
 }
 
 // declare functions
@@ -151,6 +185,8 @@ userDoc.updateUser = updateUser;
 userDoc.findByEmail = findByEmail;
 userDoc.verifyUser = verifyUser;
 userDoc.confirmUser = confirmUser;
+userDoc.changepp = changepp;
+userDoc.changeProfile = changeProfile;
 
 export default userDoc;
 

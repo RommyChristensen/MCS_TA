@@ -8,6 +8,12 @@ import { JobCreatedListener } from './events/listeners/job-created-listener';
 import { CategoryCreatedListener } from './events/listeners/category-created-listener';
 import { UserVerifiedListener } from './events/listeners/user-verified-listener';
 import { UserConfirmedListener } from './events/listeners/user-confirmed-listener';
+import { OrderExpiredListener } from './events/listeners/order-expired-listener';
+import { CategoryUpdatedListener } from './events/listeners/category-updated-listener';
+import { CategoryDeletedListener } from './events/listeners/category-deleted-listener';
+import { RatingReviewCreatedListener } from './events/listeners/rating-review-created-listener';
+import { OrderAutoConfirmedListener } from './events/listeners/order-auto-confirm-listener';
+import { UserCompletedListener } from './events/listeners/user-completed-listener';
 const start = async () => {
     // ENV VARIABLES
 
@@ -63,8 +69,14 @@ const start = async () => {
         new UserCreatedListener(natsWrapper.client).listen();
         new UserVerifiedListener(natsWrapper.client).listen();
         new UserConfirmedListener(natsWrapper.client).listen();
+        new UserCompletedListener(natsWrapper.client).listen();
         new JobCreatedListener(natsWrapper.client).listen();
         new CategoryCreatedListener(natsWrapper.client).listen();
+        new CategoryUpdatedListener(natsWrapper.client).listen();
+        new CategoryDeletedListener(natsWrapper.client).listen();
+        new OrderExpiredListener(natsWrapper.client).listen();
+        new RatingReviewCreatedListener(natsWrapper.client).listen();
+        new OrderAutoConfirmedListener(natsWrapper.client).listen();
 
     }catch(err){
         console.log(err);

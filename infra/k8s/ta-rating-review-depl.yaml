@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ta-rating-review-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ta-rating-review
+  template:
+    metadata:
+      labels:
+        app: ta-rating-review
+    spec:
+      containers:
+        - name: ta-rating-review
+          image: rommycy00/ta-rating-review
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://ta-nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: vrilance
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ta-rating-review-srv
+spec:
+  selector:
+    app: ta-rating-review
+  ports:
+    - name: ta-rating-review
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

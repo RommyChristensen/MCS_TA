@@ -13,7 +13,8 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
         console.log('Waiting this may milliseconds to process the job: ', delay);
 
         await orderExpiresQueue.add({
-            order_id: data.id
+            order_id: data.id,
+            _v: data._v
         },{
             delay: delay
         });

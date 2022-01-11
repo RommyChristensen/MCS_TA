@@ -1,5 +1,6 @@
 import { Collection, getRepository } from 'fireorm';
 import mongoose from 'mongoose';
+import { UserRole } from '@ta-vrilance/common';
 
 // definition model firestore
 @Collection()
@@ -37,7 +38,7 @@ const createUser = async (username: string, password: string, email: string, ver
     user.auth_password = password;
     user.auth_email = email;
     user.auth_verified = verified;
-    user.auth_role = role || '';
+    user.auth_role = role == 'hirer' ? UserRole.Hirer : UserRole.Worker;
     user.auth_firstname = firstname;
     user.auth_lastname = lastname || '';
     user.auth_confirmed = false;
@@ -122,6 +123,59 @@ const confirmUser = async (userId: string) => {
     return updatedUser;
 }
 
+const changepp = async (userId: string, path: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    user.auth_profile = path;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+}
+
+interface changeProfileData {
+    firstname: string | null;
+    lastname: string | null;
+    address: string | null;
+    bio: string | null;
+    phone: string | null;
+}
+
+const changeProfile = async (userId: string, userData: changeProfileData) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    if(userData.firstname !== null) user.auth_firstname = userData.firstname;
+    if(userData.lastname !== null) user.auth_lastname = userData.lastname;
+    if(userData.address !== null) user.auth_address = userData.address;
+    if(userData.bio !== null) user.auth_bio = userData.bio;
+    if(userData.phone !== null) user.auth_phone = userData.phone;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+
+}
+
+const changePassword = async (userId: string, oldPassword: string, newPassword: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    if(user.auth_password !== oldPassword){
+        return {
+            status: "failed",
+            message: "Wrong Old Password"
+        }
+    }else{
+        user.auth_password = newPassword;
+        await repo.update(user);
+
+        return {
+            status: "failed",
+            message: "Change Password Success"
+        }
+    }
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class UserDoc singleton
@@ -136,6 +190,9 @@ class UserDoc {
     findByEmail: (email: string) => Promise<User[]>;
     verifyUser: (userId: string) => Promise<User>; 
     confirmUser: (userId: string) => Promise<User>;
+    changepp: (userId: string, path: string) => Promise<User>;
+    changeProfile: (userId: string, userData: changeProfileData) => Promise<User>;
+    changePassword: (userId: string, oldPassword: string, newPassword: string) => Promise<Object>;
 }
 
 // declare functions
@@ -150,6 +207,9 @@ userDoc.updateUser = updateUser;
 userDoc.findByEmail = findByEmail;
 userDoc.verifyUser = verifyUser;
 userDoc.confirmUser = confirmUser;
+userDoc.changepp = changepp;
+userDoc.changeProfile = changeProfile;
+userDoc.changePassword = changePassword;
 
 export default userDoc;
 

@@ -4,6 +4,8 @@ import { body } from 'express-validator';
 import { validateRequest, validateHeader, BadRequestError } from '@ta-vrilance/common';
 // import multer from 'multer';
 import jwt from 'jsonwebtoken';
+import { UserCompletedPublisher } from '../events/publishers/user-completed-publisher';
+import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -21,19 +23,6 @@ body('bio').notEmpty(),
 body('address').notEmpty(),
 body('phone').isNumeric().isLength({min: 10, max: 15}).withMessage('Please Enter a Valid Phone Number'),
 body('profile').notEmpty(),
-// body('profile').custom((val, {req}) => {
-//     if(req.file.mimetype === 'image/jpeg'){
-//         return '.jpeg'; // return "non-falsy" value to indicate valid data"
-//     }else if(req.file.mimetype === 'image/png'){
-//         return '.png'; // return "non-falsy" value to indicate valid data"
-//     }else if(req.file.mimetype === 'image/bmp'){
-//         return '.bmp'; // return "non-falsy" value to indicate valid data"
-//     }else if(req.file.mimetype === 'image/tiff'){
-//         return '.tiff'; // return "non-falsy" value to indicate valid data"
-//     }else{
-//         return false; // return "falsy" value to indicate invalid data
-//     }
-// }).withMessage('Please Enter a Valid Profile'),
 validateRequest,
 async (req: Request, res: Response) => {
     const { bio, address, phone, profile } = req.body;
@@ -42,6 +31,15 @@ async (req: Request, res: Response) => {
         const response = await userDoc.updateUser(data.id, {
             bio, address, phone, profile
         });
+
+        new UserCompletedPublisher(natsWrapper.client).publish({
+            id: data.id,
+            auth_address: address,
+            auth_bio: bio,
+            auth_phone: phone,
+            auth_profile: profile,
+            _v: response._v
+        })
 
         return res.send(response);
     }catch(ex){
