@@ -7,7 +7,7 @@ import { natsWrapper } from './nats-wrapper';
 
 const start = async () => {
     // ENV VARIABLES
-    console.log("starting up...");
+    console.log("starting up ta auth");
 
     if(!process.env.JWT_KEY){
         throw new Error('JWT must be defined');
