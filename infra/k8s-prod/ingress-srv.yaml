@@ -35,7 +35,7 @@ spec:
             pathType: Prefix
             defaultBackend:
               service:
-              name: ta-rating-review-srv
+                name: ta-rating-review-srv
                 port:
                   number: 3000
           - path: /api/searchrecommendation/?(.*)
