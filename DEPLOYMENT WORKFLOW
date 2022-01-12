@@ -8,3 +8,30 @@ MANUALLY CREATE PULL REQUEST TO MASTER
 GITHUB AUTOMATICALLY RUNS TEST FOR PROJECT
 AFTER TESTS PASS, MERGE THE PR INTO MASTER BRANCH
 BECAUSE MASTER BRANCH CHANGES, GITHUB WILL REDEPLOY AND REBUILD
+
+BUAT WORKFLOW UTK AUTO DEPLOY KE KUBERNETES CLUSTER DI DIGITAL OCEAN
+- BUAT WORKFLOW BARU, DENGAN NAMA deploy-<NAMA SERVICE>.yaml
+- ISI WORKFLOW DENGAN SEPERTI BERIKUT
+
+----
+name: deploy-ta-auth
+
+on: -- ini akan dijalankan pas ada push ke master branch
+  push:
+    branches:
+      - master
+    paths:
+      - 'ta-auth/**' -- setiap perubahan yang ada di folder ta-auth
+      
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - run: cd ta-auth && docker build -t rommycy00/ta-auth .
+      - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
+      - run: docker push rommycy00/ta-auth
+----
