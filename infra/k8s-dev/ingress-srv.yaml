@@ -22,33 +22,33 @@ spec:
             defaultBackend:
               service:
                 name: ta-jobs-category-srv
-                  port:
-                    number: 3000
+                port:
+                  number: 3000
           - path: /api/orders/?(.*)
             pathType: Prefix
             defaultBackend:
               service:
                 name: ta-orders-srv
-                  port:
-                    number: 3000
+                port:
+                  number: 3000
           - path: /api/ratingreview/?(.*)
             pathType: Prefix
             defaultBackend:
               service:
                 name: ta-rating-review-srv
-                  port:
-                    number: 3000
+                port:
+                  number: 3000
           - path: /api/searchrecommendation/?(.*)
             pathType: Prefix
             defaultBackend:
               service:
                 name: ta-search-recommendations-srv
-                  port:
-                    number: 3000
+                port:
+                  number: 3000
           - path: /?(.*)
             pathType: Prefix
             defaultBackend:
               service:
                 name: ta-client-srv
-                  port:
-                    number: 3000
+                port:
+                  number: 3000
