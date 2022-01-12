@@ -1,0 +1,43 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/use-regex: 'true'
+spec:
+  rules:
+    - host: vrilance.dev
+      http:
+        paths:
+          - path: /api/auth/?(.*)
+            backend:
+              serviceName: ta-auth-srv
+              servicePort: 3000
+          - path: /api/jobscat/?(.*)
+            backend:
+              serviceName: ta-jobs-category-srv
+              servicePort: 3000
+          - path: /api/orders/?(.*)
+            backend:
+              serviceName: ta-orders-srv
+              servicePort: 3000
+          - path: /api/ratingreview/?(.*)
+            backend:
+              serviceName: ta-rating-review-srv
+              servicePort: 3000
+          - path: /api/searchrecommendation/?(.*)
+            backend:
+              serviceName: ta-search-recommendations-srv
+              servicePort: 3000
+          - path: /?(.*)
+            backend:
+              serviceName: ta-client-srv
+              servicePort: 3000
+    - host: localhost
+      http:
+        paths:
+          - path: /api/auth/?(.*)
+            backend:
+              serviceName: ta-auth-srv
+              servicePort: 3000

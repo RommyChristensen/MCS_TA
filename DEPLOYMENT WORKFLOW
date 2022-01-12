@@ -16,13 +16,13 @@ BUAT WORKFLOW UTK AUTO DEPLOY KE KUBERNETES CLUSTER DI DIGITAL OCEAN
 ----
 name: deploy-ta-auth
 
-on: -- ini akan dijalankan pas ada push ke master branch
+on: 
   push:
     branches:
       - master
     paths:
-      - 'ta-auth/**' -- setiap perubahan yang ada di folder ta-auth
-      
+      - 'ta-auth/**'
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -34,4 +34,9 @@ jobs:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
           DOCKER_PASSWORD: ${{ secrets.DOCKER_PASSWORD }}
       - run: docker push rommycy00/ta-auth
+      - uses: digitalocean/action-doctl@v2
+        with: 
+          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+      - run: doctl kubernetes cluster kubeconfig save ta-vrilance
+      - run: kubectl rollout restart deployment ta-auth-depl
 ----
