@@ -3,6 +3,7 @@ import { OrderDoneListener } from "./events/listeners/order-done-listener";
 import { natsWrapper } from "./nats-wrapper";
 const start = async () => {
     // ENV VARIABLES
+    console.log("Starting expiration service");
 
     if(!process.env.NATS_CLIENT_ID){
         throw new Error('NATS CLIENT ID must be defined');
