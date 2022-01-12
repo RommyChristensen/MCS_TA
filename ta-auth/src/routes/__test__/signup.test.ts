@@ -10,7 +10,8 @@ it('returns a 201 on successfull signup', async () => {
             "firstname": "Dominator",
             "lastname": "Ranger",
             "password": "123456789",
-            "password_confirmation" : "123456789"
+            "password_confirmation" : "123456789",
+            "role": "worker"
         })
         .expect(201);
 });
