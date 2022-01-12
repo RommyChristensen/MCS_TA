@@ -6,11 +6,6 @@ on:
       - master
     paths:
       - 'ta-auth/**'
-  pull_request:
-    branches:
-      - master
-    paths:
-      - 'ta-auth/**'
 
 jobs:
   build:
