@@ -12,6 +12,7 @@ import { JobCreatedListener } from './events/listeners/job-created-listener';
 import { OrderCreatedListener } from './events/listeners/order-created-listener';
 import { OrderConfirmedListener } from './events/listeners/order-confirmed-listener';
 const start = async () => {
+    console.log("starting search recommendations service....");
     // ENV VARIABLES
 
     if(!process.env.JWT_KEY){

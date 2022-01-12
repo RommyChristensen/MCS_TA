@@ -6,6 +6,7 @@ import { natsWrapper } from './nats-wrapper';
 import { OrderCreatedListener } from './events/listeners/order-created-listener';
 import { OrderConfirmedListener } from './events/listeners/order-confirmed-listener';
 const start = async () => {
+    console.log("starting rating review service....");
     // ENV VARIABLES
 
     if(!process.env.JWT_KEY){

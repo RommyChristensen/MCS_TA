@@ -8,6 +8,7 @@ import { UserVerifiedListener } from './events/listeners/user-verified-listener'
 import { UserConfirmedListener } from './events/listeners/user-confirmed-listener';
 import { UserCompletedListener } from './events/listeners/user-completed-listener';
 const start = async () => {
+    console.log("starting jobs category service");
     // ENV VARIABLES
 
     if(!process.env.JWT_KEY){

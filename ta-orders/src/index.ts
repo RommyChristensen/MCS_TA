@@ -15,7 +15,7 @@ import { RatingReviewCreatedListener } from './events/listeners/rating-review-cr
 import { OrderAutoConfirmedListener } from './events/listeners/order-auto-confirm-listener';
 import { UserCompletedListener } from './events/listeners/user-completed-listener';
 const start = async () => {
-    console.log("starting orders service...");
+    console.log("starting orders service....");
     // ENV VARIABLES
 
     if(!process.env.JWT_KEY){
