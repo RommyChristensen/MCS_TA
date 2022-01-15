@@ -28,7 +28,7 @@ spec:
           - path: /api/ratingreview
             pathType: Prefix
             backend:
-              servicename: ta-rating-review-srv
+              serviceName: ta-rating-review-srv
               servicePort: 3000
           - path: /api/searchrecommendation
             pathType: Prefix
