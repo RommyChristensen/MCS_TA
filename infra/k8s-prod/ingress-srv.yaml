@@ -1,47 +1,4 @@
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: ingress-service
-  annotations:
-    kubernetes.io/ingress.class: nginx
-    nginx.ingress.kubernetes.io/rewrite-target: /$1
-spec:
-  rules:
-    - host: www.ta-vrilance.xyz
-      http:
-        paths:
-          - path: /api/auth
-            pathType: Prefix
-            backend:
-              serviceName: ta-auth-srv
-              servicePort: 3000
-          - path: /api/jobscat
-            pathType: Prefix
-            backend:
-              serviceName: ta-jobs-category-srv
-              servicePort: 3000
-          - path: /api/orders
-            pathType: Prefix
-            backend:
-              serviceName: ta-orders-srv
-              servicePort: 3000
-          - path: /api/ratingreview
-            pathType: Prefix
-            backend:
-              serviceName: ta-rating-review-srv
-              servicePort: 3000
-          - path: /api/searchrecommendation
-            pathType: Prefix
-            backend:
-              serviceName: ta-search-recommendations-srv
-              servicePort: 3000
-          - path: /
-            pathType: Prefix
-            backend:
-              serviceName: ta-client-srv
-              servicePort: 3000
-              
-# apiVersion: networking.k8s.io/v1
+# apiVersion: networking.k8s.io/v1beta1
 # kind: Ingress
 # metadata:
 #   name: ingress-service
@@ -56,74 +13,117 @@ spec:
 #           - path: /api/auth
 #             pathType: Prefix
 #             backend:
-#               service:
-#                 name: 
-#                 port:
-#                   number: 3000
+#               serviceName: ta-auth-srv
+#               servicePort: 3000
 #           - path: /api/jobscat
 #             pathType: Prefix
 #             backend:
-#               service:
-#                 name: ta-jobs-category-srv
-#                 port:
-#                   number: 3000
+#               serviceName: ta-jobs-category-srv
+#               servicePort: 3000
 #           - path: /api/orders
 #             pathType: Prefix
 #             backend:
-#               service:
-#                 name: ta-orders-srv
-#                 port:
-#                   number: 3000
+#               serviceName: ta-orders-srv
+#               servicePort: 3000
 #           - path: /api/ratingreview
 #             pathType: Prefix
 #             backend:
-#               service:
-#                 name: ta-rating-review-srv
-#                 port:
-#                   number: 3000
+#               serviceName: ta-rating-review-srv
+#               servicePort: 3000
 #           - path: /api/searchrecommendation
 #             pathType: Prefix
 #             backend:
-#               service:
-#                 name: ta-search-recommendations-srv
-#                 port:
-#                   number: 3000
+#               serviceName: ta-search-recommendations-srv
+#               servicePort: 3000
 #           - path: /
 #             pathType: Prefix
 #             backend:
-#               service:
-#                 name: ta-client-srv
-#                 port:
-#                   number: 3000
-# ---
-# apiVersion: v1
-# kind: Service
-# metadata:
-#   annotations:
-#     service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
-#     service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.ta-vrilance.xyz'
-#   labels:
-#     helm.sh/chart: ingress-nginx-2.0.3
-#     app.kubernetes.io/name: ingress-nginx
-#     app.kubernetes.io/instance: ingress-nginx
-#     app.kubernetes.io/version: 0.32.0
-#     app.kubernetes.io/managed-by: Helm
-#     app.kubernetes.io/component: controller
-#   name: ingress-nginx-controller
-#   namespace: ingress-nginx
-# spec:
-#   type: LoadBalancer
-#   externalTrafficPolicy: Local
-#   ports:
-#     - name: http
-#       port: 80
-#       protocol: TCP
-#       targetPort: http
-#     - name: https
-#       port: 443
-#       protocol: TCP
-#       targetPort: https
-#   selector:
-#     app.kubernetes.io/name: ingress-nginx
-#     app.kubernetes.io/instance: ingress-nginx
-#     app.kubernetes.io/component: controller
+#               serviceName: ta-client-srv
+#               servicePort: 3000
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: ingress-service
+  annotations:
+    kubernetes.io/ingress.class: nginx
+    nginx.ingress.kubernetes.io/rewrite-target: /$1
+spec:
+  rules:
+    - host: www.ta-vrilance.xyz
+      http:
+        paths:
+          - path: /api/auth
+            pathType: Prefix
+            backend:
+              service:
+                name: 
+                port:
+                  number: 3000
+          - path: /api/jobscat
+            pathType: Prefix
+            backend:
+              service:
+                name: ta-jobs-category-srv
+                port:
+                  number: 3000
+          - path: /api/orders
+            pathType: Prefix
+            backend:
+              service:
+                name: ta-orders-srv
+                port:
+                  number: 3000
+          - path: /api/ratingreview
+            pathType: Prefix
+            backend:
+              service:
+                name: ta-rating-review-srv
+                port:
+                  number: 3000
+          - path: /api/searchrecommendation
+            pathType: Prefix
+            backend:
+              service:
+                name: ta-search-recommendations-srv
+                port:
+                  number: 3000
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: ta-client-srv
+                port:
+                  number: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    service.beta.kubernetes.io/do-loadbalancer-enable-proxy-protocol: 'true'
+    service.beta.kubernetes.io/do-loadbalancer-hostname: 'www.ta-vrilance.xyz'
+  labels:
+    helm.sh/chart: ingress-nginx-2.0.3
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/version: 0.32.0
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/component: controller
+  name: ingress-nginx-controller
+  namespace: ingress-nginx
+spec:
+  type: LoadBalancer
+  externalTrafficPolicy: Local
+  ports:
+    - name: http
+      port: 80
+      protocol: TCP
+      targetPort: http
+    - name: https
+      port: 443
+      protocol: TCP
+      targetPort: https
+  selector:
+    app.kubernetes.io/name: ingress-nginx
+    app.kubernetes.io/instance: ingress-nginx
+    app.kubernetes.io/component: controller
