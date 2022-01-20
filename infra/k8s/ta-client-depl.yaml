@@ -15,6 +15,12 @@ spec:
       containers:
         - name: ta-client
           image: rommycy00/ta-client
+          env:
+            - name: PROD
+              valueFrom:
+                secretKeyRef:
+                  name: production-mode
+                  key: PROD
 ---
 apiVersion: v1
 kind: Service

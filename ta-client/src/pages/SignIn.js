@@ -13,6 +13,7 @@ import axios from 'axios';
 import { useNavigate } from 'react-router';
 import Swal from 'sweetalert2';
 import encryptStorage from '../services/Storage';
+import base_url from '../services/Url';
 
 const theme = createTheme();
 
@@ -25,7 +26,7 @@ export default function SignIn() {
 
     
     try{
-      const response = await axios.post('https://vrilance.dev/api/auth/admin/signin', {
+      const response = await axios.post(`${base_url}/api/auth/admin/signin`, {
         username: data.get('username'),
         password: data.get('password')
       })
