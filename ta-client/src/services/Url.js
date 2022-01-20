@@ -1,3 +1,3 @@
-const base_url = process.env.PROD == "Y" ? "http://www.ta-vrilance.xyz" : "http://vrilance.dev";
+const base_url = process.env.PROD == "Y" ? "http://vrilance.dev" : "http://www.ta-vrilance.xyz";
 
 export default base_url;
