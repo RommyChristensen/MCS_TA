@@ -1,10 +1,8 @@
 import express, { Request, Response } from 'express';
 import userDoc from '../models/user';
-import { body } from 'express-validator';
-import { validateRequest, validateHeader, BadRequestError } from '@ta-vrilance/common';
+import { validateHeader, BadRequestError } from '@ta-vrilance/common';
 // import multer from 'multer';
 import jwt from 'jsonwebtoken';
-import { natsWrapper } from '../nats-wrapper';
 
 const router = express.Router();
 
@@ -25,4 +23,4 @@ async (req: Request, res: Response) => {
     }
 });
 
-export { router as getUserRouter };
+export { router as getUserByIdRouter };
