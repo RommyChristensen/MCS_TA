@@ -15,6 +15,7 @@ import { confirmUserRouter } from './routes/admin/confirm-user';
 import { changeProfilePictureRouter } from './routes/changeprofilepicture';
 import { changeProfileRouter } from './routes/changeprofile';
 import { changePasswordRouter } from './routes/changepassword';
+import { getUserByIdRouter } from './routes/getuser';
 
 // END IMPORT ROUTERS
 
@@ -41,6 +42,7 @@ app.use(confirmUserRouter);
 app.use(changeProfilePictureRouter);
 app.use(changeProfileRouter);
 app.use(changePasswordRouter);
+app.use(getUserByIdRouter);
 
 // END USE ROUTERS
 
