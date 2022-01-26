@@ -23,13 +23,15 @@ body('bio').notEmpty(),
 body('address').notEmpty(),
 body('phone').isNumeric().isLength({min: 10, max: 15}).withMessage('Please Enter a Valid Phone Number'),
 body('profile').notEmpty(),
+body('birthdate').notEmpty(),
+body('gender').notEmpty(),
 validateRequest,
 async (req: Request, res: Response) => {
-    const { bio, address, phone, profile } = req.body;
+    const { bio, address, phone, profile, birthdate, gender } = req.body;
     try{
         const data = jwt.verify(req.header('x-auth-token')!, process.env.JWT_KEY!) as JwtPayload;
         const response = await userDoc.updateUser(data.id, {
-            bio, address, phone, profile
+            bio, address, phone, profile, birthdate, gender
         });
 
         new UserCompletedPublisher(natsWrapper.client).publish({
@@ -38,6 +40,8 @@ async (req: Request, res: Response) => {
             auth_bio: bio,
             auth_phone: phone,
             auth_profile: profile,
+            auth_birthdate: birthdate,
+            auth_gender: gender,
             _v: response._v
         })
 
