@@ -18,6 +18,9 @@ class User {
     auth_profile: string;
     auth_bio: string;
     auth_confirmed: Boolean;
+    auth_gender: string;
+    auth_birthdate: Date;
+    auth_completed: Boolean;
     _v: number;
 }
 
@@ -26,6 +29,8 @@ interface UserCompleteData {
     address: string;
     profile: string;
     phone: string;
+    gender: string;
+    birthdate: Date;
 }
 
 // --------------------- Start custom functions ------------------------------ //
@@ -44,6 +49,7 @@ const createUser = async (username: string, password: string, email: string, ver
     user.auth_confirmed = false;
     user.auth_profile = 'https://firebasestorage.googleapis.com/v0/b/ta-vrilance-auth.appspot.com/o/profile_default.jpg?alt=media&token=a60e51da-2b95-4194-8f5d-9b45a8f6bd6f'
     user._v = 0;
+    user.auth_completed = false;
 
     return await repo.create(user);
 }
@@ -98,6 +104,10 @@ const updateUser = async (userId: string, data: UserCompleteData) => {
     user.auth_address = data.address;
     user.auth_phone = data.phone;
     user.auth_profile = data.profile;
+    user.auth_gender = data.gender;
+    user.auth_birthdate = data.birthdate;
+    user.auth_completed = true;
+
 
     const updatedUser = await repo.update(user);
     return updatedUser;
