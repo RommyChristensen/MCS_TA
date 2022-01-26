@@ -9,6 +9,8 @@ export interface UserCompleted {
         auth_phone: string;
         auth_profile: string;
         auth_bio: string;
+        auth_gender: string;
+        auth_birthdate: Date;
         _v: number;
     }; 
 }
