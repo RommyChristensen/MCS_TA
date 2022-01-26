@@ -17,6 +17,9 @@ export class User {
     auth_role: string;
     auth_phone: string;
     auth_profile: string;
+    auth_gender: string;
+    auth_birthdate: Date;
+    auth_completed: Boolean;
     _v: Number;
 }
 
@@ -25,6 +28,8 @@ interface UserCompleteData {
     address: string;
     profile: string;
     phone: string;
+    gender: string;
+    birthdate: Date;
 }
 
 // --------------------- Start custom functions ------------------------------ //
@@ -41,6 +46,7 @@ const createUser = async (id: string, username: string, email: string, verified:
     user.auth_lastname = lastname || '';
     user.auth_confirmed = confirmed;
     user._v = _v;
+    user.auth_completed = false;
 
     return await repo.create(user);
 }
@@ -93,6 +99,9 @@ const updateUser = async (userId: string, data: UserCompleteData) => {
 
     user.auth_phone = data.phone;
     user.auth_profile = data.profile;
+    user.auth_completed = false;
+    user.auth_gender = data.gender;
+    user.auth_birthdate = data.birthdate;
 
     const updatedUser = await repo.update(user);
     return updatedUser;
