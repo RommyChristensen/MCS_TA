@@ -107,7 +107,7 @@ const updateUser = async (userId: string, data: UserCompleteData) => {
     user.auth_completed = false;
     user.auth_gender = data.gender;
     user.auth_birthdate = data.birthdate;
-
+    user.auth_completed = true;
 
     const updatedUser = await repo.update(user);
     return updatedUser;
