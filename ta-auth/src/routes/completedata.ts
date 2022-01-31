@@ -24,6 +24,7 @@ body('address').notEmpty(),
 body('phone').isNumeric().isLength({min: 10, max: 15}).withMessage('Please Enter a Valid Phone Number'),
 body('birthdate').notEmpty(),
 body('gender').notEmpty(),
+body('profile').notEmpty(),
 validateRequest,
 async (req: Request, res: Response) => {
     const { bio, address, phone, birthdate, gender } = req.body;
