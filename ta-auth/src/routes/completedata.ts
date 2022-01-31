@@ -22,12 +22,17 @@ validateHeader,
 body('bio').notEmpty(),
 body('address').notEmpty(),
 body('phone').isNumeric().isLength({min: 10, max: 15}).withMessage('Please Enter a Valid Phone Number'),
-body('profile').notEmpty(),
 body('birthdate').notEmpty(),
 body('gender').notEmpty(),
 validateRequest,
 async (req: Request, res: Response) => {
-    const { bio, address, phone, profile, birthdate, gender } = req.body;
+    const { bio, address, phone, birthdate, gender } = req.body;
+    let profile = req.body.profile;
+
+    if(!profile){
+        profile = 'https://firebasestorage.googleapis.com/v0/b/ta-vrilance-auth.appspot.com/o/profile_default.jpg?alt=media&token=a60e51da-2b95-4194-8f5d-9b45a8f6bd6f';
+    }
+
     try{
         const data = jwt.verify(req.header('x-auth-token')!, process.env.JWT_KEY!) as JwtPayload;
         const response = await userDoc.updateUser(data.id, {
