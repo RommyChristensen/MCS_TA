@@ -21,7 +21,7 @@ validateHeader,
 async (req: Request, res: Response) => {
     const { newPassword, oldPassword, confirmPassword } = req.body;
 
-    if(oldPassword !== confirmPassword) {
+    if(newPassword !== confirmPassword) {
         return res.status(400).send({
             message: "Password do not match!"
         })
