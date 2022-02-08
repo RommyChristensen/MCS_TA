@@ -70,6 +70,19 @@ const updateCategory = async (catId: string, catName: string, catDescription: st
     return category;
 } 
 
+const getCategoryByName = async (query: string) => {
+    const repo = await getRepository(Category);
+    const categories = await repo.find();
+
+    const filteredCategories = categories.filter(c => {
+        const categoryName = c.category_name.toLowerCase();
+
+        return c.category_name.includes(query);
+    });
+
+    return filteredCategories;
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class VerificationDoc singleton
@@ -80,6 +93,7 @@ class CategoryDoc {
     findById: (categoryId: string) => Promise<Category>;
     deleteById: (categoryId: string) => Promise<Boolean>;
     updateCategory: (categoryId: string, categoryName: string, categoryDescription: string) => Promise<Category>;
+    getCategoryByname: (query: string) => Promise<Category[]>;
 }
 
 // declare functions
@@ -90,5 +104,6 @@ categoryDoc.getAll = getAll;
 categoryDoc.deleteAll = deleteAll;
 categoryDoc.deleteById = deleteById;
 categoryDoc.updateCategory = updateCategory;
+categoryDoc.getCategoryByname = getCategoryByName;
 
 export default categoryDoc;
