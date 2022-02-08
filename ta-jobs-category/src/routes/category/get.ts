@@ -18,10 +18,11 @@ async (req: Request, res: Response) => {
     }
 });
 
-router.get('/api/jobscat/category',
+router.get('/api/jobscat/category/:pattern',
 validateHeader,
 async (req: Request, res: Response) => {
-    const cats = await categoryDoc.getAll()
+    const pattern = req.params.pattern ? req.params.pattern : "";
+    const cats = await categoryDoc.getCategoryByname(pattern);
     
     if(cats){
         return res.status(200).send(cats);
