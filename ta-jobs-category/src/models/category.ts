@@ -77,7 +77,7 @@ const getCategoryByName = async (query: string) => {
     const filteredCategories = categories.filter(c => {
         const categoryName = c.category_name.toLowerCase();
 
-        return c.category_name.includes(query);
+        return categoryName.includes(query);
     });
 
     return filteredCategories;
