@@ -24,6 +24,13 @@ class User {
     _v: number;
 }
 
+interface Address {
+    address: string;
+    addres_id: string;
+    latitude: number;
+    longitude: number;
+}
+
 interface UserCompleteData {
     bio: string;
     address: string;
