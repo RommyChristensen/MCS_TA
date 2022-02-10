@@ -17,7 +17,7 @@ body('date').notEmpty().withMessage('Date is required'),
 body('date').custom(val => {
     let enteredDate = new Date(val);
     let currentDate = new Date();
-    if(enteredDate > currentDate) throw new Error('Please enter a valid date')
+    if(enteredDate < currentDate) throw new Error('Please enter a valid date')
     return true;
 }).withMessage('Please enter a valid date'),
 body('user_id').notEmpty().withMessage('User Id is Required'),
