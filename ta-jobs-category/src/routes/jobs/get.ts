@@ -1,4 +1,4 @@
-import { validateHeader } from "@ta-vrilance/common";
+import { BadRequestError, validateHeader } from "@ta-vrilance/common";
 import express, { Request, Response } from "express";
 import { checkHeaderAdmin } from "../../middlewares/validate-header-admin";
 import categoryDoc from "../../models/category";
@@ -30,5 +30,16 @@ router.get('/api/jobscat/job', validateHeader, async (req: Request, res: Respons
 
     return res.status(200).send(jobs);
 });
+
+router.get('/api/jobscat/job/getById/:id', validateHeader, async (req: Request, res: Response) => {
+    if(req.params.id){
+        const jobs = await jobDoc.findByUserId(req.params.id);
+
+        return jobs;
+    }else{
+        throw new BadRequestError('User ID required');
+    }
+
+})
 
 export { router as getJobRouter };

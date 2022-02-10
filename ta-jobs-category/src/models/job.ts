@@ -40,7 +40,7 @@ const create = async (title: string, description: string, date: Date, createdBy:
 const findByUserId = async (userId: string) => {
     const repo = await getRepository(Job);
     const job = await repo.whereEqualTo('job_created_by', userId).find();
-    return job[0];
+    return job;
 }
 
 const getAll = async () => {
@@ -103,7 +103,7 @@ const updateJob = async (jobId: string, title?: string, description?: string, pr
 // make class JobDoc singleton
 class JobDoc {
     create: (title: string, description: string, date: Date, createdBy: string, price: number, category: string, createdAt: Date) => Promise<Job>;
-    findByUserId: (userId: string) => Promise<Job>;
+    findByUserId: (userId: string) => Promise<Job[]>;
     getAll: () => Promise<Job[]>;
     deleteAll: () => Promise<Boolean>;
     findById: (jobId: string) => Promise<Job>;
