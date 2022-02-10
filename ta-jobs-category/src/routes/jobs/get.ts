@@ -35,7 +35,7 @@ router.get('/api/jobscat/job/getById/:id', validateHeader, async (req: Request, 
     if(req.params.id){
         const jobs = await jobDoc.findByUserId(req.params.id);
 
-        return jobs;
+        return res.status(200).send(jobs);
     }else{
         throw new BadRequestError('User ID required');
     }
