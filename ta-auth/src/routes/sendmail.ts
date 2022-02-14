@@ -37,7 +37,7 @@ async (req: Request, res: Response) => {
         const token = generateToken();
 
         const oAuth2Client = new google.auth.OAuth2(process.env.G_CLIENT_ID, process.env.G_CLIENT_SECRET, process.env.G_REDIRECT_URI);
-        oAuth2Client.setCredentials({refresh_token: "1//04SaK7sQdqE1-CgYIARAAGAQSNwF-L9IrUfnq8D3bj72mapwrhCxslpqIf1mhz-tBwno8yFNtCyjd2trflQrQTfeRiA0EloiWW6c"});
+        oAuth2Client.setCredentials({refresh_token: "1//04D1gwe1abC85CgYIARAAGAQSNwF-L9IrTUVBz0_CqoCZYotzocxpJ6ZZ7NPPd0B62rc1FecKYtcG-edUpzIYad5Uihe8Ek_tAXQ"});
         const accessToken = await oAuth2Client.getAccessToken();
 
         const transporter = nodemailer.createTransport({
@@ -49,7 +49,7 @@ async (req: Request, res: Response) => {
                 user: 'rommycy00@gmail.com',
                 clientId: process.env.G_CLIENT_ID,
                 clientSecret: process.env.G_CLIENT_SECRET,
-                refreshToken: "1//04SaK7sQdqE1-CgYIARAAGAQSNwF-L9IrUfnq8D3bj72mapwrhCxslpqIf1mhz-tBwno8yFNtCyjd2trflQrQTfeRiA0EloiWW6c", // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
+                refreshToken: "1//04D1gwe1abC85CgYIARAAGAQSNwF-L9IrTUVBz0_CqoCZYotzocxpJ6ZZ7NPPd0B62rc1FecKYtcG-edUpzIYad5Uihe8Ek_tAXQ", // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
                 accessToken: accessToken,
             }
         } as SMTPTransport.Options);
