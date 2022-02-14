@@ -1,6 +1,6 @@
 import { Collection, getRepository } from 'fireorm';
 import mongoose from 'mongoose';
-import { Category } from './category';
+import categoryDoc, { Category } from './category';
 import { User } from './user';
 
 // definition model firestore
@@ -39,8 +39,14 @@ const create = async (title: string, description: string, date: Date, createdBy:
 
 const findByUserId = async (userId: string) => {
     const repo = await getRepository(Job);
-    const job = await repo.whereEqualTo('job_created_by', userId).find();
-    return job;
+    let job = await repo.whereEqualTo('job_created_by', userId).find();
+
+    let newJob = job.map(async e => {
+        const cat = await categoryDoc.findById(e.job_category.toString());
+        e.job_category = cat.category_name;
+    });
+
+    return newJob;
 }
 
 const getAll = async () => {
@@ -103,7 +109,7 @@ const updateJob = async (jobId: string, title?: string, description?: string, pr
 // make class JobDoc singleton
 class JobDoc {
     create: (title: string, description: string, date: Date, createdBy: string, price: number, category: string, createdAt: Date) => Promise<Job>;
-    findByUserId: (userId: string) => Promise<Job[]>;
+    findByUserId: (userId: string) => Promise<Promise<void>[]>;
     getAll: () => Promise<Job[]>;
     deleteAll: () => Promise<Boolean>;
     findById: (jobId: string) => Promise<Job>;
