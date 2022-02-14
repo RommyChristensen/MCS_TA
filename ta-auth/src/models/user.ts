@@ -13,7 +13,7 @@ class User {
     auth_email: string;
     auth_verified: Boolean;
     auth_role: string;
-    auth_address: string;
+    auth_address: Address;
     auth_phone: string;
     auth_profile: string;
     auth_bio: string;
@@ -33,7 +33,7 @@ interface Address {
 
 interface UserCompleteData {
     bio: string;
-    address: string;
+    address: Address;
     profile: string;
     phone: string;
     gender: string;
@@ -152,7 +152,7 @@ const changepp = async (userId: string, path: string) => {
 interface changeProfileData {
     firstname: string | null;
     lastname: string | null;
-    address: string | null;
+    address: Address | null;
     bio: string | null;
     phone: string | null;
 }
