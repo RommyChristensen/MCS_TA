@@ -4,6 +4,12 @@ import { Category } from './category';
 import { User } from './user';
 
 // definition model firestore
+interface Cat {
+    category_name: string;
+    category_description: string;
+    id: string;
+}
+
 @Collection()
 class Job {
     id: string;
@@ -14,13 +20,13 @@ class Job {
     job_created_at: Date;
     job_status: string;
     job_price: number;
-    job_category: string | Category; // category id
+    job_category: string | Cat; // category id
     _v: number;
 }
 
 // --------------------- Start custom functions ------------------------------ //
 
-const create = async (title: string, description: string, date: Date, createdBy: string, price: number, category: Category, createdAt: Date) => {
+const create = async (title: string, description: string, date: Date, createdBy: string, price: number, category: Cat, createdAt: Date) => {
     const repo = await getRepository(Job);
     const job = new Job();
     job.id = new mongoose.Types.ObjectId().toString();
@@ -103,7 +109,7 @@ const updateJob = async (jobId: string, title?: string, description?: string, pr
 
 // make class JobDoc singleton
 class JobDoc {
-    create: (title: string, description: string, date: Date, createdBy: string, price: number, category: Category, createdAt: Date) => Promise<Job>;
+    create: (title: string, description: string, date: Date, createdBy: string, price: number, category: Cat, createdAt: Date) => Promise<Job>;
     findByUserId: (userId: string) => Promise<Job[]>;
     getAll: () => Promise<Job[]>;
     deleteAll: () => Promise<Boolean>;
