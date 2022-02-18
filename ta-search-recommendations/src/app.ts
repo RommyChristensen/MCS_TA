@@ -7,6 +7,7 @@ import { errorHandler, NotFoundError } from '@ta-vrilance/common';
 // IMPORT ROUTERS
 
 import { searchByNameRouter } from './routes/search';
+import { nearbyWorkerRouter } from './routes/nearby';
 
 // END IMPORT ROUTERS
 
@@ -25,6 +26,7 @@ app.use(
 // USE ROUTERS
 
 app.use(searchByNameRouter);
+app.use(nearbyWorkerRouter);
 
 // END USE ROUTERS
 
