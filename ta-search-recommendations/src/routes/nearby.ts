@@ -33,9 +33,7 @@ async (req: Request, res: Response) => {
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destinations}&origins=${origins}&key=${key}`;
 
-    return res.send(JSON.stringify({
-        origins, destinations, url, encodedUrl: encodeURI(url)
-    }));
+    return res.send({encodedUrl: encodeURI(url)});
 });
 
 export { router as nearbyWorkerRouter }
