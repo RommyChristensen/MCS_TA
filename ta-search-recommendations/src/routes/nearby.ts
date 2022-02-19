@@ -15,10 +15,10 @@ const key = 'AIzaSyBeH-O8Lx3Cw2gSc5iZD5KKpE3BuvMxHtI';
 let origins = "";
 let destinations = "";
 
-router.get('/api/searchrecommendation/worker/nearby',
+router.get('/api/searchrecommendation/worker/nearby/:originId',
 validateHeader,
 async (req: Request, res: Response) => {
-    const { originId } = req.body;
+    const { originId } = req.params;
 
     origins = originId;
 
