@@ -19,6 +19,7 @@ export class User {
     auth_profile: string;
     auth_gender: string;
     auth_birthdate: Date;
+    auth_address: string;
     auth_completed: Boolean;
     _v: Number;
 }
