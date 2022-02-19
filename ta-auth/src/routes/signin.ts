@@ -53,7 +53,10 @@ router.post('/api/auth/signin', async (req, res) => {
         auth_phone: user[0].auth_phone,
         auth_verified: user[0].auth_verified,
         auth_confirmed: user[0].auth_confirmed,
-        auth_completed: user[0].auth_completed
+        auth_completed: user[0].auth_completed,
+        auth_address: user[0].auth_address,
+        auth_brthdate: user[0].auth_birthdate,
+        auth_gender: user[0].auth_gender
     }, process.env.JWT_KEY!, { expiresIn: '3d' });
 
     return res.send({ 'x-auth-token' : data });
