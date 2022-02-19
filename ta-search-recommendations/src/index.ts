@@ -65,6 +65,7 @@ const start = async () => {
         // LISTENERS
         new UserCreatedListener(natsWrapper.client).listen();
         new UserConfirmedListener(natsWrapper.client).listen();
+        new UserCompletedListener(natsWrapper.client).listen();
         new UserVerifiedListener(natsWrapper.client).listen();
         new UserUpdatePPListener(natsWrapper.client).listen();
         new UserCompletedListener(natsWrapper.client).listen();
