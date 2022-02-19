@@ -14,7 +14,6 @@ const router = express.Router();
 const key = 'AIzaSyBeH-O8Lx3Cw2gSc5iZD5KKpE3BuvMxHtI';
 let origins = "";
 let destinations = "";
-let url = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destinations}&origins=${origins}&key=${key}`;
 
 router.get('/api/searchrecommendation/worker/nearby',
 validateHeader,
@@ -23,7 +22,20 @@ async (req: Request, res: Response) => {
 
     origins = originId;
 
-    return res.send("test");
+    const users = await userDoc.getAll();
+    const addresses = users.map(u => {
+        return u.auth_address;
+    });
+
+    addresses.forEach(a => {
+        destinations += a + "|";
+    });
+
+    let url = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destinations}&origins=${origins}&key=${key}`;
+
+    return res.send({
+        origins, destinations, url, encodedUrl: encodeURI(url)
+    });
 });
 
 export { router as nearbyWorkerRouter }
