@@ -98,10 +98,6 @@ const updateUser = async (userId: string, data: UserCompleteData) => {
     const repo = await getRepository(User);
     const user = await repo.findById(userId);
 
-    if(user == null){
-        throw Error("User Not Found");
-    }
-
     user.auth_phone = data.phone;
     user.auth_profile = data.profile;
     user.auth_completed = false;
