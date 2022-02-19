@@ -20,18 +20,18 @@ validateHeader,
 async (req: Request, res: Response) => {
     const { originId } = req.params;
 
-    origins = originId;
+    origins = "place_id:" + originId;
 
     const users = await userDoc.getAll();
     const addresses = users.map(u => {
         return u.auth_address;
     });
 
-    addresses.forEach(a => {
-        destinations += a + "|";
+    addresses.forEach((a, i) => {
+        destinations += "place_id:" + a + (i != addresses.length - 1 ? "|" : "");
     });
 
-    let url = `https://maps.googleapis.com/maps/api/distancematrix/json?destinations=${destinations}&origins=${origins}&key=${key}`;
+    let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
 
     return res.send({encodedUrl: encodeURI(url)});
 });
