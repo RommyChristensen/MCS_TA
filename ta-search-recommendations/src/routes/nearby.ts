@@ -39,6 +39,7 @@ async (req: Request, res: Response) => {
     });
 
     addresses.splice(idxOrigin, 1);
+    users.splice(idxOrigin, 1);
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
 
@@ -47,7 +48,7 @@ async (req: Request, res: Response) => {
     const resMap = response.data.rows[0].elements.map((e: any, i: number) => {
         let d = e;
         d["user_id"] = users[i].id;
-        // d["place_id"] = addresses[i];
+        d["place_id"] = addresses[i];
         return d;
     });
 
