@@ -28,15 +28,23 @@ async (req: Request, res: Response) => {
         return u.auth_address;
     });
 
+    let idxOrigin = 0;
+
     addresses.forEach((a, i) => {
-        destinations += "place_id:" + a + (i != addresses.length - 1 ? "|" : "");
+        if(a != originId){
+            destinations += "place_id:" + a + (i != addresses.length - 1 ? "|" : "");
+        }else{
+            idxOrigin = i;
+        }
     });
+
+    addresses.splice(idxOrigin, 1);
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
 
     let response = await axios.get(url);
 
-    return res.send(response.data);
+    return res.send({elements: response.data.rows[0].elements});
 });
 
 export { router as nearbyWorkerRouter }
