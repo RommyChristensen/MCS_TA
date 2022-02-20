@@ -47,7 +47,7 @@ async (req: Request, res: Response) => {
     const resMap = response.data.rows[0].elements.map((e: any, i: number) => {
         let d = e;
         d["user_id"] = users[i].id;
-        d["place_id"] = addresses[i];
+        // d["place_id"] = addresses[i];
         return d;
     });
 
