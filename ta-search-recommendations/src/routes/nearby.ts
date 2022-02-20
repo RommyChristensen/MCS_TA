@@ -44,7 +44,13 @@ async (req: Request, res: Response) => {
 
     let response = await axios.get(url);
 
-    return res.send({elements: response.data.rows[0].elements});
+    const resMap = response.data.rows[0].elements.map((e: any, i: number) => {
+        let d = e;
+        d["user_id"] = users[i].id;
+        return d;
+    });
+
+    return res.send({elements: response.data.rows[0].elements, resMap});
 });
 
 export { router as nearbyWorkerRouter }
