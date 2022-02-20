@@ -4,6 +4,7 @@ import { validateHeader } from "@ta-vrilance/common";
 import { natsWrapper } from "../nats-wrapper";
 import userDoc from "../models/user";
 import jobDoc from "../models/job";
+import axios from "axios";
 
 const router = express.Router();
 
@@ -33,7 +34,9 @@ async (req: Request, res: Response) => {
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
 
-    return res.send({encodedUrl: encodeURI(url)});
+    let response = await axios.get(url);
+
+    return res.send(response.data);
 });
 
 export { router as nearbyWorkerRouter }
