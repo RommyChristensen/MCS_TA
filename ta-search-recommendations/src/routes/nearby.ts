@@ -13,12 +13,13 @@ const router = express.Router();
 
 // https://maps.googleapis.com/maps/api/distancematrix/json?destinations=<destinations>&origins=<origins>&key=AIzaSyBeH-O8Lx3Cw2gSc5iZD5KKpE3BuvMxHtI
 const key = 'AIzaSyBeH-O8Lx3Cw2gSc5iZD5KKpE3BuvMxHtI';
-let origins = "";
-let destinations = "";
 
 router.get('/api/searchrecommendation/worker/nearby/:originId',
 validateHeader,
 async (req: Request, res: Response) => {
+    let origins = "";
+    let destinations = "";
+    
     const { originId } = req.params;
 
     origins = "place_id:" + originId;
