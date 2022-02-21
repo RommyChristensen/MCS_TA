@@ -44,6 +44,7 @@ async (req: Request, res: Response) => {
     addresses.splice(idxOrigin, 1);
     users.splice(idxOrigin, 1);
     
+    console.log(destinations);
     console.log(addresses, users);
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
