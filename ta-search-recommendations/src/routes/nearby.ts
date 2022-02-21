@@ -30,6 +30,8 @@ async (req: Request, res: Response) => {
 
     let idxOrigin = 0;
 
+    console.log(addresses, users);
+
     addresses.forEach((a, i) => {
         if(a != originId){
             destinations += "place_id:" + a + (i != addresses.length - 1 ? "|" : "");
@@ -40,6 +42,8 @@ async (req: Request, res: Response) => {
 
     addresses.splice(idxOrigin, 1);
     users.splice(idxOrigin, 1);
+    
+    console.log(addresses, users);
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
 
