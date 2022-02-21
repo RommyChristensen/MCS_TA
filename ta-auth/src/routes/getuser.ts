@@ -23,4 +23,16 @@ async (req: Request, res: Response) => {
     }
 });
 
+router.get('/api/auth/getUserById/:userId', 
+validateHeader,
+async (req: Request, res: Response) => {
+    try{
+        const user = await userDoc.findById(req.params.userId);
+
+        return res.send(user);
+    }catch(ex){
+        return new BadRequestError('Invalid Auth Token');
+    }
+});
+
 export { router as getUserByIdRouter };
