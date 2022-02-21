@@ -33,6 +33,7 @@ async (req: Request, res: Response) => {
     console.log(addresses, users);
 
     addresses.forEach((a, i) => {
+        console.log(i);
         if(a != originId){
             destinations += "place_id:" + a + (i != addresses.length - 1 ? "|" : "");
         }else{
