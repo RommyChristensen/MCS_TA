@@ -31,4 +31,10 @@ async (req: Request, res: Response) => {
     }
 });
 
+router.get('/api/jobscat/category/all', validateHeader, async (req: Request, res: Response) => {
+    const cats = await categoryDoc.getAll();
+
+    return res.status(200).send(cats);
+})
+
 export { router as getCategoryRouter };
