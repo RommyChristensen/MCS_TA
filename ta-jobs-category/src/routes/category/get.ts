@@ -18,6 +18,12 @@ async (req: Request, res: Response) => {
     }
 });
 
+router.get('/api/jobscat/category/all', validateHeader, async (req: Request, res: Response) => {
+    const cats = await categoryDoc.getAll();
+
+    return res.status(200).send(cats);
+});
+
 router.get('/api/jobscat/category/:pattern',
 validateHeader,
 async (req: Request, res: Response) => {
@@ -30,11 +36,5 @@ async (req: Request, res: Response) => {
         throw new Error('Get Data Category Failed');
     }
 });
-
-router.get('/api/jobscat/category/all', validateHeader, async (req: Request, res: Response) => {
-    const cats = await categoryDoc.getAll();
-
-    return res.status(200).send(cats);
-})
 
 export { router as getCategoryRouter };
