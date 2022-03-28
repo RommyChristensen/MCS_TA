@@ -4,7 +4,7 @@ import * as fireorm from 'fireorm';
 const serviceAccount = require('../ServiceAccountKey.json');
 import { natsWrapper } from './nats-wrapper';
 const start = async () => {
-    console.log("starting search recommendations service....");
+    console.log("starting payments service....");
     // ENV VARIABLES
 
     if(!process.env.JWT_KEY){
@@ -29,7 +29,7 @@ const start = async () => {
 
     admin.initializeApp({
         credential: admin.credential.cert(serviceAccount),
-        storageBucket: 'gs://ta-search-recommendations.appspot.com'
+        storageBucket: 'gs://ta-payments.appspot.com'
     });
 
     // storage = admin.storage();
