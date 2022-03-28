@@ -6,6 +6,9 @@ import { errorHandler, NotFoundError } from '@ta-vrilance/common';
 
 // IMPORT ROUTERS
 
+import { topUpRouter } from './routes/top-up';
+import { updatePaymentsRouter } from './routes/update-payments';
+
 // END IMPORT ROUTERS
 
 const app = express();
@@ -22,6 +25,8 @@ app.use(
 
 // USE ROUTERS
 
+app.use(topUpRouter);
+app.use(updatePaymentsRouter);
 
 // END USE ROUTERS
 
