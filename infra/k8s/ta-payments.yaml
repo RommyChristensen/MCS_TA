@@ -21,6 +21,16 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+            - name: MIDTRANS_CLIENT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: midtrans-client-key
+                  key: MIDTRANS_CLIENT_KEY
+            - name: MIDTRANS_SERVER_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: midtrans-server-key
+                  key: MIDTRANS_SERVER_KEY
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:
