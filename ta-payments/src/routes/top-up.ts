@@ -25,6 +25,7 @@ async (req: Request, res: Response) => {
         "custom_field2": "custom field 2 content",
         "custom_field3": "custom field 3 content"
     };
+    
 
     coreApiClient.charge(parameter).then((chargeResponse: string) => {
         return res.send(chargeResponse);
