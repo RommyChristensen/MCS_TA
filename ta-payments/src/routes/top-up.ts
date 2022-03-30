@@ -3,6 +3,10 @@ import express, { Request, Response } from "express";
 import { validateHeader, validateRequest } from "@ta-vrilance/common";
 import { coreApiClient } from "../helpers/v-midtrans-client";
 import { BCAInterface } from "../interfaces/bca-interface";
+import { Bank } from "../enums/bank";
+import { BNIInterface } from "../interfaces/bni-interface";
+import { PermataInterface } from "../interfaces/permata-interface";
+import userDoc from "../models/user";
 
 const router = express.Router();
 
@@ -45,15 +49,27 @@ async (req: Request, res: Response) => {
 
     }
 
-    coreApiClient.charge(paymentParameter).then((chargeResponse: BCAInterface) => {
-        if(payment_type == "bank_transfer"){
-            if(payment_type_detail == "bca"){
-                console.log("INI BCA INTERFACE");
-                console.log(chargeResponse);
-            }
+    if(payment_type == "bank_transfer"){
+        if(payment_type_detail == Bank.BCA){
+            coreApiClient.charge(paymentParameter).then(async (chargeResponse: BCAInterface) => {
+                await userDoc.addCurrentTransaction(chargeResponse, user_id);
+                await userDoc.addNewTransaction(user_id, value, payment_type, order_id, chargeResponse.transaction_time, chargeResponse.transaction_status);
+                return res.send(chargeResponse);
+            });
+        }else if(payment_type_detail == Bank.BNI){
+            coreApiClient.charge(paymentParameter).then(async (chargeResponse: BNIInterface) => {
+                await userDoc.addCurrentTransaction(chargeResponse, user_id);
+                await userDoc.addNewTransaction(user_id, value, payment_type, order_id, chargeResponse.transaction_time, chargeResponse.transaction_status);
+                return res.send(chargeResponse);
+            });
+        }else if(payment_type_detail == Bank.PERMATA){
+            coreApiClient.charge(paymentParameter).then(async (chargeResponse: PermataInterface) => {
+                await userDoc.addCurrentTransaction(chargeResponse, user_id);
+                await userDoc.addNewTransaction(user_id, value, payment_type, order_id, chargeResponse.transaction_time, chargeResponse.transaction_status);
+                return res.send(chargeResponse);
+            });
         }
-        return res.send(chargeResponse);
-    });
+    }
 });
 
 export { router as topUpRouter }

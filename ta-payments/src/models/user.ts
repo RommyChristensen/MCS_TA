@@ -2,6 +2,10 @@ import { Collection, getRepository } from 'fireorm';
 import { HistoryTransaction } from './history-transaction';
 import { TransactionStatus } from './transaction-status';
 import mongoose from 'mongoose';
+import { BCAInterface } from '../interfaces/bca-interface';
+import { BNIInterface } from '../interfaces/bni-interface';
+import { PermataInterface } from '../interfaces/permata-interface';
+import { serviceconsumermanagement } from 'googleapis/build/src/apis/serviceconsumermanagement';
 
 // FIX USER MODEL (PROPERTIES, METHODS)
 
@@ -12,6 +16,7 @@ export class User {
     auth_firstname: string;
     auth_lastname: string;
     auth_saldo: number;
+    current_transaction: BCAInterface | BNIInterface | PermataInterface | null;
     trans_history: Array<HistoryTransaction>;
     _v: Number;
 }
@@ -26,6 +31,7 @@ const createUser = async (id: string, firstname: string, _v: number, lastname?: 
     user.auth_lastname = lastname || '';
     user.auth_saldo = 0;
     user.trans_history = [];
+    user.current_transaction = null;
     user._v = _v;
 
     return await repo.create(user);
@@ -55,17 +61,33 @@ const findById = async (userId: string) => {
     return user;
 }
 
-const addNewTransaction = async (userId: string, value: number, method: String, orderId: string) => {
+const addCurrentTransaction = async (data: BCAInterface | BNIInterface | PermataInterface, userId: string) => {
     const repo = await getRepository(User);
     const user = await repo.findById(userId);
 
-    const now = new Date();
-    const status = TransactionStatus.pending;
-    
+    user.current_transaction = data;
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+}
+
+const removeCurrentTransaction = async (userId: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    user.current_transaction = null;
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+}
+
+
+const addNewTransaction = async (userId: string, value: number, method: String, orderId: string, datetime: string, status: TransactionStatus) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
     user.trans_history.push(
         {
             id: orderId,
-            transaction_date_time: now,
+            transaction_date_time: datetime,
             transaction_method: method,
             transaction_status: status,
             transaction_value: value
@@ -104,8 +126,10 @@ class UserDoc {
     getAll: () => Promise<User[]>;
     deleteAll: () => Promise<Boolean>;
     findById: (userId: string) => Promise<User>;
-    addNewTransaction: (userId: string, value: number, method: String, orderId: string) => Promise<User>;
+    addNewTransaction: (userId: string, value: number, method: String, orderId: string, datetime: string, status: TransactionStatus) => Promise<User>;
     updateTransaction: (userId: string, status: TransactionStatus, orderId: string) => Promise<User>;
+    addCurrentTransaction: (data: BCAInterface | BNIInterface | PermataInterface, userId: string) => Promise<User>;
+    removeCurrentTransaction: (userId: string) => Promise<User>;
 }
 
 // declare functions
@@ -116,5 +140,7 @@ userDoc.deleteAll = deleteAll;
 userDoc.findById = findById;
 userDoc.addNewTransaction = addNewTransaction;
 userDoc.updateTransaction = updateTransaction;
+userDoc.addCurrentTransaction = addCurrentTransaction;
+userDoc.removeCurrentTransaction = removeCurrentTransaction;
 
 export default userDoc;
