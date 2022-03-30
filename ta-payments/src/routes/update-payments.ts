@@ -9,7 +9,6 @@ interface JwtPayload {
 }
 
 router.post('/api/payments/update-payments', 
-validateHeader,
 async (req: Request, res: Response) => {
     console.log(req.body);
     return res.send(req.body);
