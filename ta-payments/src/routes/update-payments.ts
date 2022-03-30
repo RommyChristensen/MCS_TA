@@ -1,6 +1,9 @@
 import { body } from "express-validator";
 import express, { Request, Response } from "express";
 import { validateHeader } from "@ta-vrilance/common";
+import { Bank } from "../enums/bank";
+import { BCAInterface } from "../interfaces/bca-interface";
+import userDoc from "../models/user";
 
 const router = express.Router();
 
@@ -10,7 +13,12 @@ interface JwtPayload {
 
 router.post('/api/payments/update-payments', 
 async (req: Request, res: Response) => {
-    console.log(req.body);
+    if(req.body["custom_field2"] == Bank.BCA){
+        const notif = req.body as BCAInterface;
+        console.log(notif);
+        await userDoc.removeCurrentTransaction(notif.custom_field1);
+        await userDoc.updateTransaction(notif.custom_field1, notif.transaction_status, notif.order_id);
+    }
     return res.send(req.body);
 });
 
