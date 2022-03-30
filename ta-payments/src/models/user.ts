@@ -112,6 +112,7 @@ const updateTransaction = async (userId: string, status: TransactionStatus, orde
     });
 
     user.trans_history = history;
+    if(status == TransactionStatus.settlement && user.current_transaction != null) user.auth_saldo += parseInt(user.current_transaction!.gross_amount);
     const updatedUser = await repo.update(user);
 
     return updatedUser;
