@@ -2,6 +2,7 @@ import { body } from "express-validator";
 import express, { Request, Response } from "express";
 import { validateHeader, validateRequest } from "@ta-vrilance/common";
 import { coreApiClient } from "../helpers/v-midtrans-client";
+import { BCAInterface } from "../interfaces/bca-interface";
 
 const router = express.Router();
 
@@ -28,19 +29,6 @@ async (req: Request, res: Response) => {
     let paymentParameter = {};
 
     if(payment_type == PaymentType.BANK){
-        // let parameter = {
-        //     "payment_type": "bank_transfer",
-        //     "bank_transfer": {
-        //         "bank": "permata"
-        //     },
-        //     "transaction_details": {
-        //         "order_id": "C17550",
-        //         "gross_amount": 145000
-        //     },
-        //     "custom_field1": "custom field 1 content",
-        //     "custom_field2": "custom field 2 content",
-        //     "custom_field3": "custom field 3 content"
-        // };
         paymentParameter = {
             payment_type: payment_type,
             transaction_details: {
@@ -57,7 +45,13 @@ async (req: Request, res: Response) => {
 
     }
 
-    coreApiClient.charge(paymentParameter).then((chargeResponse: string) => {
+    coreApiClient.charge(paymentParameter).then((chargeResponse: BCAInterface) => {
+        if(payment_type == "bank_transfer"){
+            if(payment_type_detail == "bca"){
+                console.log("INI BCA INTERFACE");
+                console.log(chargeResponse);
+            }
+        }
         return res.send(chargeResponse);
     });
 });
