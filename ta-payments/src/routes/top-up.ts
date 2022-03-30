@@ -31,12 +31,13 @@ validateRequest,
 async (req: Request, res: Response) => {
     const { payment_type, payment_type_detail, value, order_id, user_id } = req.body;
     let paymentParameter = {};
+    let newOrderId = order_id+new Date().getTime().toString();
 
     if(payment_type == PaymentType.BANK){
         paymentParameter = {
             payment_type: payment_type,
             transaction_details: {
-                order_id: order_id+new Date().getTime().toString(),
+                order_id: newOrderId,
                 gross_amount: value
             },
             bank_transfer: {
@@ -53,19 +54,19 @@ async (req: Request, res: Response) => {
         if(payment_type_detail == Bank.BCA){
             coreApiClient.charge(paymentParameter).then(async (chargeResponse: BCAInterface) => {
                 await userDoc.addCurrentTransaction(chargeResponse, user_id);
-                await userDoc.addNewTransaction(user_id, value, payment_type, order_id, chargeResponse.transaction_time, chargeResponse.transaction_status);
+                await userDoc.addNewTransaction(user_id, value, payment_type, newOrderId, chargeResponse.transaction_time, chargeResponse.transaction_status);
                 return res.send(chargeResponse);
             });
         }else if(payment_type_detail == Bank.BNI){
             coreApiClient.charge(paymentParameter).then(async (chargeResponse: BNIInterface) => {
                 await userDoc.addCurrentTransaction(chargeResponse, user_id);
-                await userDoc.addNewTransaction(user_id, value, payment_type, order_id, chargeResponse.transaction_time, chargeResponse.transaction_status);
+                await userDoc.addNewTransaction(user_id, value, payment_type, newOrderId, chargeResponse.transaction_time, chargeResponse.transaction_status);
                 return res.send(chargeResponse);
             });
         }else if(payment_type_detail == Bank.PERMATA){
             coreApiClient.charge(paymentParameter).then(async (chargeResponse: PermataInterface) => {
                 await userDoc.addCurrentTransaction(chargeResponse, user_id);
-                await userDoc.addNewTransaction(user_id, value, payment_type, order_id, chargeResponse.transaction_time, chargeResponse.transaction_status);
+                await userDoc.addNewTransaction(user_id, value, payment_type, newOrderId, chargeResponse.transaction_time, chargeResponse.transaction_status);
                 return res.send(chargeResponse);
             });
         }
