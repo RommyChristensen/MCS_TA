@@ -15,9 +15,8 @@ router.post('/api/payments/update-payments',
 async (req: Request, res: Response) => {
     if(req.body["custom_field2"] == Bank.BCA){
         const notif = req.body as BCAInterface;
-        console.log(notif);
-        await userDoc.removeCurrentTransaction(notif.custom_field1);
         await userDoc.updateTransaction(notif.custom_field1, notif.transaction_status, notif.order_id);
+        await userDoc.removeCurrentTransaction(notif.custom_field1);
     }
     return res.send(req.body);
 });
