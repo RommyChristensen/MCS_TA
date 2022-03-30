@@ -44,7 +44,7 @@ async (req: Request, res: Response) => {
         paymentParameter = {
             payment_type: payment_type,
             transaction_details: {
-                order_id: order_id,
+                order_id: order_id+new Date().getTime().toString(),
                 gross_amount: value
             },
             bank_transfer: {
