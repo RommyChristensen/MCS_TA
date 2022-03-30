@@ -45,6 +45,13 @@ spec:
                 name: ta-search-recommendations-srv
                 port:
                   number: 3000
+          - path: /api/payments/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: ta-payments-srv
+                port:
+                  number: 3000
           - path: /?(.*)
             pathType: Prefix
             backend:
