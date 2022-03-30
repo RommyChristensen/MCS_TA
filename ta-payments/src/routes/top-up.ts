@@ -1,6 +1,6 @@
 import { body } from "express-validator";
 import express, { Request, Response } from "express";
-import { validateHeader } from "@ta-vrilance/common";
+import { validateHeader, validateRequest } from "@ta-vrilance/common";
 import { coreApiClient } from "../helpers/v-midtrans-client";
 
 const router = express.Router();
@@ -22,6 +22,7 @@ body('payment_type').notEmpty().withMessage('Please enter a payment type'),
 body('payment_type_detail').notEmpty().withMessage('Please enter a payment type detail, like bank / credit card details'),
 body('order_id').notEmpty().withMessage('Please enter an order id'),
 body('user_id').notEmpty().withMessage("Please enter a user id"),
+validateRequest,
 async (req: Request, res: Response) => {
     const { payment_type, payment_type_detail, value, order_id, user_id } = req.body;
     let paymentParameter = {};
