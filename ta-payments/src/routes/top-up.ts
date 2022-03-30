@@ -50,7 +50,8 @@ async (req: Request, res: Response) => {
             bank_transfer: {
                 bank: payment_type_detail
             },
-            user_id: user_id
+            custom_field1: user_id,
+            custom_field2: payment_type_detail
         }
     }else if(payment_type == PaymentType.CC){
 
