@@ -5,7 +5,6 @@ import mongoose from 'mongoose';
 import { BCAInterface } from '../interfaces/bca-interface';
 import { BNIInterface } from '../interfaces/bni-interface';
 import { PermataInterface } from '../interfaces/permata-interface';
-import { serviceconsumermanagement } from 'googleapis/build/src/apis/serviceconsumermanagement';
 
 // FIX USER MODEL (PROPERTIES, METHODS)
 
