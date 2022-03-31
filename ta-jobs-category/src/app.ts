@@ -15,6 +15,7 @@ import { getCategoryRouter } from './routes/category/get';
 import { createCategoryRouter } from './routes/category/create';
 import { updateCategoryRouter } from './routes/category/update';
 import { deleteCategoryRouter } from './routes/category/delete';
+import { addPreferredCategoryRouter } from './routes/category/add-preferred-category';
 
 // END IMPORT ROUTERS
 
@@ -41,6 +42,7 @@ app.use(getCategoryRouter);
 app.use(createCategoryRouter);
 app.use(updateCategoryRouter);
 app.use(deleteCategoryRouter);
+app.use(addPreferredCategoryRouter);
 
 // END USE ROUTERS
 

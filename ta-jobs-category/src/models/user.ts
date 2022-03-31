@@ -21,6 +21,7 @@ export class User {
     auth_completed: Boolean;
     auth_gender: string;
     auth_birthdate: Date;
+    preferred_category: string;
     _v: Number;
 }
 
@@ -48,6 +49,7 @@ const createUser = async (id: string, username: string, email: string, verified:
     user.auth_confirmed = confirmed;
     user._v = _v;
     user.auth_completed = false;
+    user.preferred_category = '';
 
     return await repo.create(user);
 }
@@ -160,7 +162,16 @@ const changeProfile = async (userId: string, userData: changeProfileData) => {
 
     const updatedUser = await repo.update(user);
     return updatedUser;
+}
 
+const addPreferredCategory = async (userId: string, categoryId: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    user.preferred_category = categoryId;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
 }
 
 // --------------------- End custom functions ------------------------------ //
@@ -180,6 +191,7 @@ class UserDoc {
     changepp: (userId: string, path: string) => Promise<User>;
     changeProfile: (userId: string, userData: changeProfileData) => Promise<User>;
     changePassword: (userId: string, oldPassword: string, newPassword: string) => Promise<Object>;
+    addPreferredCategory: (userId: string, categoryId: string) => Promise<User>;
 }
 
 // declare functions
@@ -196,6 +208,7 @@ userDoc.verifyUser = verifyUser;
 userDoc.confirmUser = confirmUser;
 userDoc.changepp = changepp;
 userDoc.changeProfile = changeProfile;
+userDoc.addPreferredCategory = addPreferredCategory;
 
 export default userDoc;
 
