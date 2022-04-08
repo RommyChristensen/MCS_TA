@@ -24,4 +24,11 @@ router.get('/api/auth/admin/users', checkHeader, async (req: Request, res: Respo
     return res.status(200).send(users);
 });
 
+router.get('/api/auth/admin/users/:userId', checkHeader, async (req: Request, res: Response) => {
+    const { userId } = req.params;
+    const user = await userDoc.findById(userId);
+
+    return res.status(200).send(user);
+})
+
 export { router as getUserRouter };
