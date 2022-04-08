@@ -8,7 +8,7 @@ const router = express.Router();
 router.get('/api/payments/:user_id', 
 validateHeader,
 async (req: Request, res: Response) => {
-    const user = await userDoc.findById(req.params.user_id);
+    const user = req.params.user_id ? await userDoc.findById(req.params.user_id) : await userDoc.getAll();
     return res.send(user);
 });
 

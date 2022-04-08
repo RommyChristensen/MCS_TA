@@ -4,7 +4,7 @@ import { Category } from './category';
 import { User } from './user';
 
 // definition model firestore
-interface Cat {
+export interface Cat {
     category_name: string;
     category_description: string;
     id: string;
@@ -20,7 +20,7 @@ class Job {
     job_created_at: Date;
     job_status: string;
     job_price: number;
-    job_category: string | Cat; // category id
+    job_category: Cat; // category id
     _v: number;
 }
 
