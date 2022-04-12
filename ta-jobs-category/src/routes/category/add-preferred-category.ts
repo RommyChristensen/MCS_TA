@@ -15,11 +15,14 @@ async (req: Request, res: Response) => {
     const { user_id, category_id } = req.body;
 
     const c = await categoryDoc.findById(category_id);
-    return res.send(c);
 
-    const user = await userDoc.addPreferredCategory(user_id, category_id);
+    if(c) {
+        const user = await userDoc.addPreferredCategory(user_id, category_id);
 
-    return res.send(user);
+        return res.send(user);
+    }else{
+        return res.status(404).send({ msg: "Kategori Tidak Ditemukan" });
+    }
 });
 
 export { router as addPreferredCategoryRouter };
