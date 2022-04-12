@@ -23,7 +23,7 @@ async (req: Request, res: Response) => {
 
     const user = await userDoc.addPreferredCategory(user_id, category_id);
 
-    return res.send(user);
+    return res.send({ user, cat: c });
 });
 
 export { router as addPreferredCategoryRouter };
