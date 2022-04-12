@@ -1,0 +1,6 @@
+export const ONE_SIGNAL_CONFIG = {
+    APP_ID: "a1b1bf0f-1925-4274-a382-f07908bfb6da",
+    API_KEY: "MmYwZDFiZjQtN2IyYi00Nzg1LWJmMzYtYWI1ZmYwODQxYTk1"
+};
+
+// APP ID ONE SIGNAL a1b1bf0f-1925-4274-a382-f07908bfb6da
