@@ -26,4 +26,18 @@ async (req: Request, res: Response) => {
     return res.send({ user, cat: c });
 });
 
+router.get('/api/jobscat/getpreferredcategory', 
+body('user_id').notEmpty().withMessage('Please enter user id'),
+validateHeader,
+validateRequest,
+async (req: Request, res: Response) => {
+
+    const { user_id } = req.body;
+
+    const u = await userDoc.findById(user_id);
+    const c = await categoryDoc.findById(u.preferred_category);
+
+    return res.send({ cat: c });
+});
+
 export { router as addPreferredCategoryRouter };
