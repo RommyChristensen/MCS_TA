@@ -21,28 +21,28 @@ router.post('/api/auth/signup', [
         .isAlphanumeric(),
     body('password')
         .trim()
-        .isLength({ min: 9 })
-        .withMessage('Password must be at least 9 characters'),
+        .isLength({ min: 8 })
+        .withMessage('Panjang Password Minimal 8 Karakter'),
     body('email')
         .isEmail()
-        .withMessage('Email must be valid'),
+        .withMessage('Email Tidak Valid'),
     body('password_confirmation')
         .notEmpty(),
-    body('firstname').notEmpty().withMessage('Firstname must be provided'),
-    body('role').notEmpty().withMessage('Role is required'),
+    body('firstname').notEmpty().withMessage('Nama Depan Harus Diisi'),
+    body('role').notEmpty().withMessage('Pilih Peran Anda'),
 ], validateRequest,  async (req: Request, res: Response) => {
     const { username, password, password_confirmation, email, firstname, lastname, role } = req.body;
 
     if ( !await userDoc.checkUsername(username) ){
-        throw new BadRequestError("Username has been used");
+        throw new BadRequestError("Username Telah Dipakai");
     }
 
     if ( !await userDoc.checkEmail(email) ){
-        throw new BadRequestError("Email has been used");
+        throw new BadRequestError("Email Telah Dipakai");
     }
 
     if ( password !== password_confirmation ){
-        throw new BadRequestError("Password do not match");
+        throw new BadRequestError("Password Tidak Cocok");
     }
 
     const hashedPassword = await Password.toHash(password);

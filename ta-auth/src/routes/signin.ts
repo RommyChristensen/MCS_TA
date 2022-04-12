@@ -31,13 +31,13 @@ router.post('/api/auth/signin', async (req, res) => {
     const { email, password } = req.body;
 
     if(await userDoc.checkEmail(email)){
-        throw new BadRequestError('Email Not Exists');
+        throw new BadRequestError('Email Tidak Terdaftar');
     }
 
     const user = await userDoc.findByEmail(email);
 
     if(!await Password.compare(user[0].auth_password, password)) {
-        throw new BadRequestError('Wrong Password')
+        throw new BadRequestError('Password Salah')
     }
 
     const data = jwt.sign({
