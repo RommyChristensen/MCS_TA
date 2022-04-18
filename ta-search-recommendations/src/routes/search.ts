@@ -1,5 +1,5 @@
 import { body } from "express-validator";
-import express, { Request, Response } from "express";
+import express, { json, Request, Response } from "express";
 import { validateHeader } from "@ta-vrilance/common";
 import { natsWrapper } from "../nats-wrapper";
 import userDoc from "../models/user";
@@ -32,6 +32,20 @@ async (req: Request, res: Response) => {
     });
 
     return res.send(filteredJobs);
+});
+
+router.get('/api/searchrecommendation/jobs/category',
+validateHeader,
+async (req: Request, res: Response) => {
+    const { listCategory } = req.body;
+
+    const jobs = await jobDoc.getJobByCategory(listCategory);
+
+    if(jobs.length == 0){
+        return res.status(404).send({ message: "Pekerjaan Tidak Ditemukan" });
+    }
+
+    return res.send(jobs);
 });
 
 export { router as searchByNameRouter }
