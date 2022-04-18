@@ -1,4 +1,4 @@
-import { Collection, getRepository } from 'fireorm';
+import { Collection, getRepository, IFirestoreVal } from 'fireorm';
 import mongoose from 'mongoose';
 import { User } from './user';
 
@@ -97,6 +97,13 @@ const updateJob = async (jobId: string, title?: string, description?: string, pr
     return updatedJob;
 }
 
+const getJobByCategory = async (categories: IFirestoreVal[]) => {
+    const repo = await getRepository(Job);
+    const jobs = await repo.whereIn('job_category', categories).find();
+
+    return jobs;
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class JobDoc singleton
@@ -108,6 +115,7 @@ class JobDoc {
     findById: (jobId: string) => Promise<Job>;
     deleteById: (jobId: string) => Promise<false | Job>;
     updateJob: (jobId: string, title: string, description: string, price: number, date: Date) => Promise<Job>;
+    getJobByCategory: (categories: IFirestoreVal[]) => Promise<Job[]>;
 }
 
 // declare functions
@@ -119,5 +127,6 @@ jobDoc.getAll = getAll;
 jobDoc.deleteAll = deleteAll;
 jobDoc.deleteById = deleteById;
 jobDoc.updateJob = updateJob;
+jobDoc.getJobByCategory = getJobByCategory;
 
 export default jobDoc;
