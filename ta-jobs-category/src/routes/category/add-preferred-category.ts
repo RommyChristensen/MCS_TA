@@ -33,6 +33,9 @@ async (req: Request, res: Response) => {
     const { user_id } = req.params;
 
     const u = await userDoc.findById(user_id);
+
+    if(u.preferred_category == null) return res.status(404).send({ message: "Kategori Diminati Tidak Ada" });
+
     const c = await categoryDoc.findById(u.preferred_category);
 
     return res.send({ cat: c });
