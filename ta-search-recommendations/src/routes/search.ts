@@ -34,7 +34,7 @@ async (req: Request, res: Response) => {
     return res.send(filteredJobs);
 });
 
-router.get('/api/searchrecommendation/jobs/category',
+router.post('/api/searchrecommendation/jobs/category',
 validateHeader,
 async (req: Request, res: Response) => {
     const { listCategory } = req.body;
