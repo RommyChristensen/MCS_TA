@@ -45,7 +45,14 @@ async (req: Request, res: Response) => {
         return res.status(404).send({ message: "Pekerjaan Tidak Ditemukan" });
     }
 
-    return res.send(jobs);
+    const newJobs = jobs.map(async j => {
+        const u = await userDoc.findById(j.job_created_by as string);
+
+        j.job_created_by = u.auth_firstname + " " + u.auth_lastname;
+        return j;
+    });
+
+    return res.send(newJobs);
 });
 
 export { router as searchByNameRouter }
