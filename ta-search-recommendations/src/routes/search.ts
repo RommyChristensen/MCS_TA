@@ -45,17 +45,19 @@ async (req: Request, res: Response) => {
         return res.status(404).send({ message: "Pekerjaan Tidak Ditemukan" });
     }
 
-    await Promise.all(jobs.map(async (job) => {
-        // let category = await categoryDoc.findById((job.job_category.id));
-        const u = await userDoc.findById(job.job_created_by as string);
+    return res.send(jobs);
 
-        // job['job_category'] = category;
-        job['job_created_by'] = u.auth_firstname + " " + u.auth_lastname;
+    // await Promise.all(jobs.map(async (job) => {
+    //     // let category = await categoryDoc.findById((job.job_category.id));
+    //     const u = await userDoc.findById(job.job_created_by as string);
 
-        return job;
-    })).then(result => {
-        return res.status(200).send(result);
-    })
+    //     // job['job_category'] = category;
+    //     job['job_created_by'] = u.auth_firstname + " " + u.auth_lastname;
+
+    //     return job;
+    // })).then(result => {
+    //     return res.status(200).send(result);
+    // })
 
     // const newJobs = jobs.map(async j => {
     //     const u = await userDoc.findById(j.job_created_by as string);
