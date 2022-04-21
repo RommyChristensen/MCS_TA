@@ -2,6 +2,12 @@ import { Collection, getRepository, IFirestoreVal } from 'fireorm';
 import mongoose from 'mongoose';
 import { User } from './user';
 
+export enum JobStatus {
+    aktif = "Aktif",
+    nonaktif = "Non Aktif",
+    selesai = "Selesai"
+}
+
 // definition model firestore
 @Collection()
 export class Job {
@@ -99,7 +105,7 @@ const updateJob = async (jobId: string, title?: string, description?: string, pr
 
 const getJobByCategory = async (categories: IFirestoreVal[]) => {
     const repo = await getRepository(Job);
-    const jobs = await repo.whereIn('job_category', categories).find();
+    const jobs = await repo.whereIn('job_category', categories).whereEqualTo('job_status', JobStatus.aktif).find();
 
     return jobs;
 }
