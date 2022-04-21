@@ -20,6 +20,7 @@ export enum Subjects {
     JobCancelled = 'job:cancelled',
     JobDone = 'job:done',
     JobExpired = 'job:expired',
+    JobStatusUpdated = 'job:statusupdated',
 
     // ORDER EVENTS
     OrderCreated = 'order:created',

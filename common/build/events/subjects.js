@@ -22,6 +22,7 @@ var Subjects;
     Subjects["JobCancelled"] = "job:cancelled";
     Subjects["JobDone"] = "job:done";
     Subjects["JobExpired"] = "job:expired";
+    Subjects["JobStatusUpdated"] = "job:statusupdated";
     // ORDER EVENTS
     Subjects["OrderCreated"] = "order:created";
     Subjects["OrderUpdated"] = "order:updated";

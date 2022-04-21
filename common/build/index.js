@@ -40,6 +40,7 @@ __exportStar(require("./events/category/category-deleted-event"), exports);
 __exportStar(require("./events/job/job-created-event"), exports);
 __exportStar(require("./events/job/job-updated-event"), exports);
 __exportStar(require("./events/job/job-deleted-event"), exports);
+__exportStar(require("./events/job/job-status-updated-event"), exports);
 __exportStar(require("./events/order/order-created-event"), exports);
 __exportStar(require("./events/order/order-accepted-event"), exports);
 __exportStar(require("./events/order/order-rejected-event"), exports);

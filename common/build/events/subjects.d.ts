@@ -15,6 +15,7 @@ export declare enum Subjects {
     JobCancelled = "job:cancelled",
     JobDone = "job:done",
     JobExpired = "job:expired",
+    JobStatusUpdated = "job:statusupdated",
     OrderCreated = "order:created",
     OrderUpdated = "order:updated",
     OrderCancelled = "order:cancelled",
