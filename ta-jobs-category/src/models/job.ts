@@ -1,7 +1,12 @@
 import { Collection, getRepository } from 'fireorm';
 import mongoose from 'mongoose';
-import { Category } from './category';
 import { User } from './user';
+
+export enum JobStatus {
+    aktif = "Aktif",
+    nonaktif = "Non Aktif",
+    selesai = "Selesai"
+}
 
 // definition model firestore
 export interface Cat {
@@ -18,7 +23,7 @@ class Job {
     job_date: Date;
     job_created_by: string | User; // user id
     job_created_at: Date;
-    job_status: string;
+    job_status: JobStatus;
     job_price: number;
     job_category: Cat; // category id
     _v: number;
@@ -36,7 +41,7 @@ const create = async (title: string, description: string, date: Date, createdBy:
     job.job_created_by = createdBy;
     job.job_price = price;
     job.job_category = category;
-    job.job_status = 'Created';
+    job.job_status = JobStatus.aktif;
     job.job_created_at = createdAt;
     job._v = 0;
 
