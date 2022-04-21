@@ -1,7 +1,9 @@
 import { BadRequestError, validateHeader, validateRequest } from "@ta-vrilance/common";
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
+import { JobStatusUpdatedPublisher } from "../../events/publishers/job-status-updated-publisher";
 import jobDoc, { JobStatus } from "../../models/job";
+import { natsWrapper } from "../../nats-wrapper";
 
 const router = express.Router();
 
@@ -71,8 +73,15 @@ async (req: Request, res: Response) => {
     const { job_status } = req.body;
 
     if(job_id) {
-        if(!validateJobStatus(job_status)){
+        if(validateJobStatus(job_status)){
             const job = await jobDoc.updateStatusJob(job_id, job_status);
+
+            // publish event for job updated status
+            await new JobStatusUpdatedPublisher(natsWrapper.client).publish({
+                id: job.id,
+                job_status: job.job_status,
+                _v: job._v
+            })
 
             return res.send(job);
         }

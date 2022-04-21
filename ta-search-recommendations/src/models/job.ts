@@ -110,6 +110,17 @@ const getJobByCategory = async (categories: IFirestoreVal[]) => {
     return jobs;
 }
 
+const updateStatusJob = async (jobId: string, status: JobStatus) => {
+    const repo = await getRepository(Job);
+    const job = await repo.findById(jobId);
+
+    job.job_status = status;
+    
+    const updatedJob = await repo.update(job);
+
+    return updatedJob;
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class JobDoc singleton
@@ -122,6 +133,7 @@ class JobDoc {
     deleteById: (jobId: string) => Promise<false | Job>;
     updateJob: (jobId: string, title: string, description: string, price: number, date: Date) => Promise<Job>;
     getJobByCategory: (categories: IFirestoreVal[]) => Promise<Job[]>;
+    updateStatusJob: (jobId: string, status: JobStatus) => Promise<Job>;
 }
 
 // declare functions
@@ -134,5 +146,6 @@ jobDoc.deleteAll = deleteAll;
 jobDoc.deleteById = deleteById;
 jobDoc.updateJob = updateJob;
 jobDoc.getJobByCategory = getJobByCategory;
+jobDoc.updateStatusJob = updateStatusJob;
 
 export default jobDoc;
