@@ -6,6 +6,18 @@ import { validateHeader } from '@ta-vrilance/common';
 
 const router = express.Router();
 
+router.get('/api/jobscat/admin/category/',
+checkHeaderAdmin,
+async (req: Request, res: Response) => {
+    const cats = await categoryDoc.getAll();
+    
+    if(cats){
+        return res.status(200).send(cats);
+    }else{
+        throw new Error('Get Data Category Failed');
+    }
+});
+
 router.get('/api/jobscat/admin/category/:catId',
 checkHeaderAdmin,
 async (req: Request, res: Response) => {
