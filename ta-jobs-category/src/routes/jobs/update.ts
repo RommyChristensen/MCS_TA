@@ -1,7 +1,7 @@
 import { BadRequestError, validateHeader, validateRequest } from "@ta-vrilance/common";
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
-import jobDoc from "../../models/job";
+import jobDoc, { JobStatus } from "../../models/job";
 
 const router = express.Router();
 
@@ -52,6 +52,35 @@ async (req: Request, res: Response) => {
     // EMIT JOB UPDATED EVENT
 
     return res.send(updatedJob);
+});
+
+const validateJobStatus = (jobStatus: string) => {
+    if(jobStatus == JobStatus.aktif || jobStatus == JobStatus.nonaktif || jobStatus == JobStatus.selesai){
+        return true;
+    }
+
+    return false;
+}
+
+router.put('/api/jobscat/job/status/:job_id', 
+body('job_status').notEmpty().withMessage('Status Job Wajib Diisikan'),
+validateHeader,
+validateRequest,
+async (req: Request, res: Response) => {
+    const { job_id } = req.params;
+    const { job_status } = req.body;
+
+    if(job_id) {
+        if(!validateJobStatus(job_status)){
+            const job = await jobDoc.updateStatusJob(job_id, job_status);
+
+            return res.send(job);
+        }
+
+        return res.status(400).send({ message: "Status Job Tidak Dikenali" });
+    }else{
+        return res.status(400).send({ message: "Id Job Diperlukan" });
+    }
 });
 
 export { router as updateJobRouter };

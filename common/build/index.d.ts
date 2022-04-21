@@ -23,6 +23,7 @@ export * from './events/category/category-deleted-event';
 export * from './events/job/job-created-event';
 export * from './events/job/job-updated-event';
 export * from './events/job/job-deleted-event';
+export * from './events/job/job-status-updated-event';
 export * from './events/order/order-created-event';
 export * from './events/order/order-accepted-event';
 export * from './events/order/order-rejected-event';
