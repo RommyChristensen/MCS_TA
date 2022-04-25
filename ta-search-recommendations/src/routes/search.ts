@@ -25,7 +25,7 @@ validateHeader,
 async (req: Request, res: Response) => {
     const { q } = req.query;
 
-    const jobs = await jobDoc.getAll();
+    const jobs = await jobDoc.getAllActiveJobs();
 
     const filteredJobs = jobs.filter(j => {
         return j.job_title.includes(q as string);
