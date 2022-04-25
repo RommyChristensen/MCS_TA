@@ -1,6 +1,7 @@
 import { BadRequestError, validateHeader, validateRequest } from "@ta-vrilance/common";
 import express, { Request, Response } from "express";
 import { body } from "express-validator";
+import { JobUpdatedPublisher } from "../../events/publishers/job-updated-publisher";
 import { JobStatusUpdatedPublisher } from "../../events/publishers/job-status-updated-publisher";
 import jobDoc, { JobStatus } from "../../models/job";
 import { natsWrapper } from "../../nats-wrapper";
@@ -52,6 +53,14 @@ async (req: Request, res: Response) => {
     const updatedJob = await jobDoc.updateJob(req.params.job_id, title, description, price, date);
 
     // EMIT JOB UPDATED EVENT
+    await new JobUpdatedPublisher(natsWrapper.client).publish({
+        id: updatedJob.id,
+        job_title: updatedJob.job_title,
+        job_description: updatedJob.job_description,
+        job_date: updatedJob.job_date,
+        job_price: updatedJob.job_price,
+        _v: updatedJob._v
+    });
 
     return res.send(updatedJob);
 });
