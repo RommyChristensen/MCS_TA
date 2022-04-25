@@ -55,6 +55,13 @@ const getAll = async () => {
     return jobs;
 }
 
+const getAllActiveJobs = async () => {
+    const repo = await getRepository(Job);
+    const jobs = await repo.whereEqualTo('job_status', JobStatus.aktif).find();
+
+    return jobs;
+}
+
 const deleteAll = async () => {
     const repo = await getRepository(Job);
     const jobs = await repo.find();
@@ -128,6 +135,7 @@ class JobDoc {
     create: (id: string, title: string, description: string, date: Date, createdBy: string, price: number, category: string, createdAt: Date) => Promise<Job>;
     findByUserId: (userId: string) => Promise<Job>;
     getAll: () => Promise<Job[]>;
+    getAllActiveJobs: () => Promise<Job[]>;
     deleteAll: () => Promise<Boolean>;
     findById: (jobId: string) => Promise<Job>;
     deleteById: (jobId: string) => Promise<false | Job>;
@@ -147,5 +155,6 @@ jobDoc.deleteById = deleteById;
 jobDoc.updateJob = updateJob;
 jobDoc.getJobByCategory = getJobByCategory;
 jobDoc.updateStatusJob = updateStatusJob;
+jobDoc.getAllActiveJobs = getAllActiveJobs;
 
 export default jobDoc;
