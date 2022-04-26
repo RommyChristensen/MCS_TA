@@ -48,4 +48,4 @@ async (req: Request, res: Response) => {
     return res.send(orders);
 });
 
-export { router as getRouter };
+export { router as orderGetRouter };
