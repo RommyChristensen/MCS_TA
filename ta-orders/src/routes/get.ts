@@ -1,6 +1,7 @@
 import express, { Request, Response } from 'express';
 import userDoc from '../models/user';
 import orderDoc from '../models/order';
+import jobDoc from '../models/job';
 import { BadRequestError, validateHeader } from '@ta-vrilance/common';
 
 const router = express.Router();
@@ -45,7 +46,16 @@ async (req: Request, res: Response) => {
 
     const orders = await orderDoc.findByUserId(workerId);
 
-    return res.send(orders);
+    await Promise.all(orders.map(async (order) => {
+        let job = await jobDoc.findById(order.job_id.toString());
+
+        // job['job_category'] = category;
+        order['job_id'] = job;
+
+        return order;
+    })).then(result => {
+        return res.status(200).send(result);
+    });
 });
 
 export { router as orderGetRouter };
