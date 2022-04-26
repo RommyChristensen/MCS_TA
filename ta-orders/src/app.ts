@@ -13,6 +13,7 @@ import { rejectOrderRouter } from './routes/reject';
 import { orderCancelledRouter } from './routes/cancel';
 import { orderDoneRouter } from './routes/done';
 import { orderConfirmedRouter } from './routes/confirmed';
+import { orderGetRouter } from './routes/get';
 
 // END IMPORT ROUTERS
 
@@ -37,6 +38,7 @@ app.use(rejectOrderRouter);
 app.use(orderCancelledRouter);
 app.use(orderDoneRouter);
 app.use(orderConfirmedRouter);
+app.use(orderGetRouter);
 
 // END USE ROUTERS
 
