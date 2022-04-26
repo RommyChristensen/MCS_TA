@@ -47,7 +47,7 @@ const create = async (orderer_id: string | User, job_id: string | Job, order_pri
 const findByUserId = async (userId: string) => {
     const repo = await getRepository(Order);
     const order = await repo.whereEqualTo('orderer_id', userId).find();
-    return order[0];
+    return order;
 }
 
 const getAll = async () => {
@@ -124,7 +124,7 @@ const update = async (orderId: string, price: number) => {
 // make class JobDoc singleton
 class OrderDoc {
     create: (orderer_id: string | User, job_id: string | Job, order_price: number, order_date: Date) => Promise<Order>;
-    findByUserId: (userId: string) => Promise<Order>;
+    findByUserId: (userId: string) => Promise<Order[]>;
     getAll: () => Promise<Order[]>;
     deleteAll: () => Promise<Boolean>;
     findById: (jobId: string) => Promise<Order>;
