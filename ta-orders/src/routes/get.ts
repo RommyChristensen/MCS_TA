@@ -34,12 +34,15 @@ router.get('/api/orders/hirer/:hirerId', validateHeader, async (req: Request, re
 
     const orders = await orderDoc.getAll();
 
-    const filteredOrders = orders.filter(o => {
-        const j = o.job_id as Job;
-        return j.job_created_by === hirerId;
-    });
+    await Promise.all(orders.filter(async (order) => {
+        let job = await jobDoc.findById(order.job_id.toString());
 
-    return res.send(filteredOrders);
+        order["job_id"] = job;
+
+        return job.job_created_by === hirerId;
+    })).then(result => {
+        return res.status(200).send(result);
+    });
 });
 
 router.get('/api/orders/worker/:workerId',
