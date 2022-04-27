@@ -1,7 +1,7 @@
 import express, { Request, Response } from 'express';
 import userDoc from '../models/user';
 import orderDoc from '../models/order';
-import jobDoc from '../models/job';
+import jobDoc, { Job } from '../models/job';
 import { BadRequestError, validateHeader } from '@ta-vrilance/common';
 
 const router = express.Router();
@@ -29,6 +29,19 @@ async (req: Request, res: Response) => {
     return res.send(order);
 });
 
+router.get('/api/orders/hirer/:hirerId', validateHeader, async (req: Request, res: Response) => {
+    const { hirerId } = req.params;
+
+    const orders = await orderDoc.getAll();
+
+    const filteredOrders = orders.filter(o => {
+        const j = o.job_id as Job;
+        return j.job_created_by === hirerId;
+    });
+
+    return res.send(filteredOrders);
+});
+
 router.get('/api/orders/worker/:workerId',
 validateHeader,
 async (req: Request, res: Response) => {
@@ -48,8 +61,6 @@ async (req: Request, res: Response) => {
 
     await Promise.all(orders.map(async (order) => {
         let job = await jobDoc.findById(order.job_id.toString());
-
-        // job['job_category'] = category;
         order['job_id'] = job;
 
         return order;
