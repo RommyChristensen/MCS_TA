@@ -14,6 +14,9 @@ import { CategoryDeletedListener } from './events/listeners/category-deleted-lis
 import { RatingReviewCreatedListener } from './events/listeners/rating-review-created-listener';
 import { OrderAutoConfirmedListener } from './events/listeners/order-auto-confirm-listener';
 import { UserCompletedListener } from './events/listeners/user-completed-listener';
+import { JobUpdatedListener } from './events/listeners/job-updated-listener';
+import { JobStatusUpdatedListener } from './events/listeners/job-status-updated-listener';
+import { JobDeletedListener } from './events/listeners/job-deleted-listener';
 const start = async () => {
     console.log("starting orders service.....");
     // ENV VARIABLES
@@ -72,6 +75,9 @@ const start = async () => {
         new UserConfirmedListener(natsWrapper.client).listen();
         new UserCompletedListener(natsWrapper.client).listen();
         new JobCreatedListener(natsWrapper.client).listen();
+        new JobUpdatedListener(natsWrapper.client).listen();
+        new JobStatusUpdatedListener(natsWrapper.client).listen();
+        new JobDeletedListener(natsWrapper.client).listen();
         new CategoryCreatedListener(natsWrapper.client).listen();
         new CategoryUpdatedListener(natsWrapper.client).listen();
         new CategoryDeletedListener(natsWrapper.client).listen();
