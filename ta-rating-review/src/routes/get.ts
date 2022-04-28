@@ -25,6 +25,12 @@ async (req: Request, res: Response) => {
 
         rating = rating / count;
 
+        if(rating % 1 > 0.5){
+            rating = parseInt(rating.toString()) + 0.5;
+        }else{
+            rating = parseInt(rating.toString());
+        }
+
         return res.send({ data: { rating }, code: 200});
     }
 
