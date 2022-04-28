@@ -42,7 +42,10 @@ router.get('/api/orders/hirer/:hirerId', validateHeader, async (req: Request, re
         if(job.job_created_by == hirerId) return order;
         else return null;
     })).then(result => {
-        return res.status(200).send(result);
+        const r = result.filter(re => {
+            return re != null;
+        });
+        return res.status(200).send(r);
     });
 });
 
