@@ -6,6 +6,7 @@ import { errorHandler, NotFoundError } from '@ta-vrilance/common';
 
 // IMPORT ROUTERS
 import { ratingReviewCreateRouter } from './routes/create';
+import { getRatingReviewRouter } from './routes/get';
 
 // END IMPORT ROUTERS
 
@@ -23,6 +24,7 @@ app.use(
 
 // USE ROUTERS
 app.use(ratingReviewCreateRouter);
+app.use(getRatingReviewRouter);
 
 // END USE ROUTERS
 
