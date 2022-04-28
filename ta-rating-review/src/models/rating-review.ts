@@ -42,7 +42,7 @@ const getAll = async () => {
     return rr;
 }
 
-const findByReviewer = async (reviewer_id: string) => {
+const findByWorkerId = async (reviewer_id: string) => {
     const repo = await getRepository(RatingReview);
     const rr = await repo.whereEqualTo(r => r.user_id, reviewer_id).find();
     return rr;
@@ -53,14 +53,14 @@ const findByReviewer = async (reviewer_id: string) => {
 // make class JobDoc singleton
 class RatingReviewDoc {
     create: (order_id: string, rate: number, review: string, user_id: string) => Promise<RatingReview>;
-    findByReviewer: (reviewer_id: string) => Promise<RatingReview[]>;
+    findByWorkerId: (reviewer_id: string) => Promise<RatingReview[]>;
     getAll: () => Promise<RatingReview[]>;
 }
 
 // declare functions
 const ratingReviewDoc = new RatingReviewDoc();
 ratingReviewDoc.create = create;
-ratingReviewDoc.findByReviewer = findByReviewer;
+ratingReviewDoc.findByWorkerId = findByWorkerId;
 ratingReviewDoc.getAll = getAll;
 
 export default ratingReviewDoc;
