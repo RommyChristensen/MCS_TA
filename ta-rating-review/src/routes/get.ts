@@ -20,7 +20,7 @@ async (req: Request, res: Response) => {
         }
 
         ratings.forEach(r => {
-            rating += r.rate;
+            rating += parseInt(r.rate.toString());
         });
 
         rating = rating / count;
