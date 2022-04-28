@@ -34,12 +34,12 @@ router.get('/api/orders/hirer/:hirerId', validateHeader, async (req: Request, re
 
     const orders = await orderDoc.getAll();
 
-    await Promise.all(orders.map(async (order) => {
+    await Promise.all(orders.filter(async (order) => {
         let job = await jobDoc.findById(order.job_id.toString());
 
         order["job_id"] = job;
 
-        if(job.job_created_by === hirerId) return order;
+        return job.job_created_by == hirerId;
     })).then(result => {
         return res.status(200).send(result);
     });
