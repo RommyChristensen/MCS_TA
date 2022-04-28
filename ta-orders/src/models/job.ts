@@ -3,6 +3,12 @@ import mongoose from 'mongoose';
 import { Category } from './category';
 import { User } from './user';
 
+export enum JobStatus {
+    aktif = "Aktif",
+    nonaktif = "Non Aktif",
+    selesai = "Selesai"
+}
+
 // definition model firestore
 @Collection()
 export class Job {
@@ -98,6 +104,17 @@ const updateJob = async (jobId: string, title?: string, description?: string, pr
     return updatedJob;
 }
 
+const updateStatusJob = async (jobId: string, status: JobStatus) => {
+    const repo = await getRepository(Job);
+    const job = await repo.findById(jobId);
+
+    job.job_status = status;
+    
+    const updatedJob = await repo.update(job);
+
+    return updatedJob;
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class JobDoc singleton
@@ -109,6 +126,7 @@ class JobDoc {
     findById: (jobId: string) => Promise<Job>;
     deleteById: (jobId: string) => Promise<false | Job>;
     updateJob: (jobId: string, title: string, description: string, price: number, date: Date) => Promise<Job>;
+    updateStatusJob: (jobId: string, status: JobStatus) => Promise<Job>;
 }
 
 // declare functions
@@ -120,5 +138,6 @@ jobDoc.getAll = getAll;
 jobDoc.deleteAll = deleteAll;
 jobDoc.deleteById = deleteById;
 jobDoc.updateJob = updateJob;
+jobDoc.updateStatusJob = updateStatusJob;
 
 export default jobDoc;
