@@ -16,6 +16,7 @@ import { OrderAutoConfirmedListener } from './events/listeners/order-auto-confir
 import { UserCompletedListener } from './events/listeners/user-completed-listener';
 import { JobUpdatedListener } from './events/listeners/job-updated-listener';
 import { JobStatusUpdatedListener } from './events/listeners/job-status-updated-listener';
+import { JobDeletedListener } from './events/listeners/job-deleted-listener';
 const start = async () => {
     console.log("starting orders service.....");
     // ENV VARIABLES
@@ -76,6 +77,7 @@ const start = async () => {
         new JobCreatedListener(natsWrapper.client).listen();
         new JobUpdatedListener(natsWrapper.client).listen();
         new JobStatusUpdatedListener(natsWrapper.client).listen();
+        new JobDeletedListener(natsWrapper.client).listen();
         new CategoryCreatedListener(natsWrapper.client).listen();
         new CategoryUpdatedListener(natsWrapper.client).listen();
         new CategoryDeletedListener(natsWrapper.client).listen();
