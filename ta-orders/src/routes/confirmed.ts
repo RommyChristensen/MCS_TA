@@ -23,12 +23,13 @@ async (req: Request, res: Response) => {
     const { id } = jwt.verify(req.header('x-auth-token')!, 'christensen') as JwtPayload;
     const user = await userDoc.findById(id);
     const order = await orderDoc.findById(order_id);
+    const job = await jobDoc.findById(order.job_id as string);
 
     if(order.order_status !== OrderStatus.Done){
         throw new BadRequestError('Order cannot be set to Confirmed!');
     }
 
-    if(order.orderer_id !== user.id){
+    if(job.job_created_by !== user.id){
         throw new NotAuthorizedError();
     }
 
