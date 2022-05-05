@@ -29,7 +29,7 @@ async (req: Request, res: Response) => {
         throw new BadRequestError('User must be verified!');
     }
 
-    const date = new Date(datetime);
+    const date = new Date(datetime + "+07:00");
 
     const order = await orderDoc.create(orderer, job_id, price, date);
 
