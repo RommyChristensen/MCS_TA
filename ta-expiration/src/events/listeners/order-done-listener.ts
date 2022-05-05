@@ -3,7 +3,7 @@ import { queueGroupName } from './queue-group-name';
 import { Message } from "node-nats-streaming";
 import { orderAutoConfirmQueue } from "../../queues/order-auto-confirmed-queue";
 
-const minutesToExpires = 1 * 60 * 1000;
+const minutesToExpires = 30 * 60 * 1000;
 
 export class OrderDoneListener extends Listener<OrderDoneEvent> {
     subject: Subjects.OrderDone = Subjects.OrderDone;
