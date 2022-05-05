@@ -36,6 +36,7 @@ var Subjects;
     Subjects["OrderConfirmed"] = "order:confirmed";
     Subjects["OrderReviewed"] = "order:reviewed";
     Subjects["OrderAutoConfirmed"] = "order:autoconfirmed";
+    Subjects["OrderAutoCancelled"] = "order:autocancelled";
     // RATING REVIEW EVENTS
     Subjects["RatingReviewCreated"] = "ratingreview:created";
 })(Subjects = exports.Subjects || (exports.Subjects = {}));
