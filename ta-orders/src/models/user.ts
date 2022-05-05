@@ -19,6 +19,7 @@ export class User {
     auth_gender: string;
     auth_birthdate: Date;
     auth_completed: Boolean;
+    auth_address: string;
     _v: Number;
 }
 
@@ -101,6 +102,7 @@ const updateUser = async (userId: string, data: UserCompleteData) => {
     user.auth_completed = false;
     user.auth_gender = data.gender;
     user.auth_birthdate = data.birthdate;
+    user.auth_address == data.address;
 
     const updatedUser = await repo.update(user);
     return updatedUser;
