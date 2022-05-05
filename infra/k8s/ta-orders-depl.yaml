@@ -21,6 +21,11 @@ spec:
                 secretKeyRef:
                   name: jwt-secret
                   key: JWT_KEY
+            - name: G_MAPS_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: g-maps-api-key
+                  key: G_MAPS_API_KEY
             - name: NATS_CLIENT_ID
               valueFrom:
                 fieldRef:
