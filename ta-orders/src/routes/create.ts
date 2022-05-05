@@ -24,6 +24,10 @@ async (req: Request, res: Response) => {
     const { job_id, orderer, price, datetime } = req.body;
 
     const user = await userDoc.findById(orderer);
+    const job = await jobDoc.findById(job_id);
+    const job_user = await userDoc.findById(job.job_created_by as string);
+    const category = await categoryDoc.findById(job.job_category as string);
+    const timeout = (new Date().getTime() + minutesToExpires) - new Date().getTime();
 
     if(user.auth_verified === false){
         throw new BadRequestError('User must be verified!');
@@ -31,13 +35,7 @@ async (req: Request, res: Response) => {
 
     const date = new Date(datetime + "+07:00");
 
-    const order = await orderDoc.create(orderer, job_id, price, date);
-
-
-    const job = await jobDoc.findById(job_id);
-    const job_user = await userDoc.findById(job.job_created_by as string);
-    const category = await categoryDoc.findById(job.job_category as string);
-    const timeout = (new Date().getTime() + minutesToExpires) - new Date().getTime();
+    const order = await orderDoc.create(orderer, job_id, price, date, job_user.auth_address);
 
     //DONE: EMIT OrderCreatedEvent
     await new OrderCreatedPublisher(natsWrapper.client).publish({
