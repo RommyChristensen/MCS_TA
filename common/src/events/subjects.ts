@@ -35,6 +35,7 @@ export enum Subjects {
     OrderConfirmed = 'order:confirmed',
     OrderReviewed = 'order:reviewed', 
     OrderAutoConfirmed = 'order:autoconfirmed',
+    OrderAutoCancelled = 'order:autocancelled',
 
     // RATING REVIEW EVENTS
     RatingReviewCreated = 'ratingreview:created',
