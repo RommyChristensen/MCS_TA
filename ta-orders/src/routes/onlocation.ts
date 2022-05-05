@@ -6,7 +6,7 @@ import { natsWrapper } from "../nats-wrapper";
 import userDoc from "../models/user";
 import jwt from 'jsonwebtoken';
 import jobDoc from "../models/job";
-import { OrderOnprogressPublisher } from "../events/publishers/order-onprogress-publisher";
+import { OrderOnLocationPublisher } from "../events/publishers/order-on-location-publisher";
 
 const router = express.Router();
 
@@ -39,8 +39,9 @@ async (req: Request, res: Response) => {
     const updatedOrder = await orderDoc.changeStatus(order_id, OrderStatus.OnLocation);
 
     // Emit OnProgress Order Event
-    new OrderOnprogressPublisher(natsWrapper.client).publish({
+    new OrderOnLocationPublisher(natsWrapper.client).publish({
         id: updatedOrder.id,
+        order_date: new Date(updatedOrder.order_on_location_at!),
         _v: updatedOrder._v
     });
 

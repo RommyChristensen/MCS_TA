@@ -18,6 +18,7 @@ class Order {
     order_cancelled_at: Date | null;
     order_expired_at: Date| null;
     order_done_at: Date | null;
+    order_on_location_at: Date | null;
     order_created_at: Date;
     order_location: string;
     _v: number;
@@ -40,6 +41,7 @@ const create = async (orderer_id: string | User, job_id: string | Job, order_pri
     order.order_created_at = new Date();
     order.order_date = order_date;
     order.order_expired_at = null;
+    order.order_on_location_at = null;
     order.order_location = order_location;
     order._v = 0;
 
@@ -105,6 +107,8 @@ const changeStatus = async (orderId: string, status: OrderStatus) => {
         order.order_done_at = new Date();
     }else if(status === OrderStatus.Rejected){
         order.order_rejected_at = new Date();
+    } else if(status === OrderStatus.OnLocation){
+        order.order_on_location_at = new Date();
     }
 
     const updatedOrder = await repo.update(order);
