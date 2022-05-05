@@ -15,6 +15,7 @@ import { orderDoneRouter } from './routes/done';
 import { orderConfirmedRouter } from './routes/confirmed';
 import { orderGetRouter } from './routes/get';
 import { orderOnLocationRouter } from './routes/onlocation';
+import { orderOnprogressRouter } from './routes/onprogress';
 import { getDistancePlacesRouter } from './routes/distance';
 
 // END IMPORT ROUTERS
@@ -43,6 +44,7 @@ app.use(orderConfirmedRouter);
 app.use(orderGetRouter);
 app.use(orderOnLocationRouter);
 app.use(getDistancePlacesRouter);
+app.use(orderOnprogressRouter);
 
 // END USE ROUTERS
 
