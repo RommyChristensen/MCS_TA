@@ -9,7 +9,7 @@ export class OrderAcceptedListener extends Listener<OrderAcceptedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: OrderAcceptedEvent['data'], msg: Message) {
-        const delay = new Date().getTime() - data.order_date.getTime();
+        const delay = new Date().getTime() - new Date(data.order_date).getTime();
         console.log('Waiting this may milliseconds to process the job: ', delay);
 
         await orderAutoCancelledQueue.add({
