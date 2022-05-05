@@ -14,7 +14,7 @@ interface JwtPayload {
     id: string
 }
 
-router.post('/api/orders/onprogress',
+router.post('/api/orders/onlocation',
 validateHeader, 
 body('order_id').notEmpty().withMessage('Order ID Required'),
 validateRequest, 
@@ -23,13 +23,12 @@ async (req: Request, res: Response) => {
     const { id } = jwt.verify(req.header('x-auth-token')!, 'christensen') as JwtPayload;
     const user = await userDoc.findById(id);
     const order = await orderDoc.findById(order_id);
-    const job = await jobDoc.findById(order.job_id as string);
 
     if(order.order_status !== OrderStatus.Accepted){
         throw new BadRequestError('Order cannot be change to on progress!');
     }
 
-    if(job.job_created_by !== user.id){
+    if(order.orderer_id !== user.id){
         throw new NotAuthorizedError();
     }
 
@@ -37,7 +36,7 @@ async (req: Request, res: Response) => {
         throw new BadRequestError('User must be verified!');
     }
 
-    const updatedOrder = await orderDoc.changeStatus(order_id, OrderStatus.Progress);
+    const updatedOrder = await orderDoc.changeStatus(order_id, OrderStatus.OnLocation);
 
     // Emit OnProgress Order Event
     new OrderOnprogressPublisher(natsWrapper.client).publish({
@@ -48,4 +47,4 @@ async (req: Request, res: Response) => {
     return res.status(200).send(updatedOrder);
 });
 
-export { router as orderOnprogressRouter }
+export { router as orderOnLocationRouter }

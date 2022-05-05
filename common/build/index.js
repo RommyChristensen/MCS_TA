@@ -46,6 +46,7 @@ __exportStar(require("./events/order/order-accepted-event"), exports);
 __exportStar(require("./events/order/order-rejected-event"), exports);
 __exportStar(require("./events/order/order-expired-event"), exports);
 __exportStar(require("./events/order/order-onprogress-event"), exports);
+__exportStar(require("./events/order/order-onlocation-event"), exports);
 __exportStar(require("./events/order/order-done-event"), exports);
 __exportStar(require("./events/order/order-confirmed-event"), exports);
 __exportStar(require("./events/order/order-cancelled-event"), exports);
