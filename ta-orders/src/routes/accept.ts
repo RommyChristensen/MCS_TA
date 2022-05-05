@@ -42,6 +42,7 @@ async (req: Request, res: Response) => {
     // Emit Accepted Order Event
     new OrderAcceptedPublisher(natsWrapper.client).publish({
         id: updatedOrder.id,
+        order_date: order.order_date as Date,
         _v: updatedOrder._v
     });
 
