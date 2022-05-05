@@ -25,7 +25,7 @@ async (req: Request, res: Response) => {
     const order = await orderDoc.findById(order_id);
     const job = await jobDoc.findById(order.job_id as string);
 
-    if(order.order_status !== OrderStatus.Accepted){
+    if(order.order_status !== OrderStatus.OnLocation){
         throw new BadRequestError('Order cannot be change to on progress!');
     }
 
