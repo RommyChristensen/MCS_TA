@@ -19,12 +19,12 @@ const orderAutoCancelledQueue = new Queue<Payload>('order:autocancelled', {
 // function yang dijalankan ketika job diproses
 orderAutoCancelledQueue.process(async (job) => {
     console.log('I want to publish an order:autocancelled event for orderId', job.data.id);
-    // new OrderAutoCancelledPublisher(natsWrapper.client).publish({
-    //     id: job.data.id,
-    //     cancel_code: job.data.cancel_code,
-    //     order_date: job.data.order_date,
-    //     _v: job.data._v
-    // });
+    new OrderAutoCancelledPublisher(natsWrapper.client).publish({
+        id: job.data.id,
+        cancel_code: job.data.cancel_code,
+        order_date: job.data.order_date,
+        _v: job.data._v
+    });
 });
 
 export { orderAutoCancelledQueue };
