@@ -38,6 +38,10 @@ const start = async () => {
         throw new Error('NATS CLUSTER ID must be defined');
     }
 
+    if(!process.env.G_MAPS_API_KEY){
+        throw new Error('G MAPS API KEY must be defined');
+    }
+
     // END ENV VARIABLES
     // -------------------
     // DB CONNECITON
