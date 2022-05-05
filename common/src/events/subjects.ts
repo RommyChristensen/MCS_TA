@@ -31,6 +31,7 @@ export enum Subjects {
     OrderRejected = 'order:rejected',
     OrderAccepted = 'order:accepted',
     OrderOnprogress = 'order:onprogress',
+    OrderOnlocation = "order:onlocation",
     OrderDone = 'order:done',
     OrderConfirmed = 'order:confirmed',
     OrderReviewed = 'order:reviewed', 

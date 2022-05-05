@@ -32,6 +32,7 @@ var Subjects;
     Subjects["OrderRejected"] = "order:rejected";
     Subjects["OrderAccepted"] = "order:accepted";
     Subjects["OrderOnprogress"] = "order:onprogress";
+    Subjects["OrderOnlocation"] = "order:onlocation";
     Subjects["OrderDone"] = "order:done";
     Subjects["OrderConfirmed"] = "order:confirmed";
     Subjects["OrderReviewed"] = "order:reviewed";

@@ -8,6 +8,7 @@ var OrderStatus;
     OrderStatus["Rejected"] = "rejected";
     OrderStatus["Cancelled"] = "cancelled";
     OrderStatus["Done"] = "done";
+    OrderStatus["OnLocation"] = "onlocation";
     OrderStatus["Progress"] = "progress";
     OrderStatus["Reviewed"] = "reviewed";
     OrderStatus["Expired"] = "expired";
