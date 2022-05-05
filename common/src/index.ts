@@ -44,6 +44,7 @@ export * from './events/order/order-accepted-event';
 export * from './events/order/order-rejected-event';
 export * from './events/order/order-expired-event';
 export * from './events/order/order-onprogress-event';
+export * from './events/order/order-onlocation-event';
 export * from './events/order/order-done-event';
 export * from './events/order/order-confirmed-event';
 export * from './events/order/order-cancelled-event';

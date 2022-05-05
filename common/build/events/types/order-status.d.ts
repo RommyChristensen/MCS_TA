@@ -4,6 +4,7 @@ export declare enum OrderStatus {
     Rejected = "rejected",
     Cancelled = "cancelled",
     Done = "done",
+    OnLocation = "onlocation",
     Progress = "progress",
     Reviewed = "reviewed",
     Expired = "expired",
