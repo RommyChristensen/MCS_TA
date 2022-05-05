@@ -24,15 +24,6 @@ orderAutoConfirmQueue.process(async (job) => {
         id: job.data.order_id,
         _v: job.data._v
     });
-
-    // new OrderExpiredPublisher(natsWrapper.client).publish({
-    //     id: job.data.order_id,
-    //     _v: job.data._v
-    // })
-    // new JobExpiredPublisher(natsWrapper.client).publish({
-    //     id: job.data.order_id,
-    //     _v: 1
-    // })
 });
 
 export { orderAutoConfirmQueue };

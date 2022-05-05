@@ -52,6 +52,7 @@ __exportStar(require("./events/order/order-cancelled-event"), exports);
 __exportStar(require("./events/order/order-updated-event"), exports);
 __exportStar(require("./events/order/order-reviewed-event"), exports);
 __exportStar(require("./events/order/order-auto-confirmed-event"), exports);
+__exportStar(require("./events/order/order-auto-cancelled-event"), exports);
 __exportStar(require("./events/rating-review/rating-review-created-event"), exports);
 // END EVENTS
 // ENUMS

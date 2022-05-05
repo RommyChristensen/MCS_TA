@@ -28,5 +28,6 @@ export declare enum Subjects {
     OrderConfirmed = "order:confirmed",
     OrderReviewed = "order:reviewed",
     OrderAutoConfirmed = "order:autoconfirmed",
+    OrderAutoCancelled = "order:autocancelled",
     RatingReviewCreated = "ratingreview:created"
 }
