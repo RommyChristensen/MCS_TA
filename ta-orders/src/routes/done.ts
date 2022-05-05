@@ -29,7 +29,7 @@ async (req: Request, res: Response) => {
         throw new BadRequestError('Order cannot be set to Done!');
     }
 
-    if(job.job_created_by !== user.id){
+    if(order.orderer_id !== user.id){
         throw new NotAuthorizedError();
     }
 
