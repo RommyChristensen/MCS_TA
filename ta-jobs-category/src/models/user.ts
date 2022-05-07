@@ -1,4 +1,4 @@
-import { Collection, getRepository } from 'fireorm';
+import { Collection, getRepository, IFirestoreVal } from 'fireorm';
 import mongoose from 'mongoose';
 
 // FIX USER MODEL (PROPERTIES, METHODS)
@@ -174,6 +174,13 @@ const addPreferredCategory = async (userId: string, categoryId: string) => {
     return updatedUser;
 }
 
+const getByPreferredCategory = async (categories: IFirestoreVal[]) => {
+    const repo = await getRepository(User);
+    const users = await repo.whereIn('preferred_category', categories).find();
+
+    return users;
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class UserDoc singleton
@@ -192,6 +199,7 @@ class UserDoc {
     changeProfile: (userId: string, userData: changeProfileData) => Promise<User>;
     changePassword: (userId: string, oldPassword: string, newPassword: string) => Promise<Object>;
     addPreferredCategory: (userId: string, categoryId: string) => Promise<User>;
+    getPreferredCategory: (categories: IFirestoreVal[]) => Promise<User[]>;
 }
 
 // declare functions
@@ -209,6 +217,7 @@ userDoc.confirmUser = confirmUser;
 userDoc.changepp = changepp;
 userDoc.changeProfile = changeProfile;
 userDoc.addPreferredCategory = addPreferredCategory;
+userDoc.getPreferredCategory = getByPreferredCategory;
 
 export default userDoc;
 
