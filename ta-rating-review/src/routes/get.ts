@@ -5,7 +5,7 @@ import ratingReviewDoc from "../models/rating-review";
 
 const router = express.Router();
 
-router.get('/api/ratingreview/:orderId',
+router.get('/api/ratingreview/order/:orderId',
 validateHeader, 
 async (req: Request, res: Response) => {
     const { orderId } = req.params;
