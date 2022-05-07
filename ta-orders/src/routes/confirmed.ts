@@ -41,8 +41,12 @@ async (req: Request, res: Response) => {
 
     // Emit Confirmed Order Event
     new OrderConfirmedPublisher(natsWrapper.client).publish({
+        order_id: order.id,
+        orderer_id: order.orderer_id as string,
+        worker_id: job.job_created_by,
         id: updatedOrder.id,
-        _v: updatedOrder._v
+        _v: updatedOrder._v,
+        total_payment: order.order_price.toString(),
     });
 
     return res.status(200).send(updatedOrder);

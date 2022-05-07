@@ -40,5 +40,8 @@ var Subjects;
     Subjects["OrderAutoCancelled"] = "order:autocancelled";
     // RATING REVIEW EVENTS
     Subjects["RatingReviewCreated"] = "ratingreview:created";
+    // PAYMENT EVENTS
+    Subjects["PaymentSuccess"] = "payment:success";
+    Subjects["PaymentFailed"] = "payment:failed";
 })(Subjects = exports.Subjects || (exports.Subjects = {}));
 ;

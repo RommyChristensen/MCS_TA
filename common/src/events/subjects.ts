@@ -40,4 +40,8 @@ export enum Subjects {
 
     // RATING REVIEW EVENTS
     RatingReviewCreated = 'ratingreview:created',
+
+    // PAYMENT EVENTS
+    PaymentSuccess = 'payment:success',
+    PaymentFailed = 'payment:failed'
 };
