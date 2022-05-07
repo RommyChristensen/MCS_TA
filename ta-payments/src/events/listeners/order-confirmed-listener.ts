@@ -14,8 +14,12 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
     async onMessage(data: OrderConfirmedEvent['data'], msg: Message){
         const {id, order_id, orderer_id, worker_id, total_payment, _v} = data;
 
+        console.log(orderer_id, worker_id);
+
         const hirer = await userDoc.findById(worker_id);
         const orderer = await userDoc.findById(orderer_id);
+
+        console.log("success find");
 
         if(hirer.auth_saldo - parseInt(total_payment) > 0) {
             new PaymentFailedPublisher(natsWrapper.client).publish({
