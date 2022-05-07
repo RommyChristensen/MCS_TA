@@ -16,6 +16,7 @@ interface JwtPayload {
 
 router.post('/api/payments/update-payments', 
 async (req: Request, res: Response) => {
+    console.log(req.body);
     if(req.body["custom_field2"] == Bank.BCA){
         const notif = req.body as BCAInterface;
         if(notif.transaction_status == TransactionStatus.settlement){
@@ -39,3 +40,6 @@ async (req: Request, res: Response) => {
 });
 
 export { router as updatePaymentsRouter }
+
+// dominatorranger@gmail.com
+// Stone4769
