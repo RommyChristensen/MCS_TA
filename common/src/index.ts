@@ -55,6 +55,9 @@ export * from './events/order/order-auto-cancelled-event';
 
 export * from './events/rating-review/rating-review-created-event';
 
+export * from './events/payments/payment-failed-event';
+export * from './events/payments/payment-success-event';
+
 // END EVENTS
 
 // ENUMS
