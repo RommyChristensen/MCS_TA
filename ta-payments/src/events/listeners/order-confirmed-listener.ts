@@ -17,7 +17,7 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
         const hirer = await userDoc.findById(worker_id);
         const orderer = await userDoc.findById(orderer_id);
 
-        if(hirer.auth_saldo - parseInt(total_payment) > 0) {
+        if(hirer.auth_saldo - parseInt(total_payment) < 0) {
             new PaymentFailedPublisher(natsWrapper.client).publish({
                 order_id: order_id,
                 message: "Saldo Pencari Jasa Tidak Mencukupi",
