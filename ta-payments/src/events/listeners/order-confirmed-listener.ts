@@ -16,8 +16,8 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
 
         console.log(orderer_id, worker_id);
 
-        const hirer = await userDoc.findById(worker_id);
-        const orderer = await userDoc.findById(orderer_id);
+        const hirer = await userDoc.findById("6210de26f1dbfe001a3c8ea0");
+        const orderer = await userDoc.findById("6210deecf1dbfe001a3c8ea2");
 
         console.log("success find");
 
