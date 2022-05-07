@@ -12,33 +12,33 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: OrderConfirmedEvent['data'], msg: Message){
-        const {id, order_id, orderer_id, worker_id, total_payment, _v} = data;
+        // const {id, order_id, orderer_id, worker_id, total_payment, _v} = data;
 
-        const hirer = await userDoc.findById(worker_id);
-        const orderer = await userDoc.findById(orderer_id);
+        // const hirer = await userDoc.findById(worker_id);
+        // const orderer = await userDoc.findById(orderer_id);
 
-        if(hirer.auth_saldo - parseInt(total_payment) > 0) {
-            new PaymentFailedPublisher(natsWrapper.client).publish({
-                order_id: order_id,
-                message: "Saldo Pencari Jasa Tidak Mencukupi",
-                total_payment: parseInt(total_payment),
-                _v: _v
-            });
+        // if(hirer.auth_saldo - parseInt(total_payment) > 0) {
+        //     new PaymentFailedPublisher(natsWrapper.client).publish({
+        //         order_id: order_id,
+        //         message: "Saldo Pencari Jasa Tidak Mencukupi",
+        //         total_payment: parseInt(total_payment),
+        //         _v: _v
+        //     });
 
-            await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.pending);
-            await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.pending);
-            // publish payment failed cause not enough saldo
-        }else{
-            await userDoc.updateSaldo(hirer.id, parseInt(total_payment) * -1);
-            await userDoc.updateSaldo(orderer.id, parseInt(total_payment));
-            // publish payment success
-            new PaymentSuccessPublisher(natsWrapper.client).publish({
-                order_id, message: "Pembayaran Sukses", total_payment: parseInt(total_payment), _v,
-            })
+        //     await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.pending);
+        //     await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.pending);
+        //     // publish payment failed cause not enough saldo
+        // }else{
+        //     await userDoc.updateSaldo(hirer.id, parseInt(total_payment) * -1);
+        //     await userDoc.updateSaldo(orderer.id, parseInt(total_payment));
+        //     // publish payment success
+        //     new PaymentSuccessPublisher(natsWrapper.client).publish({
+        //         order_id, message: "Pembayaran Sukses", total_payment: parseInt(total_payment), _v,
+        //     })
 
-            await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.done);
-            await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.done);
-        }
+        //     await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.done);
+        //     await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.done);
+        // }
 
         msg.ack();
     }
