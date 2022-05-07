@@ -1,5 +1,5 @@
 import { Subjects } from "../subjects";
-export interface PaymentFailedSuccess {
+export interface PaymentFailedEvent {
     subject: Subjects.PaymentFailed;
     data: {
         order_id: string;

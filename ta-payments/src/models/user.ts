@@ -5,6 +5,8 @@ import mongoose from 'mongoose';
 import { BCAInterface } from '../interfaces/bca-interface';
 import { BNIInterface } from '../interfaces/bni-interface';
 import { PermataInterface } from '../interfaces/permata-interface';
+import { OrderHistory } from './order-history';
+import { OrderPaymentStatus } from './order-payment-status';
 
 // FIX USER MODEL (PROPERTIES, METHODS)
 
@@ -17,6 +19,7 @@ export class User {
     auth_saldo: number;
     current_transaction: BCAInterface | BNIInterface | PermataInterface | null;
     trans_history: Array<HistoryTransaction>;
+    order_history: Array<OrderHistory>;
     _v: Number;
 }
 
@@ -31,6 +34,7 @@ const createUser = async (id: string, firstname: string, _v: number, lastname?: 
     user.auth_saldo = 0;
     user.trans_history = [];
     user.current_transaction = null;
+    user.order_history = [];
     user._v = _v;
 
     return await repo.create(user);
@@ -58,6 +62,16 @@ const findById = async (userId: string) => {
     const user = await repo.findById(userId);
 
     return user;
+}
+
+const updateSaldo = async (userId: string, saldo: number) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    user.auth_saldo += saldo;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
 }
 
 const addCurrentTransaction = async (data: BCAInterface | BNIInterface | PermataInterface, userId: string) => {
@@ -117,6 +131,22 @@ const updateTransaction = async (userId: string, status: TransactionStatus, orde
     return updatedUser;
 }
 
+const addOrderHistory = async (userId: string, orderId: string, status: OrderPaymentStatus) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    const history = user.order_history;
+    history.push({
+        id: new mongoose.Types.ObjectId().toString(),
+        status: status,
+        order_id: orderId,
+    });
+    user.order_history = history;
+
+    const updatedOrderHistory = await repo.update(user);
+    return updatedOrderHistory;
+}
+
 
 // --------------------- End custom functions ------------------------------ //
 
@@ -130,6 +160,8 @@ class UserDoc {
     updateTransaction: (userId: string, status: TransactionStatus, orderId: string) => Promise<User>;
     addCurrentTransaction: (data: BCAInterface | BNIInterface | PermataInterface, userId: string) => Promise<User>;
     removeCurrentTransaction: (userId: string) => Promise<User>;
+    updateSaldo: (userId: string, saldo: number) => Promise<User>;
+    addOrderHistory: (userId: string, orderId: string, status: OrderPaymentStatus) => Promise<User>;
 }
 
 // declare functions
@@ -142,5 +174,7 @@ userDoc.addNewTransaction = addNewTransaction;
 userDoc.updateTransaction = updateTransaction;
 userDoc.addCurrentTransaction = addCurrentTransaction;
 userDoc.removeCurrentTransaction = removeCurrentTransaction;
+userDoc.updateSaldo = updateSaldo;
+userDoc.addOrderHistory = addOrderHistory;
 
 export default userDoc;
