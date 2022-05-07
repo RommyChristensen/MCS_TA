@@ -51,7 +51,7 @@ async (req: Request, res: Response) => {
     }
 });
 
-router.get('/api/jobscat/prefferedcategory', validateHeader, async (req: Request, res: Response) => {
+router.post('/api/jobscat/prefferedcategory', validateHeader, async (req: Request, res: Response) => {
     const { listCategory } = req.body;
 
     const users = await userDoc.getPreferredCategory(listCategory);
