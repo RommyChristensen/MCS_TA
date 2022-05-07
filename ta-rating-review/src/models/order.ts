@@ -108,7 +108,7 @@ const update = async (orderId: string, price: number) => {
 
 const findByOrderer = async (orderer_id: string, order_id: string) => {
     const repo = await getRepository(Order);
-    const order = await repo.whereEqualTo(o => o.user.id, orderer_id).whereEqualTo(o => o.id, order_id).find();
+    const order = await repo.whereEqualTo(o => o.job.user.id, orderer_id).whereEqualTo(o => o.id, order_id).find();
     return order;
 }
 
