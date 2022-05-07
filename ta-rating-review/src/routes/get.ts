@@ -5,6 +5,18 @@ import ratingReviewDoc from "../models/rating-review";
 
 const router = express.Router();
 
+router.get('/api/ratingreview/:orderId',
+validateHeader, 
+async (req: Request, res: Response) => {
+    const { orderId } = req.params;
+
+    if(!orderId) throw new BadRequestError('Order ID Required');
+
+    const rating = await ratingReviewDoc.findByOrderId(orderId);
+
+    return res.send(rating);
+});
+
 router.get('/api/ratingreview/:userId', 
 validateHeader, 
 async (req: Request, res: Response) => {

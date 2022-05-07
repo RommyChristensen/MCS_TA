@@ -35,6 +35,13 @@ const findById = async (rrId: string) => {
     return rr;
 }
 
+const findByOrderId = async (orderId: string) => {
+    const repo = await getRepository(RatingReview);
+    const rr = await repo.whereEqualTo(r => r.order_id, orderId).find();
+
+    return rr[0];
+}
+
 const getAll = async () => {
     const repo = await getRepository(RatingReview);
     const rr = await repo.find();
@@ -55,6 +62,8 @@ class RatingReviewDoc {
     create: (order_id: string, rate: number, review: string, user_id: string) => Promise<RatingReview>;
     findByWorkerId: (reviewer_id: string) => Promise<RatingReview[]>;
     getAll: () => Promise<RatingReview[]>;
+    findById: (rrId: string) => Promise<RatingReview>;
+    findByOrderId: (orderId: string) => Promise<RatingReview>;
 }
 
 // declare functions
@@ -62,5 +71,7 @@ const ratingReviewDoc = new RatingReviewDoc();
 ratingReviewDoc.create = create;
 ratingReviewDoc.findByWorkerId = findByWorkerId;
 ratingReviewDoc.getAll = getAll;
+ratingReviewDoc.findById = findById;
+ratingReviewDoc.findByOrderId = findByOrderId;
 
 export default ratingReviewDoc;
