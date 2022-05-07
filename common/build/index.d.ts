@@ -38,5 +38,7 @@ export * from './events/order/order-reviewed-event';
 export * from './events/order/order-auto-confirmed-event';
 export * from './events/order/order-auto-cancelled-event';
 export * from './events/rating-review/rating-review-created-event';
+export * from './events/payments/payment-failed-event';
+export * from './events/payments/payment-success-event';
 export * from './events/types/order-status';
 export * from './events/types/user-role';

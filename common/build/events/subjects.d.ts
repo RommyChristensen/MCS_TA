@@ -30,5 +30,7 @@ export declare enum Subjects {
     OrderReviewed = "order:reviewed",
     OrderAutoConfirmed = "order:autoconfirmed",
     OrderAutoCancelled = "order:autocancelled",
-    RatingReviewCreated = "ratingreview:created"
+    RatingReviewCreated = "ratingreview:created",
+    PaymentSuccess = "payment:success",
+    PaymentFailed = "payment:failed"
 }
