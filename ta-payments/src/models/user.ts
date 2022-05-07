@@ -68,7 +68,12 @@ const updateSaldo = async (userId: string, saldo: number) => {
     const repo = await getRepository(User);
     const user = await repo.findById(userId);
 
-    user.auth_saldo = user.auth_saldo + saldo;
+    console.log(saldo);
+    console.log(user.auth_saldo);
+    console.log(saldo + user.auth_saldo);
+    
+    let s = user.auth_saldo + saldo;
+    user.auth_saldo = s;
 
     const updatedUser = await repo.update(user);
     return updatedUser;
