@@ -2,7 +2,7 @@ import express, { Request, Response } from 'express';
 import userDoc from '../models/user';
 import orderDoc from '../models/order';
 import jobDoc, { Job } from '../models/job';
-import { BadRequestError, validateHeader } from '@ta-vrilance/common';
+import { BadRequestError, OrderStatus, validateHeader } from '@ta-vrilance/common';
 
 const router = express.Router();
 
@@ -27,6 +27,16 @@ async (req: Request, res: Response) => {
     }
 
     return res.send(order);
+});
+
+router.get('/api/orders/type2', validateHeader, async (req: Request, res: Response) => {
+    const orders = await orderDoc.getType2();
+
+    const filteredOrders = orders.filter(o => {
+        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected;
+    });
+
+    return res.send(filteredOrders);
 });
 
 router.get('/api/orders/hirer/:hirerId', validateHeader, async (req: Request, res: Response) => {
