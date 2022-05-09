@@ -63,9 +63,9 @@ const getAll = async () => {
     return order;
 }
 
-const getType2 = async () => {
+const getType2 = async (workerId: string) => {
     const repo = await getRepository(Order);
-    const order = await repo.whereEqualTo('order_type', 2).find();
+    const order = await repo.whereEqualTo('order_type', 2).whereEqualTo('orderer_id', workerId).find();
 
     return order;
 }
@@ -147,7 +147,7 @@ class OrderDoc {
     updateJob: (jobId: string, title: string, description: string, price: number, date: Date) => Promise<Order>;
     changeStatus: (orderId: string, status: OrderStatus) => Promise<Order>;
     update: (orderId: string, price: number) => Promise<Order>;
-    getType2: () => Promise<Order[]>;
+    getType2: (workerId: string) => Promise<Order[]>;
 }
 
 // declare functions
