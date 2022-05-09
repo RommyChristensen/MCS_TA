@@ -44,6 +44,7 @@ const create = async (orderer_id: string | User, job_id: string | Job, order_pri
     order.order_expired_at = null;
     order.order_on_location_at = null;
     order.order_location = order_location;
+    order.order_type = order_type;
     order._v = 0;
 
     return await repo.create(order);
