@@ -19,7 +19,7 @@ router.get('/api/orders/type2/:workerId', validateHeader, async (req: Request, r
     const orders = await orderDoc.getType2(workerId);
 
     const filteredOrders = orders.filter(o => {
-        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected;
+        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled;
     });
 
     return res.send(filteredOrders);
