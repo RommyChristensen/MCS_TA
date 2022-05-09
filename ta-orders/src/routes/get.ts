@@ -11,8 +11,12 @@ router.get('/api/orders/admin/get/:orderId', async (req: Request, res: Response)
     return res.send(true);
 });
 
-router.get('/api/orders/type2', validateHeader, async (req: Request, res: Response) => {
-    const orders = await orderDoc.getType2();
+router.get('/api/orders/type2/:workerId', validateHeader, async (req: Request, res: Response) => {
+    const { workerId } = req.params;
+
+    if(!workerId) throw new BadRequestError('ID Pekerja Tidak Valid');
+
+    const orders = await orderDoc.getType2(workerId);
 
     const filteredOrders = orders.filter(o => {
         return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected;
