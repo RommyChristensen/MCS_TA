@@ -36,7 +36,7 @@ router.get('/api/orders/type2', validateHeader, async (req: Request, res: Respon
         return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected;
     });
 
-    return res.send(orders);
+    return res.send(filteredOrders);
 });
 
 router.get('/api/orders/hirer/:hirerId', validateHeader, async (req: Request, res: Response) => {
