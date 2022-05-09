@@ -19,9 +19,10 @@ body('orderer').notEmpty().withMessage('User Orderer ID Required'),
 body('price').notEmpty().withMessage('Price is Required'),
 body('price').isNumeric().withMessage('Price must be a number'),
 body('datetime').notEmpty().withMessage('Order Date is Required'),
+body('order_type').notEmpty().withMessage("Order Type Required"),
 validateRequest, 
 async (req: Request, res: Response) => {
-    const { job_id, orderer, price, datetime } = req.body;
+    const { job_id, orderer, price, datetime, order_type } = req.body;
 
     const user = await userDoc.findById(orderer);
     const job = await jobDoc.findById(job_id);
@@ -35,7 +36,7 @@ async (req: Request, res: Response) => {
 
     const date = new Date(datetime + "+07:00");
 
-    const order = await orderDoc.create(orderer, job_id, price, date, job_user.auth_address);
+    const order = await orderDoc.create(orderer, job_id, price, date, job_user.auth_address, order_type);
 
     //DONE: EMIT OrderCreatedEvent
     await new OrderCreatedPublisher(natsWrapper.client).publish({
@@ -62,6 +63,7 @@ async (req: Request, res: Response) => {
         order_status: OrderStatus.Created,
         order_expires_at: timeout.toString(), // TODO: ubah jdi number
         order_price: price,
+        order_type: order_type,
         _v: order._v
     });
 

@@ -21,12 +21,13 @@ class Order {
     order_on_location_at: Date | null;
     order_created_at: Date;
     order_location: string;
+    order_type: number;
     _v: number;
 }
 
 // --------------------- Start custom functions ------------------------------ //
 
-const create = async (orderer_id: string | User, job_id: string | Job, order_price: number, order_date: Date, order_location: string) => {
+const create = async (orderer_id: string | User, job_id: string | Job, order_price: number, order_date: Date, order_location: string, order_type: number) => {
     const repo = await getRepository(Order);
     const order = new Order();
     order.id = new mongoose.Types.ObjectId().toString();
@@ -129,7 +130,7 @@ const update = async (orderId: string, price: number) => {
 
 // make class JobDoc singleton
 class OrderDoc {
-    create: (orderer_id: string | User, job_id: string | Job, order_price: number, order_date: Date, order_location: string) => Promise<Order>;
+    create: (orderer_id: string | User, job_id: string | Job, order_price: number, order_date: Date, order_location: string, order_type: number) => Promise<Order>;
     findByUserId: (userId: string) => Promise<Order[]>;
     getAll: () => Promise<Order[]>;
     deleteAll: () => Promise<Boolean>;

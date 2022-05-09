@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ta-ads-depl
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: ta-ads
+  template:
+    metadata:
+      labels:
+        app: ta-ads
+    spec:
+      containers:
+        - name: ta-ads
+          image: rommycy00/ta-ads
+          env:
+            - name: JWT_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: jwt-secret
+                  key: JWT_KEY
+            - name: NATS_CLIENT_ID
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+            - name: NATS_URL
+              value: 'http://ta-nats-srv:4222'
+            - name: NATS_CLUSTER_ID
+              value: vrilance
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: ta-ads-srv
+spec:
+  selector:
+    app: ta-ads
+  ports:
+    - name: ta-ads
+      protocol: TCP
+      port: 3000
+      targetPort: 3000

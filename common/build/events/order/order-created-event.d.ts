@@ -26,6 +26,7 @@ export interface OrderCreatedEvent {
         order_status: OrderStatus;
         order_expires_at: string;
         order_price: number;
+        order_type: number;
         _v: number;
     };
 }
