@@ -11,7 +11,7 @@ export class JobCreatedListener extends Listener<JobCreatedEvent> {
     async onMessage(data: JobCreatedEvent['data'], msg: Message) {
         const { job_date, id, _v } = data;
 
-        const delay = new Date(job_date).getTime() - new Date().getTime();
+        const delay = new Date(job_date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime() - new Date().getTime();
 
         console.log("job done " + delay);
 
