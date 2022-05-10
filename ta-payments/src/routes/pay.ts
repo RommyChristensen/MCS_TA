@@ -4,6 +4,7 @@ import { BadRequestError, validateHeader } from "@ta-vrilance/common";
 import userDoc from "../models/user";
 import { OrderPaidPublisher } from "../events/publishers/order-paid-publisher";
 import { natsWrapper } from "../nats-wrapper";
+import { OrderPaymentStatus } from "../models/order-payment-status";
 
 const router = express.Router();
 
@@ -19,9 +20,20 @@ async (req: Request, res: Response) => {
     const hirer = await userDoc.findById(hirer_id);
     const worker = await userDoc.findById(worker_id);
 
+    const order = hirer.order_history.filter(o => {
+        return o.order_id == order_id;
+    });
+
+    if(order[0].status == OrderPaymentStatus.done){
+        throw new BadRequestError('Pesanan Sudah Terbayar');
+    }
+
     if(hirer.auth_saldo - parseInt(price) >= 0){
         await userDoc.updateSaldo(hirer.id, parseInt(price) * -1);
         await userDoc.updateSaldo(worker.id, parseInt(price));
+
+        await userDoc.updateOrderHistory(order_id, hirer_id);
+        await userDoc.updateOrderHistory(order_id, worker_id);
 
         new OrderPaidPublisher(natsWrapper.client).publish({
             id: order_id,

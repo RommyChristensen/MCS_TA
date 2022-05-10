@@ -154,6 +154,23 @@ const addOrderHistory = async (userId: string, orderId: string, status: OrderPay
     return updatedOrderHistory;
 }
 
+const updateOrderHistory = async (orderId: string, userId: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    const orderHistory = user.order_history.map(o => {
+        if(o.order_id == orderId){
+            o["status"] = OrderPaymentStatus.done;
+        }
+        return o;
+    });
+
+    user.order_history = orderHistory;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+}
+
 
 // --------------------- End custom functions ------------------------------ //
 
@@ -169,6 +186,7 @@ class UserDoc {
     removeCurrentTransaction: (userId: string) => Promise<User>;
     updateSaldo: (userId: string, saldo: number) => Promise<User>;
     addOrderHistory: (userId: string, orderId: string, status: OrderPaymentStatus) => Promise<User>;
+    updateOrderHistory: (orderId: string, userId: string) => Promise<User>;
 }
 
 // declare functions
@@ -183,5 +201,6 @@ userDoc.addCurrentTransaction = addCurrentTransaction;
 userDoc.removeCurrentTransaction = removeCurrentTransaction;
 userDoc.updateSaldo = updateSaldo;
 userDoc.addOrderHistory = addOrderHistory;
+userDoc.updateOrderHistory = userDoc.updateOrderHistory;
 
 export default userDoc;
