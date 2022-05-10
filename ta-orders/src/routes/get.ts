@@ -87,7 +87,7 @@ async (req: Request, res: Response) => {
 router.get('/api/orders/hirer/:hirerId', validateHeader, async (req: Request, res: Response) => {
     const { hirerId } = req.params;
 
-    const orders = await orderDoc.getAll();
+    const orders = await orderDoc.getType1();
 
     await Promise.all(orders.map(async (order) => {
         let job = await jobDoc.findById(order.job_id.toString());
@@ -119,7 +119,9 @@ async (req: Request, res: Response) => {
         return res.status(404).send({ message: "Pengguna Tidak Ditemukan" });
     }
 
-    const orders = await orderDoc.findByUserId(workerId);
+    const o = await orderDoc.getType1();
+
+    const orders = o.filter(or => or.orderer_id == workerId);
 
     await Promise.all(orders.map(async (order) => {
         let job = await jobDoc.findById(order.job_id.toString());
