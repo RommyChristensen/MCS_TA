@@ -20,7 +20,7 @@ router.get('/api/orders/type2/worker/:workerId', validateHeader, async (req: Req
     const orders = await orderDoc.getWorkerType2(workerId);
 
     const filteredOrders = orders.filter(o => {
-        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed;
+        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed && o.order_status != OrderStatus.Paid && o.order_status != OrderStatus.PaidPending;
     });
 
     await Promise.all(filteredOrders.map(async (order) => {
@@ -44,7 +44,7 @@ router.get('/api/orders/type2/hirer/:hirerId', validateHeader, async (req: Reque
     const orders = await orderDoc.getType2();
 
     const filteredOrders = orders.filter(o => {
-        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed;
+        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed && o.order_status != OrderStatus.Paid && o.order_status != OrderStatus.PaidPending;
     });
 
     await Promise.all(filteredOrders.map(async (order) => {
