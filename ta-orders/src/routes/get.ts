@@ -43,7 +43,7 @@ router.get('/api/orders/type2/hirer/:hirerId', validateHeader, async (req: Reque
     const orders = await orderDoc.getType2();
 
     const filteredOrders = orders.filter(o => {
-        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled;
+        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed;
     });
 
     await Promise.all(filteredOrders.map(async (order) => {
