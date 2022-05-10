@@ -29,7 +29,7 @@ router.get('/api/orders/type2/worker/:workerId', validateHeader, async (req: Req
 
         return order;
     })).then(result => {
-        return res.status(200).send(r);
+        return res.status(200).send(result);
     });
 
     return res.send(filteredOrders);
