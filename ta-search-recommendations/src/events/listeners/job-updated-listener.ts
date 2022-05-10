@@ -8,10 +8,10 @@ export class JobUpdatedListener extends Listener<JobUpdatedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: JobUpdatedEvent['data'], msg: Message){
-        const { id, job_date, job_description, job_title, job_price } = data;
+        // const { id, job_date, job_description, job_title, job_price } = data;
 
-        // Store updated job to database
-        await jobDoc.updateJob(id, job_title, job_description, job_price, job_date);
+        // // Store updated job to database
+        // await jobDoc.updateJob(id, job_title, job_description, job_price, job_date);
 
         msg.ack();
     }
