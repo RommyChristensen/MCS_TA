@@ -201,6 +201,6 @@ userDoc.addCurrentTransaction = addCurrentTransaction;
 userDoc.removeCurrentTransaction = removeCurrentTransaction;
 userDoc.updateSaldo = updateSaldo;
 userDoc.addOrderHistory = addOrderHistory;
-userDoc.updateOrderHistory = userDoc.updateOrderHistory;
+userDoc.updateOrderHistory = updateOrderHistory;
 
 export default userDoc;
