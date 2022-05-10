@@ -13,6 +13,8 @@ export class JobCreatedListener extends Listener<JobCreatedEvent> {
 
         const delay = new Date(job_date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime() - new Date().getTime();
 
+        console.log(new Date(job_date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime());
+        console.log(new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime());
         console.log("job done " + delay);
 
         await jobDoneQueue.add({
