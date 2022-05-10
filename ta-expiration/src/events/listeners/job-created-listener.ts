@@ -1,8 +1,6 @@
-import { Listener, Subjects } from "@ta-vrilance/common";
+import { JobCreatedEvent, Listener, Subjects } from "@ta-vrilance/common";
 import { queueGroupName } from './queue-group-name';
 import { Message } from "node-nats-streaming";
-import { orderAutoCancelledQueue } from "../../queues/order-awaiting-progress-queue";
-import { JobCreatedEvent } from "../../../../common/src/events/job/job-created-event";
 import { jobDoneQueue } from "../../queues/job-done-queue";
 
 
