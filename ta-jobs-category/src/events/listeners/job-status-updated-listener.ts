@@ -11,6 +11,8 @@ export class JobStatusUpdatedListener extends Listener<JobStatusUpdatedEvent> {
         const { job_status, id } = data;
 
         // Update confirmed new user to database
+        console.log(job_status);
+        console.log(id);
         const job = await jobDoc.findById(id);
         if(new Date(job.job_date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime() == new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime()){
             await jobDoc.updateStatusJob(id, job_status as JobStatus);
