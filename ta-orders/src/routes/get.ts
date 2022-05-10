@@ -3,6 +3,7 @@ import userDoc from '../models/user';
 import orderDoc from '../models/order';
 import jobDoc, { Job } from '../models/job';
 import { BadRequestError, OrderStatus, validateHeader } from '@ta-vrilance/common';
+import { listenerCount } from 'nodemailer/lib/xoauth2';
 
 const router = express.Router();
 
@@ -70,7 +71,11 @@ async (req: Request, res: Response) => {
         throw new BadRequestError("Order ID Wajib Disertakan");
     }
 
-    const order = await orderDoc.findById(orderId);
+    let order = await orderDoc.findById(orderId);
+
+    const job = await jobDoc.findById(order.job_id as string);
+
+    order["job_id"] = job;
 
     if(!order){
         throw new BadRequestError("Data Order Tidak Ditemukan");
