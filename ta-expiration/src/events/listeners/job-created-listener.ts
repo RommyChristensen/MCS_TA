@@ -13,6 +13,8 @@ export class JobCreatedListener extends Listener<JobCreatedEvent> {
 
         const delay = new Date(job_date).getTime() - new Date().getTime();
 
+        console.log("job done " + delay);
+
         await jobDoneQueue.add({
             job_id: id,
             _v: _v
