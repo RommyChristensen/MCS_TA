@@ -36,7 +36,7 @@ const create = async (id: string, title: string, description: string, date: Date
     job.job_created_by = createdBy;
     job.job_price = price;
     job.job_category = category;
-    job.job_status = 'Created';
+    job.job_status = JobStatus.aktif;
     job.job_created_at = createdAt;
     job._v = 0;
 
