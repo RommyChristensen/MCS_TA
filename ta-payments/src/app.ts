@@ -9,6 +9,7 @@ import { errorHandler, NotFoundError } from '@ta-vrilance/common';
 import { topUpRouter } from './routes/top-up';
 import { updatePaymentsRouter } from './routes/update-payments';
 import { getRouter } from './routes/get';
+import { payRouter } from './routes/pay';
 
 // END IMPORT ROUTERS
 
@@ -29,6 +30,7 @@ app.use(
 app.use(topUpRouter);
 app.use(updatePaymentsRouter);
 app.use(getRouter);
+app.use(payRouter);
 
 // END USE ROUTERS
 

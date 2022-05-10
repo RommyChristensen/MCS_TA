@@ -18,6 +18,8 @@ import { JobUpdatedListener } from './events/listeners/job-updated-listener';
 import { JobStatusUpdatedListener } from './events/listeners/job-status-updated-listener';
 import { JobDeletedListener } from './events/listeners/job-deleted-listener';
 import { OrderAutoCancelledListener } from './events/listeners/order-auto-cancelled-listener';
+import { OrderPaidListener } from './events/listeners/order-paid-listener';
+import { OrderPaidPendingListener } from './events/listeners/order-paid-pending-listener';
 const start = async () => {
     console.log("starting orders service.....");
     // ENV VARIABLES
@@ -90,6 +92,8 @@ const start = async () => {
         new RatingReviewCreatedListener(natsWrapper.client).listen();
         new OrderAutoConfirmedListener(natsWrapper.client).listen();
         new OrderAutoCancelledListener(natsWrapper.client).listen();
+        new OrderPaidListener(natsWrapper.client).listen();
+        new OrderPaidPendingListener(natsWrapper.client).listen();
 
     }catch(err){
         console.log(err);

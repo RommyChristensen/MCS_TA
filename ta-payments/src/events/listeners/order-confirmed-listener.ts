@@ -6,6 +6,8 @@ import { PaymentFailedPublisher } from '../publishers/payment-failed-publisher';
 import { natsWrapper } from '../../nats-wrapper';
 import { PaymentSuccessPublisher } from '../publishers/payment-success-publisher';
 import { OrderPaymentStatus } from '../../models/order-payment-status';
+import { OrderPaidPendingPublisher } from '../publishers/order-paid-pending-publisher';
+import { OrderPaidPublisher } from '../publishers/order-paid-publisher';
 
 export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
     subject: Subjects.OrderConfirmed = Subjects.OrderConfirmed;
@@ -27,6 +29,11 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
 
             await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.pending);
             await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.pending);
+
+            new OrderPaidPendingPublisher(natsWrapper.client).publish({
+                id: order_id,
+                _v: _v
+            })
             // publish payment failed cause not enough saldo
         }else{
             await userDoc.updateSaldo(hirer.id, parseInt(total_payment) * -1);
@@ -38,6 +45,11 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
 
             await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.done);
             await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.done);
+
+            new OrderPaidPublisher(natsWrapper.client).publish({
+                id: order_id,
+                _v: _v,
+            })
         }
 
         msg.ack();
