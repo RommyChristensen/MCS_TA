@@ -7,6 +7,7 @@ import { UserCreatedListener } from './events/listeners/user-created-listener';
 import { UserVerifiedListener } from './events/listeners/user-verified-listener';
 import { UserConfirmedListener } from './events/listeners/user-confirmed-listener';
 import { UserCompletedListener } from './events/listeners/user-completed-listener';
+import { JobStatusUpdatedListener } from './events/listeners/job-status-updated-listener';
 const start = async () => {
     console.log("starting jobs category service");
     // ENV VARIABLES
@@ -51,6 +52,7 @@ const start = async () => {
         new UserVerifiedListener(natsWrapper.client).listen();
         new UserConfirmedListener(natsWrapper.client).listen();
         new UserCompletedListener(natsWrapper.client).listen();
+        new JobStatusUpdatedListener(natsWrapper.client).listen();
 
     }catch(err){
         console.log(err);
