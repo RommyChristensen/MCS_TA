@@ -123,7 +123,7 @@ const changeStatus = async (orderId: string, status: OrderStatus) => {
         order.order_done_at = new Date();
     }else if(status === OrderStatus.Rejected){
         order.order_rejected_at = new Date();
-    } else if(status === OrderStatus.OnLocation){
+    }else if(status === OrderStatus.OnLocation){
         order.order_on_location_at = new Date();
     }
 

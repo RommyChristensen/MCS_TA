@@ -13,4 +13,6 @@ var OrderStatus;
     OrderStatus["Reviewed"] = "reviewed";
     OrderStatus["Expired"] = "expired";
     OrderStatus["Confirmed"] = "confirmed";
+    OrderStatus["Paid"] = "paid";
+    OrderStatus["PaidPending"] = "paidpending";
 })(OrderStatus = exports.OrderStatus || (exports.OrderStatus = {}));

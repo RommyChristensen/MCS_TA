@@ -8,5 +8,7 @@ export enum OrderStatus {
     Progress = 'progress',
     Reviewed = 'reviewed',
     Expired = 'expired',
-    Confirmed = 'confirmed'
+    Confirmed = 'confirmed',
+    Paid = 'paid',
+    PaidPending = 'paidpending'
 }

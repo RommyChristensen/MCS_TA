@@ -37,6 +37,8 @@ export enum Subjects {
     OrderReviewed = 'order:reviewed', 
     OrderAutoConfirmed = 'order:autoconfirmed',
     OrderAutoCancelled = 'order:autocancelled',
+    OrderPaid = 'order:paid',
+    OrderPaidPending = 'order:paidpending',
 
     // RATING REVIEW EVENTS
     RatingReviewCreated = 'ratingreview:created',
@@ -45,3 +47,5 @@ export enum Subjects {
     PaymentSuccess = 'payment:success',
     PaymentFailed = 'payment:failed'
 };
+
+// cd ta-auth && npm update @ta-vrilance/common && cd ../ta-expiration && npm update @ta-vrilance/common && cd ../ta-jobs-category && npm update @ta-vrilance/common && cd ../ta-orders && npm update @ta-vrilance/common && cd ../ta-payments && npm update @ta-vrilance/common && cd ../ta-rating-review && npm update @ta-vrilance/common && cd ../ta-search-recommendations && npm update @ta-vrilance/common && cd ../

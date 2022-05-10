@@ -38,6 +38,8 @@ var Subjects;
     Subjects["OrderReviewed"] = "order:reviewed";
     Subjects["OrderAutoConfirmed"] = "order:autoconfirmed";
     Subjects["OrderAutoCancelled"] = "order:autocancelled";
+    Subjects["OrderPaid"] = "order:paid";
+    Subjects["OrderPaidPending"] = "order:paidpending";
     // RATING REVIEW EVENTS
     Subjects["RatingReviewCreated"] = "ratingreview:created";
     // PAYMENT EVENTS
