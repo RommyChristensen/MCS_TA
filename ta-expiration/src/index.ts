@@ -1,3 +1,4 @@
+import { JobCreatedListener } from "./events/listeners/job-created-listener";
 import { OrderAcceptedListener } from "./events/listeners/order-accepted-listener";
 import { OrderCreatedListener } from "./events/listeners/order-created-listener";
 import { OrderDoneListener } from "./events/listeners/order-done-listener";
@@ -39,6 +40,7 @@ const start = async () => {
         new OrderDoneListener(natsWrapper.client).listen();
         new OrderAcceptedListener(natsWrapper.client).listen();
         new OrderOnLocationListener(natsWrapper.client).listen();
+        new JobCreatedListener(natsWrapper.client).listen();
 
     }catch(err){
         console.log(err);
