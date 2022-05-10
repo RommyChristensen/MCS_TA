@@ -22,6 +22,16 @@ router.get('/api/orders/type2/worker/:workerId', validateHeader, async (req: Req
         return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled;
     });
 
+    await Promise.all(filteredOrders.map(async (order) => {
+        let job = await jobDoc.findById(order.job_id.toString());
+
+        order["job_id"] = job;
+
+        return order;
+    })).then(result => {
+        return res.status(200).send(r);
+    });
+
     return res.send(filteredOrders);
 });
 
