@@ -52,6 +52,8 @@ export * from './events/order/order-updated-event';
 export * from './events/order/order-reviewed-event';
 export * from './events/order/order-auto-confirmed-event';
 export * from './events/order/order-auto-cancelled-event';
+export * from './events/order/order-paid-event';
+export * from './events/order/order-paid-pending-event';
 
 export * from './events/rating-review/rating-review-created-event';
 
