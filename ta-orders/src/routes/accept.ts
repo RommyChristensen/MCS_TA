@@ -29,8 +29,14 @@ async (req: Request, res: Response) => {
         throw new BadRequestError('Order cannot be accepted!');
     }
 
-    if(job.job_created_by !== user.id){
-        throw new NotAuthorizedError();
+    if(order.order_type == 1){
+        if(job.job_created_by !== user.id){
+            throw new NotAuthorizedError();
+        }
+    } else {
+        if(order.orderer_id !== user.id){
+            throw new NotAuthorizedError();
+        }
     }
 
     if(user.auth_verified === false){
