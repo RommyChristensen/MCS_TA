@@ -25,7 +25,7 @@ jobDoneQueue.process(async (job) => {
     new JobDonePublisher(natsWrapper.client).publish({
         id: job.data.job_id,
         _v: job.data._v,
-        job_status: 'selesai'
+        job_status: 'Selesai'
     })
 });
 
