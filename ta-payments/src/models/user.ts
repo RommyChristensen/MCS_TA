@@ -138,7 +138,7 @@ const updateTransaction = async (userId: string, status: TransactionStatus, orde
     return updatedUser;
 }
 
-const addOrderHistory = async (userId: string, orderId: string, status: OrderPaymentStatus) => {
+const addOrderHistory = async (userId: string, orderId: string, status: OrderPaymentStatus, amount: number) => {
     const repo = await getRepository(User);
     const user = await repo.findById(userId);
 
@@ -147,6 +147,7 @@ const addOrderHistory = async (userId: string, orderId: string, status: OrderPay
         id: new mongoose.Types.ObjectId().toString(),
         status: status,
         order_id: orderId,
+        amount: amount,
     });
     user.order_history = history;
 
@@ -185,7 +186,7 @@ class UserDoc {
     addCurrentTransaction: (data: BCAInterface | BNIInterface | PermataInterface, userId: string) => Promise<User>;
     removeCurrentTransaction: (userId: string) => Promise<User>;
     updateSaldo: (userId: string, saldo: number) => Promise<User>;
-    addOrderHistory: (userId: string, orderId: string, status: OrderPaymentStatus) => Promise<User>;
+    addOrderHistory: (userId: string, orderId: string, status: OrderPaymentStatus, amount: number) => Promise<User>;
     updateOrderHistory: (orderId: string, userId: string) => Promise<User>;
 }
 
