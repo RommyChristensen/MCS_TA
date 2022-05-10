@@ -4,4 +4,5 @@ export class OrderHistory {
     id: String;
     status: OrderPaymentStatus;
     order_id: String;
+    amount: number;
 }

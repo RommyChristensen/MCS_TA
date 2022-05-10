@@ -27,8 +27,8 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
                 _v: _v
             });
 
-            await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.pending);
-            await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.pending);
+            await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.pending, parseInt(total_payment));
+            await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.pending, parseInt(total_payment));
 
             new OrderPaidPendingPublisher(natsWrapper.client).publish({
                 id: order_id,
@@ -43,8 +43,8 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
                 order_id, message: "Pembayaran Sukses", total_payment: parseInt(total_payment), _v,
             })
 
-            await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.done);
-            await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.done);
+            await userDoc.addOrderHistory(hirer.id, order_id, OrderPaymentStatus.done, parseInt(total_payment));
+            await userDoc.addOrderHistory(orderer.id, order_id, OrderPaymentStatus.done, parseInt(total_payment));
 
             new OrderPaidPublisher(natsWrapper.client).publish({
                 id: order_id,
