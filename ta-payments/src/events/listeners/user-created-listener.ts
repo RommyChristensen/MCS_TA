@@ -8,10 +8,10 @@ export class UserCreatedListener extends Listener<UserCreatedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: UserCreatedEvent['data'], msg: Message){
-        const { id, auth_firstname, auth_lastname, _v } = data;
+        const { id, auth_firstname, auth_lastname, _v, auth_role } = data;
 
         // Store new user to database
-        await userDoc.create(id, auth_firstname, _v, auth_lastname);
+        await userDoc.create(id, auth_firstname, _v, auth_role, auth_lastname);
 
         msg.ack();
     }

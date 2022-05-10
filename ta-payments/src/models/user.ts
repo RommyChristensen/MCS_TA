@@ -17,6 +17,7 @@ export class User {
     auth_firstname: string;
     auth_lastname: string;
     auth_saldo: number;
+    auth_role: string;
     current_transaction: BCAInterface | BNIInterface | PermataInterface | null;
     trans_history: Array<HistoryTransaction>;
     order_history: Array<OrderHistory>;
@@ -25,7 +26,7 @@ export class User {
 
 // --------------------- Start custom functions ------------------------------ //
 
-const createUser = async (id: string, firstname: string, _v: number, lastname?: string) => {
+const createUser = async (id: string, firstname: string, _v: number, role: string, lastname?: string) => {
     const repo = await getRepository(User);
     const user = new User();
     user.id = id;
@@ -36,6 +37,7 @@ const createUser = async (id: string, firstname: string, _v: number, lastname?: 
     user.current_transaction = null;
     user.order_history = [];
     user._v = _v;
+    user.auth_role = role;
 
     return await repo.create(user);
 }
@@ -157,7 +159,7 @@ const addOrderHistory = async (userId: string, orderId: string, status: OrderPay
 
 // make class UserDoc singleton
 class UserDoc {
-    create: (id: string, firstname: string, _v: number, lastname?: string) => Promise<User>;
+    create: (id: string, firstname: string, _v: number, role: string, lastname?: string) => Promise<User>;
     getAll: () => Promise<User[]>;
     deleteAll: () => Promise<Boolean>;
     findById: (userId: string) => Promise<User>;
