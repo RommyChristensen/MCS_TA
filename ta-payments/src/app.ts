@@ -11,6 +11,7 @@ import { updatePaymentsRouter } from './routes/update-payments';
 import { getRouter } from './routes/get';
 import { payRouter } from './routes/pay';
 import { completePaymentDataRouter } from './routes/complete';
+import { withdrawRouter } from './routes/withdraw';
 
 // END IMPORT ROUTERS
 
@@ -33,6 +34,7 @@ app.use(updatePaymentsRouter);
 app.use(getRouter);
 app.use(payRouter);
 app.use(completePaymentDataRouter);
+app.use(withdrawRouter);
 
 // END USE ROUTERS
 
