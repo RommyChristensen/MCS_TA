@@ -10,6 +10,7 @@ import { topUpRouter } from './routes/top-up';
 import { updatePaymentsRouter } from './routes/update-payments';
 import { getRouter } from './routes/get';
 import { payRouter } from './routes/pay';
+import { completePaymentDataRouter } from './routes/complete';
 
 // END IMPORT ROUTERS
 
@@ -31,6 +32,7 @@ app.use(topUpRouter);
 app.use(updatePaymentsRouter);
 app.use(getRouter);
 app.use(payRouter);
+app.use(completePaymentDataRouter);
 
 // END USE ROUTERS
 

@@ -21,7 +21,17 @@ export class User {
     current_transaction: BCAInterface | BNIInterface | PermataInterface | null;
     trans_history: Array<HistoryTransaction>;
     order_history: Array<OrderHistory>;
+    card_number: string | null;
+    bank: string | null;
+    card_name: string | null;
+    payment_data_complete: boolean;
     _v: Number;
+}
+
+export interface DetailPaymentData {
+    card_number: string;
+    card_name: string;
+    bank: string;
 }
 
 // --------------------- Start custom functions ------------------------------ //
@@ -38,6 +48,10 @@ const createUser = async (id: string, firstname: string, _v: number, role: strin
     user.order_history = [];
     user._v = _v;
     user.auth_role = role;
+    user.card_number = null;
+    user.bank = null;
+    user.card_name = null;
+    user.payment_data_complete = false;
 
     return await repo.create(user);
 }
@@ -172,6 +186,30 @@ const updateOrderHistory = async (orderId: string, userId: string) => {
     return updatedUser;
 }
 
+const updatePaymentData = async (userId: string, card_name: string, card_number: string, bank: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    user.card_name = card_name;
+    user.card_number = card_number;
+    user.bank = bank;
+    user.payment_data_complete = true;
+
+    const updatedUser = await repo.update(user);
+    return updatedUser;
+}
+
+const getPaymentData = async (userId: string) => {
+    const repo = await getRepository(User);
+    const user = await repo.findById(userId);
+
+    return {
+        card_name: user.card_name,
+        card_number: user.card_number,
+        bank: user.bank
+    } as DetailPaymentData;
+}
+
 
 // --------------------- End custom functions ------------------------------ //
 
@@ -188,6 +226,8 @@ class UserDoc {
     updateSaldo: (userId: string, saldo: number) => Promise<User>;
     addOrderHistory: (userId: string, orderId: string, status: OrderPaymentStatus, amount: number) => Promise<User>;
     updateOrderHistory: (orderId: string, userId: string) => Promise<User>;
+    updatePaymentData: (userId: string, card_name: string, card_number: string, bank: string) => Promise<User>;
+    getPaymentData: (userId: string) => Promise<DetailPaymentData>;
 }
 
 // declare functions
@@ -203,5 +243,7 @@ userDoc.removeCurrentTransaction = removeCurrentTransaction;
 userDoc.updateSaldo = updateSaldo;
 userDoc.addOrderHistory = addOrderHistory;
 userDoc.updateOrderHistory = updateOrderHistory;
+userDoc.updatePaymentData = updatePaymentData;
+userDoc.getPaymentData = getPaymentData;
 
 export default userDoc;
