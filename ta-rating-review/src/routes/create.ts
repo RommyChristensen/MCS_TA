@@ -12,10 +12,11 @@ router.post('/api/ratingreview',
 validateHeader, 
 body('order_id').notEmpty().withMessage('Order ID Required'),
 body('orderer').notEmpty().withMessage('User Orderer ID Required'),
+body('workerId').notEmpty().withMessage('Worker ID Wajib Diisi'),
 body('rate').isNumeric().withMessage('Price must be a number'),
 validateRequest, 
 async (req: Request, res: Response) => {
-    const { order_id, rate, review, orderer } = req.body;
+    const { order_id, rate, review, orderer, workerId } = req.body;
 
     let order = await orderDoc.findByOrderer(orderer, order_id);
 
@@ -27,7 +28,7 @@ async (req: Request, res: Response) => {
         return res.status(400).send({ message: "Order not yet confirmed!" });
     }
 
-    const rr = await ratingReviewDoc.create(order_id, rate, review, orderer);
+    const rr = await ratingReviewDoc.create(order_id, rate, review, workerId);
 
     await orderDoc.changeReviewed(order_id);
 
