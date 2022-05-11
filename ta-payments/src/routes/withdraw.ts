@@ -29,6 +29,14 @@ async (req: Request, res: Response) => {
     }
 });
 
+router.get('/api/payments/withdraw/pending/:userId', validateHeader, async (req: Request, res: Response) => {
+    const { userId } = req.params;
+    if(!userId) throw new BadRequestError('User ID Wajib Diisi');
+
+    const withdraws = await withdrawDoc.getPendingRequest(userId);
+    return res.send(withdraws);
+});
+
 router.get('/api/payments/withdraw/:userId', validateHeader, async (req: Request, res: Response) => {
     const { userId } = req.params;
     if(!userId) throw new BadRequestError('User ID Wajib Diisi');
