@@ -31,4 +31,11 @@ router.get('/api/payments/orderhistory/:userId', validateHeader, async (req: Req
     }
 });
 
+router.get('/api/payments/paymentdata/:userId', validateHeader, async (req: Request, res: Response) => {
+    const { userId } = req.params;
+    if(!userId) throw new BadRequestError('ID Pengguna Wajib Diisi');
+    const paymentData = await userDoc.getPaymentData(userId);
+    return res.send(paymentData);
+});
+
 export { router as getRouter }
