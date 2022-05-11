@@ -12,54 +12,82 @@ router.get('/api/orders/admin/get/:orderId', async (req: Request, res: Response)
     return res.send(true);
 });
 
-router.get('/api/orders/type2/worker/:workerId', validateHeader, async (req: Request, res: Response) => {
-    const { workerId } = req.params;
+router.get('/api/orders/type2/worker/:workerId/:all?', validateHeader, async (req: Request, res: Response) => {
+    const { workerId, all } = req.params;
 
     if(!workerId) throw new BadRequestError('ID Pekerja Tidak Valid');
 
     const orders = await orderDoc.getWorkerType2(workerId);
 
-    const filteredOrders = orders.filter(o => {
-        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed && o.order_status != OrderStatus.Paid;
-    });
-
-    await Promise.all(filteredOrders.map(async (order) => {
-        let job = await jobDoc.findById(order.job_id.toString());
-
-        order["job_id"] = job;
-
-        return order;
-    })).then(result => {
-        return res.status(200).send(result);
-    });
-
-    return res.send(filteredOrders);
+    if(all == "yes"){
+        await Promise.all(orders.map(async (order) => {
+            let job = await jobDoc.findById(order.job_id.toString());
+    
+            order["job_id"] = job;
+    
+            return order;
+        })).then(result => {
+            return res.status(200).send(result);
+        });
+    }else{
+        const filteredOrders = orders.filter(o => {
+            return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed && o.order_status != OrderStatus.Paid;
+        });
+    
+        await Promise.all(filteredOrders.map(async (order) => {
+            let job = await jobDoc.findById(order.job_id.toString());
+    
+            order["job_id"] = job;
+    
+            return order;
+        })).then(result => {
+            return res.status(200).send(result);
+        });
+    
+        return res.send(filteredOrders);
+    }
 });
 
-router.get('/api/orders/type2/hirer/:hirerId', validateHeader, async (req: Request, res: Response) => {
-    const { hirerId } = req.params;
+router.get('/api/orders/type2/hirer/:hirerId/:all?', validateHeader, async (req: Request, res: Response) => {
+    const { hirerId, all } = req.params;
 
     if(!hirerId) throw new BadRequestError('ID Pencari Jasa Tidak Valid');
 
     const orders = await orderDoc.getType2();
 
-    const filteredOrders = orders.filter(o => {
-        return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed && o.order_status != OrderStatus.Paid;
-    });
-
-    await Promise.all(filteredOrders.map(async (order) => {
-        let job = await jobDoc.findById(order.job_id.toString());
-
-        order["job_id"] = job;
-
-        if(job.job_created_by == hirerId) return order;
-        else return null;
-    })).then(result => {
-        const r = result.filter(re => {
-            return re != null;
+    if(all == "yes"){
+        await Promise.all(orders.map(async (order) => {
+            let job = await jobDoc.findById(order.job_id.toString());
+    
+            order["job_id"] = job;
+    
+            if(job.job_created_by == hirerId) return order;
+            else return null;
+        })).then(result => {
+            const r = result.filter(re => {
+                return re != null;
+            });
+            return res.status(200).send(r);
         });
-        return res.status(200).send(r);
-    });
+    }else{
+        const filteredOrders = orders.filter(o => {
+            return o.order_status != OrderStatus.Confirmed && o.order_status != OrderStatus.Expired && o.order_status != OrderStatus.Rejected && o.order_status != OrderStatus.Cancelled && o.order_status != OrderStatus.Reviewed && o.order_status != OrderStatus.Paid;
+        });
+    
+        await Promise.all(filteredOrders.map(async (order) => {
+            let job = await jobDoc.findById(order.job_id.toString());
+    
+            order["job_id"] = job;
+    
+            if(job.job_created_by == hirerId) return order;
+            else return null;
+        })).then(result => {
+            const r = result.filter(re => {
+                return re != null;
+            });
+            return res.status(200).send(r);
+        });
+    }
 });
 
 router.get('/api/orders/:orderId',
