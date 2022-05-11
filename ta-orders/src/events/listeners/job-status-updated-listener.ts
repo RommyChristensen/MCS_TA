@@ -8,16 +8,13 @@ export class JobStatusUpdatedListener extends Listener<JobStatusUpdatedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: JobStatusUpdatedEvent['data'], msg: Message){
-        const { id, job_status, _v } = data;
+        // const { id, job_status, _v } = data;
 
-        // Store new user to database
-        const job = await jobDoc.findById(id);
-
-        if(job.job_date != null){
-            if(new Date(job.job_date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime() == new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime()){
-                await jobDoc.updateStatusJob(id, job_status as JobStatus);
-            }
-        }
+        // // Store new user to database
+        // const job = await jobDoc.findById(id);
+        // if(new Date(job.job_date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime() == new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime()){
+        //     await jobDoc.updateStatusJob(id, job_status as JobStatus);
+        // }
 
         msg.ack();
     }
