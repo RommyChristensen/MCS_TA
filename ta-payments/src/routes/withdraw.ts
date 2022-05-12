@@ -2,6 +2,7 @@ import { body } from "express-validator";
 import express, { Request, Response } from "express";
 import { BadRequestError, validateHeader, validateRequest } from "@ta-vrilance/common";
 import withdrawDoc, { WithdrawalStatus } from "../models/request-withdraw";
+import userDoc from "../models/user";
 
 const router = express.Router();
 
@@ -55,14 +56,15 @@ router.get('/api/payments/withdraw/byId/:id', validateHeader, async (req: Reques
 
 router.put('/api/payments/withdraw/accept/:id',
 body('transfer_prove').notEmpty().withMessage("Bukti Wajib Diisikan"),
-validateHeader, 
+validateHeader,
 validateRequest,
 async (req: Request, res: Response) => {
     const { id } = req.params;
     const { transfer_prove } = req.body;
     if(!id) throw new BadRequestError('ID Wajib Diisi');
 
-    const withdraw = withdrawDoc.updateStatus(id, WithdrawalStatus.accepted, transfer_prove);
+    const withdraw = await withdrawDoc.updateStatus(id, WithdrawalStatus.accepted, transfer_prove);
+    await userDoc.updateSaldo(withdraw!.user_id, withdraw!.amount * -1);
     return res.send(withdraw);
 });
 
