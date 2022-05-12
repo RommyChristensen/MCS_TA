@@ -6,13 +6,30 @@ import historyDoc from "../models/order-history";
 
 const router = express.Router();
 
-router.get('/api/searchrecommendation/recommendations/worker/:hirer_id',
+router.get('/api/searchrecommendation/hirer/cat/recom/:hirer_id',
 validateHeader,
 async (req: Request, res: Response) => {
     const { hirer_id } = req.params;
     if(!hirer_id) throw new BadRequestError('ID Wajib Diisi');
 
     const history = await historyDoc.getByHirerId(hirer_id);
+
+    const categories = history.reduce((h, k) => {
+        h[k.category_id] = h[k.category_id] || [];
+        h[k.category_id].push(k);
+        return h;
+    }, Object.create(null));
+
+    return res.send(categories);
+});
+
+router.get('/api/searchrecommendation/worker/cat/recom/:worker_id',
+validateHeader,
+async (req: Request, res: Response) => {
+    const { worker_id } = req.params;
+    if(!worker_id) throw new BadRequestError('ID Wajib Diisi');
+
+    const history = await historyDoc.getByWorkerId(worker_id);
 
     const categories = history.reduce((h, k) => {
         h[k.category_id] = h[k.category_id] || [];
