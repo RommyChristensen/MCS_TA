@@ -14,13 +14,28 @@ async (req: Request, res: Response) => {
 
     const history = await historyDoc.getByHirerId(hirer_id);
 
-    const categories = history.reduce((h, k) => {
+    const c = history.reduce((h, k) => {
         h[k.category_id] = h[k.category_id] || [];
         h[k.category_id].push(k);
         return h;
     }, Object.create(null));
+    
+    let categories = [];
 
-    return res.send(categories);
+    for (var key of Object.keys(c)) {
+        categories.push({
+            [key]: c[key],
+            l: c[key].length
+        })
+    }
+
+    const sorted = categories.sort((a: { [x:string] :any[], l: any}, b: { [x:string] :any[], l: any}) => {
+        if(a.l > b.l) return -1;
+        else if(a.l < b.l) return 1;
+        return 0;
+    });
+
+    return res.send({ categories, sorted: sorted.slice(0, 3) });
 });
 
 router.get('/api/searchrecommendation/worker/cat/recom/:worker_id',
@@ -52,7 +67,7 @@ async (req: Request, res: Response) => {
         return 0;
     });
 
-    return res.send({ categories, sorted });
+    return res.send({ categories, sorted: sorted.slice(0, 3) });
 });
 
 export { router as recommendationsRouter }
