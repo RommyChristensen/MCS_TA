@@ -12,7 +12,7 @@ export class OrderCreatedListener extends Listener<OrderCreatedEvent> {
         const { id, job, user, order_status } = data;
 
         // Store new user to database
-        await historyDoc.create(id, job.id, job.user.id, user.id, order_status);
+        await historyDoc.create(id, job.id, job.user.id, user.id, order_status, job.category.id, job.category.category_name);
 
         msg.ack();
     }
