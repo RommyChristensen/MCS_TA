@@ -39,16 +39,16 @@ async (req: Request, res: Response) => {
 
     let categories = [];
 
-    for (var key of Object.keys(c as any[])) {
-        c[key]["length"] = c.length;
+    for (var key of Object.keys(c)) {
         categories.push({
-            [key]: c[key]
+            [key]: c[key],
+            l: c[key].length
         })
     }
 
-    const sorted = categories.sort((a: { [x:string] :any[]}, b: { [x:string] :any[]}) => {
-        if(a.length > b.length) return -1;
-        else if(a.length < b.length) return 1;
+    const sorted = categories.sort((a: { [x:string] :any[], l: any}, b: { [x:string] :any[], l: any}) => {
+        if(a.l > b.l) return -1;
+        else if(a.l < b.l) return 1;
         return 0;
     });
 
