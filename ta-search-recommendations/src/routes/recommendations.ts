@@ -18,15 +18,9 @@ async (req: Request, res: Response) => {
         h[k.category_id] = h[k.category_id] || [];
         h[k.category_id].push(k);
         return h;
-    }, Object.create(null)) as Array<any>;
+    }, Object.create(null));
 
-    const sorted = categories.sort((a: Array<any>, b: Array<any>) => {
-        if(a.length > b.length) return -1;
-        else if(a.length < b.length) return 1;
-        return 0;
-    });
-
-    return res.send({categories, sorted});
+    return res.send(categories);
 });
 
 router.get('/api/searchrecommendation/worker/cat/recom/:worker_id',
