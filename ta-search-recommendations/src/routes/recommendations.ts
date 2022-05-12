@@ -41,11 +41,17 @@ async (req: Request, res: Response) => {
 
     for (var key of Object.keys(c)) {
         categories.push({
-            key: c[key]
+            [key]: c[key]
         })
     }
 
-    return res.send(categories);
+    const sorted = categories.sort((a: { [x:string] :any[]}, b: { [x:string] :any[]}) => {
+        if(a.length > b.length) return -1;
+        else if(a.length < b.length) return 1;
+        return 0;
+    });
+
+    return res.send({ categories, sorted });
 });
 
 export { router as recommendationsRouter }
