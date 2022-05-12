@@ -2,7 +2,7 @@ import { body } from "express-validator";
 import express, { Request, Response } from "express";
 import { BadRequestError, validateHeader } from "@ta-vrilance/common";
 import { natsWrapper } from "../nats-wrapper";
-import historyDoc from "../models/order-history";
+import historyDoc, { OrderHistory } from "../models/order-history";
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ async (req: Request, res: Response) => {
         h[k.category_id] = h[k.category_id] || [];
         h[k.category_id].push(k);
         return h;
-    }, Object.create(null));
+    }, Object.create(null)) as Array<any>;
 
     const sorted = categories.sort((a: Array<any>, b: Array<any>) => {
         if(a.length > b.length) return -1;
