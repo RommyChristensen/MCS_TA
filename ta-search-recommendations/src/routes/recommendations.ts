@@ -39,7 +39,8 @@ async (req: Request, res: Response) => {
 
     let categories = [];
 
-    for (var key of Object.keys(c)) {
+    for (var key of Object.keys(c as any[])) {
+        c[key]["length"] = c.length;
         categories.push({
             [key]: c[key]
         })
