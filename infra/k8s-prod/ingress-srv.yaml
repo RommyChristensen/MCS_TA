@@ -52,6 +52,13 @@ spec:
                 name: ta-payments-srv
                 port:
                   number: 3000
+          - path: /api/ads/?(.*)
+            pathType: Prefix
+            backend:
+              service:
+                name: ta-ads-srv
+                port:
+                  number: 3000
           - path: /?(.*)
             pathType: Prefix
             backend:
