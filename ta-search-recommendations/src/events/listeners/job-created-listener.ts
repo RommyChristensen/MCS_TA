@@ -8,10 +8,12 @@ export class JobCreatedListener extends Listener<JobCreatedEvent> {
     queueGroupName = queueGroupName;
 
     async onMessage(data: JobCreatedEvent['data'], msg: Message){
-        // const { id, job_title, job_description, job_date, job_created_by, job_created_at, job_price, job_category, _v } = data;
+        const { id, job_title, job_description, job_date, job_created_by, job_created_at, job_price, job_category, _v } = data;
 
-        // // Store new user to database
-        // await jobDoc.create(id, job_title, job_description, job_date, job_created_by, job_price, job_category, job_created_at);
+        // Store new user to database
+        if(!await jobDoc.findById(id)){
+            await jobDoc.create(id, job_title, job_description, job_date, job_created_by, job_price, job_category, job_created_at);
+        }
 
         msg.ack();
     }
