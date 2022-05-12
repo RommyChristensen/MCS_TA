@@ -74,7 +74,7 @@ async (req: Request, res: Response) => {
     const { id } = req.params;
     if(!id) throw new BadRequestError('ID Wajib Diisi');
 
-    const withdraw = withdrawDoc.updateStatus(id, WithdrawalStatus.rejected);
+    const withdraw = await withdrawDoc.updateStatus(id, WithdrawalStatus.rejected);
     return res.send(withdraw);
 });
 
