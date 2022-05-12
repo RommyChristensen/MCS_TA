@@ -31,11 +31,17 @@ async (req: Request, res: Response) => {
 
     const history = await historyDoc.getByWorkerId(worker_id);
 
-    const categories = history.reduce((h, k) => {
+    const c = history.reduce((h, k) => {
         h[k.category_id] = h[k.category_id] || [];
         h[k.category_id].push(k);
         return h;
     }, Object.create(null));
+
+    let categories = [];
+
+    for (var key of Object.keys(c)) {
+        categories.push(c[key])
+    }
 
     return res.send(categories);
 });
