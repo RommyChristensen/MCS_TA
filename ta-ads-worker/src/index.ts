@@ -4,7 +4,7 @@ import * as fireorm from 'fireorm';
 const serviceAccount = require('../ServiceAccountKey.json');
 import { natsWrapper } from './nats-wrapper';
 const start = async () => {
-    console.log("starting ads service....");
+    console.log("starting ads service.....");
     // ENV VARIABLES
 
     if(!process.env.JWT_KEY){
