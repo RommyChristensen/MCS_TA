@@ -40,10 +40,9 @@ async (req: Request, res: Response) => {
     let categories = [];
 
     for (var key of Object.keys(c)) {
-        let cat = {
-            key : c[key]
-        }
-        categories.push(cat)
+        categories.push({
+            key: c[key]
+        })
     }
 
     return res.send(categories);
