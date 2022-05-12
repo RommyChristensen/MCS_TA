@@ -20,7 +20,13 @@ async (req: Request, res: Response) => {
         return h;
     }, Object.create(null));
 
-    return res.send(categories);
+    const sorted = categories.sort((a: Array<any>, b: Array<any>) => {
+        if(a.length > b.length) return -1;
+        else if(a.length < b.length) return 1;
+        return 0;
+    });
+
+    return res.send({categories, sorted});
 });
 
 router.get('/api/searchrecommendation/worker/cat/recom/:worker_id',
