@@ -5,14 +5,14 @@ on:
     branches:
       - master
     paths:
-      - 'ta-ads/**'
+      - 'ta-ads-worker/**'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - run: cd ta-ads && docker build -t rommycy00/ta-ads .
+      - run: cd ta-ads-worker && docker build -t rommycy00/ta-ads .
       - run: docker login -u $DOCKER_USERNAME -p $DOCKER_PASSWORD
         env:
           DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
