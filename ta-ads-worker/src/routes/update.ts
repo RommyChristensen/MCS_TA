@@ -16,4 +16,17 @@ router.put('/api/ads/:id', validateHeader, async (req: Request, res: Response) =
     return res.send(updatedAds);
 });
 
+router.put('/api/ads/:id',
+body('status').notEmpty().withMessage('Status Harus Diisi'),
+validateHeader, async (req: Request, res: Response) => {
+    const { id } = req.params;
+    const { status } = req.body;
+
+    if(!id) throw new BadRequestError('ID Wajib Diisi');
+
+    const updatedAds = await adsDoc.changeStatus(id, status);
+
+    return res.send(updatedAds);
+});
+
 export { router as updateAdsRouter }

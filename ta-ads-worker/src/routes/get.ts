@@ -16,7 +16,7 @@ router.get('/api/ads/bystatus/:status', validateHeader, async (req: Request, res
 
     if(!status) throw new BadRequestError('Status Wajib Diisi');
 
-    if(status != AdsStatus.Accepted && status != AdsStatus.Rejected && status != AdsStatus.Requested){
+    if(status != AdsStatus.Active && status != AdsStatus.Rejected && status != AdsStatus.Requested && status != AdsStatus.NonActive){
         const ads = await adsDoc.getAdsByStatus(status as AdsStatus);
         return res.send(ads);
     }
