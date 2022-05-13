@@ -1,5 +1,6 @@
 export enum AdsStatus {
-    Requested = "requested",
-    Accepted = "accepted",
-    Rejected = "rejected"
+    Requested = "Diminta",
+    Active = "Aktif",
+    Rejected = "Ditolak",
+    NonActive = "Non Aktif"
 }

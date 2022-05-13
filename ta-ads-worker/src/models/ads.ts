@@ -32,7 +32,7 @@ const create = async (worker_id: string, title: string, description: string, cat
 
 const getById = async (id: string) => {
     const repo = await getRepository(Ads);
-    const ads = await repo.whereEqualTo('status', AdsStatus.Accepted).whereEqualTo('id', id).find();
+    const ads = await repo.whereEqualTo('status', AdsStatus.Active).whereEqualTo('id', id).find();
 
     return ads[0];
 }
@@ -46,14 +46,14 @@ const getByWorkerId = async (id: string) => {
 
 const getByCategoryId = async (id: string) => {
     const repo = await getRepository(Ads);
-    const ads = await repo.whereEqualTo('category_id', id).whereEqualTo('status', AdsStatus.Accepted).find();
+    const ads = await repo.whereEqualTo('category_id', id).whereEqualTo('status', AdsStatus.Active).find();
 
     return ads;
 }
 
 const getByCategoryIds = async (categories: IFirestoreVal[]) => {
     const repo = await getRepository(Ads);
-    const ads = await repo.whereIn('category_id', categories).whereEqualTo('status', AdsStatus.Accepted).find();
+    const ads = await repo.whereIn('category_id', categories).whereEqualTo('status', AdsStatus.Active).find();
 
     return ads;
 }
