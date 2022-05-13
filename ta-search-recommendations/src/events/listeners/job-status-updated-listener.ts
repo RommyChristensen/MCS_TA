@@ -12,8 +12,10 @@ export class JobStatusUpdatedListener extends Listener<JobStatusUpdatedEvent> {
 
         // Store new user to database
         const job = await jobDoc.findById(id);
-        if(new Date(job.job_date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime() == new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime()){
-            await jobDoc.updateStatusJob(id, job_status as JobStatus);
+        if(job){
+            if(new Date(job.job_date.toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime() == new Date(new Date().toLocaleString('en-US', { timeZone: 'Asia/Jakarta' })).getTime()){
+                await jobDoc.updateStatusJob(id, job_status as JobStatus);
+            }
         }
 
         msg.ack();
