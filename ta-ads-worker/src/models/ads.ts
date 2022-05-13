@@ -39,7 +39,7 @@ const getById = async (id: string) => {
 
 const getByWorkerId = async (id: string) => {
     const repo = await getRepository(Ads);
-    const ads = await repo.whereEqualTo('worker_id', id).whereEqualTo('status', AdsStatus.Accepted).find();
+    const ads = await repo.whereEqualTo('worker_id', id).find();
 
     return ads;
 }
