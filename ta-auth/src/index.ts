@@ -3,6 +3,7 @@ import admin from 'firebase-admin';
 import * as fireorm from 'fireorm';
 const serviceAccount = require('../ServiceAccountKey.json');
 import { natsWrapper } from './nats-wrapper';
+import { MessageNotificationListener } from './events/listeners/message-notification-listener';
 // let storage = null;
 
 const start = async () => {
@@ -61,6 +62,9 @@ const start = async () => {
     
         process.on('SIGINT', () => natsWrapper.client.close());
         process.on('SIGTERM', () => natsWrapper.client.close());
+
+        // LISTENER
+        new MessageNotificationListener(natsWrapper.client).listen();
     }catch(err){
         console.log(err);
     }
