@@ -6,6 +6,9 @@ import { errorHandler, NotFoundError } from '@ta-vrilance/common';
 
 // IMPORT ROUTERS
 
+import { createAdsRouter } from './routes/create';
+import { getAdsRouter } from './routes/get';
+import { updateAdsRouter } from './routes/update';
 
 // END IMPORT ROUTERS
 
@@ -22,6 +25,10 @@ app.use(
 );
 
 // USE ROUTERS
+
+app.use(createAdsRouter);
+app.use(getAdsRouter);
+app.use(updateAdsRouter);
 
 // END USE ROUTERS
 
