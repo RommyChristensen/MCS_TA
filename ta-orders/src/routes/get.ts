@@ -43,8 +43,6 @@ router.get('/api/orders/type2/worker/:workerId/:all?', validateHeader, async (re
         })).then(result => {
             return res.status(200).send(result);
         });
-    
-        return res.send(filteredOrders);
     }
 });
 
