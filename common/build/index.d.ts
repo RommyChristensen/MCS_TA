@@ -42,5 +42,6 @@ export * from './events/order/order-paid-pending-event';
 export * from './events/rating-review/rating-review-created-event';
 export * from './events/payments/payment-failed-event';
 export * from './events/payments/payment-success-event';
+export * from './events/notification/message-notification-event';
 export * from './events/types/order-status';
 export * from './events/types/user-role';
