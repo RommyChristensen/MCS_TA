@@ -84,8 +84,8 @@ const updateAds = async (id: string, title?: string, description?: string) => {
     const repo = await getRepository(Ads);
     const ads = await repo.findById(id);
 
-    if(title) ads.title = title;
-    if(description) ads.description = description;
+    if(title != null) ads.title = title;
+    if(description != null) ads.description = description;
 
     const updatedAds = await repo.update(ads);
 
