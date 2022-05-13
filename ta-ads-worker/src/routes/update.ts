@@ -16,7 +16,7 @@ router.put('/api/ads/:id', validateHeader, async (req: Request, res: Response) =
     return res.send(updatedAds);
 });
 
-router.put('/api/ads/:id',
+router.put('/api/ads/status/:id',
 body('status').notEmpty().withMessage('Status Harus Diisi'),
 validateHeader, async (req: Request, res: Response) => {
     const { id } = req.params;
