@@ -68,9 +68,6 @@ async (req: Request, res: Response) => {
         _v: order._v
     });
 
-    if(order) return res.status(201).send(order);
-    return res.status(500).send({ message: "Something wrong" });
-
     new MessageNotificationPublisher(natsWrapper.client).publish({
         user_id: order.orderer_id as string,
         topic: "Pesanan Dibuat",
@@ -82,6 +79,9 @@ async (req: Request, res: Response) => {
         topic: "Pesanan Dibuat",
         message: order_type == 1 ? "Terdapat pesanan dengan id " + order.id + " masuk. Mohon meresponi permintaan ini dalam 10 menit." : "Pesanan dengan id " + order.id + " berhasil dibuat. Mohon menunggu pencari kerja untuk melakukan respon."
     });
+
+    if(order) return res.status(201).send(order);
+    return res.status(500).send({ message: "Something wrong" });
 });
 
 export { router as createOrderRouter }
