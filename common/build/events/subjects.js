@@ -45,5 +45,8 @@ var Subjects;
     // PAYMENT EVENTS
     Subjects["PaymentSuccess"] = "payment:success";
     Subjects["PaymentFailed"] = "payment:failed";
+    // NOTIF EVENTS
+    Subjects["MessageNotification"] = "message:notification";
 })(Subjects = exports.Subjects || (exports.Subjects = {}));
 ;
+// cd ta-auth && npm update @ta-vrilance/common && cd ../ta-expiration && npm update @ta-vrilance/common && cd ../ta-jobs-category && npm update @ta-vrilance/common && cd ../ta-orders && npm update @ta-vrilance/common && cd ../ta-payments && npm update @ta-vrilance/common && cd ../ta-rating-review && npm update @ta-vrilance/common && cd ../ta-search-recommendations && npm update @ta-vrilance/common && cd ../

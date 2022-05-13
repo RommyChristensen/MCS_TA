@@ -45,7 +45,10 @@ export enum Subjects {
 
     // PAYMENT EVENTS
     PaymentSuccess = 'payment:success',
-    PaymentFailed = 'payment:failed'
+    PaymentFailed = 'payment:failed',
+
+    // NOTIF EVENTS
+    MessageNotification = 'message:notification',
 };
 
 // cd ta-auth && npm update @ta-vrilance/common && cd ../ta-expiration && npm update @ta-vrilance/common && cd ../ta-jobs-category && npm update @ta-vrilance/common && cd ../ta-orders && npm update @ta-vrilance/common && cd ../ta-payments && npm update @ta-vrilance/common && cd ../ta-rating-review && npm update @ta-vrilance/common && cd ../ta-search-recommendations && npm update @ta-vrilance/common && cd ../

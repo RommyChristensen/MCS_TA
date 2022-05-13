@@ -59,6 +59,7 @@ __exportStar(require("./events/order/order-paid-pending-event"), exports);
 __exportStar(require("./events/rating-review/rating-review-created-event"), exports);
 __exportStar(require("./events/payments/payment-failed-event"), exports);
 __exportStar(require("./events/payments/payment-success-event"), exports);
+__exportStar(require("./events/notification/message-notification-event"), exports);
 // END EVENTS
 // ENUMS
 __exportStar(require("./events/types/order-status"), exports);
