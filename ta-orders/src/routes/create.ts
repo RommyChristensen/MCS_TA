@@ -7,6 +7,7 @@ import { natsWrapper } from "../nats-wrapper";
 import userDoc from "../models/user";
 import jobDoc from "../models/job";
 import categoryDoc from "../models/category";
+import { MessageNotificationPublisher } from "../events/publishers/notification-publisher";
 
 const router = express.Router();
 
@@ -68,7 +69,19 @@ async (req: Request, res: Response) => {
     });
 
     if(order) return res.status(201).send(order);
-    return res.status(500).send({ message: "Something wrong" })
+    return res.status(500).send({ message: "Something wrong" });
+
+    new MessageNotificationPublisher(natsWrapper.client).publish({
+        user_id: order.orderer_id as string,
+        topic: "Pesanan Dibuat",
+        message: order_type == 1 ? "Pesanan dengan id " + order.id + " berhasil dibuat. Mohon menunggu pencari jasa untuk melakukan respon." : "Terdapat pesanan dengan id " + order.id + " masuk. Mohon meresponi permintaan ini dalam waktu 10 menit."
+    });
+
+    new MessageNotificationPublisher(natsWrapper.client).publish({
+        user_id: job.job_created_by as string,
+        topic: "Pesanan Dibuat",
+        message: order_type == 1 ? "Terdapat pesanan dengan id " + order.id + " masuk. Mohon meresponi permintaan ini dalam 10 menit." : "Pesanan dengan id " + order.id + " berhasil dibuat. Mohon menunggu pencari kerja untuk melakukan respon."
+    });
 });
 
 export { router as createOrderRouter }
