@@ -12,9 +12,9 @@ body('description').notEmpty().withMessage('Deskripsi Iklan Wajib Diisi'),
 body('category_id').notEmpty().withMessage('ID Kategori Wajib Diisi'),
 body('category_name').notEmpty().withMessage('Nama Kategori Wajib Diisi'),
 async (req: Request, res: Response) => {
-    const { worker_id, title, description, category_id, categoy_name } = req.body;
+    const { worker_id, title, description, category_id, category_name } = req.body;
 
-    const ads = await adsDoc.create(worker_id, title, description, category_id, categoy_name);
+    const ads = await adsDoc.create(worker_id, title, description, category_id, category_name);
     
     if(ads){
         return res.status(201).send(ads);
