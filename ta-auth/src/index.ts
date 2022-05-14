@@ -8,7 +8,7 @@ import { MessageNotificationListener } from './events/listeners/message-notifica
 
 const start = async () => {
     // ENV VARIABLES
-    console.log("starting up ta auth, modified for new cluster 2");
+    console.log("starting up ta auth, modified for new cluster 3");
 
     if(!process.env.JWT_KEY){
         throw new Error('JWT must be defined');
