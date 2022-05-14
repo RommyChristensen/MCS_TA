@@ -10,6 +10,7 @@ class Notification {
     message: string;
     user_profile: string | null;
     read: boolean;
+    date: Date;
     _v: Number;
 }
 
@@ -24,6 +25,7 @@ const create = async (user_id: string, topic: string, message: string, user_prof
     notif.message = message;
     notif.user_profile = user_profile || null;
     notif.read = false;
+    notif.date = new Date(new Date().toLocaleString('en-US', { timeZone: "Asia/Jakarta"}));
     notif._v = 0;
 
     return await repo.create(notif);
