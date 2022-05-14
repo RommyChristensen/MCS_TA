@@ -7,6 +7,7 @@ import userDoc from "../models/user";
 import jwt from 'jsonwebtoken';
 import jobDoc from "../models/job";
 import { OrderConfirmedPublisher } from "../events/publishers/order-confirmed-publisher";
+import { MessageNotificationPublisher } from "../events/publishers/notification-publisher";
 
 const router = express.Router();
 
@@ -47,6 +48,12 @@ async (req: Request, res: Response) => {
         id: updatedOrder.id,
         _v: updatedOrder._v,
         total_payment: order.order_price.toString(),
+    });
+
+    new MessageNotificationPublisher(natsWrapper.client).publish({
+        user_id: order.orderer_id as string,
+        topic: "Pencari Jasa Melakukan Konfirmasi Pekerjaan",
+        message: "Pencari Jasa pada pesanan dengan id " + order.id + " dan judul " + job.job_title + " telah melakukan konfirmasi bahwa pekerjaan anda sudah selesai. Silahkan menunggu pencari jasa melakukan pembayaran."
     });
 
     return res.status(200).send(updatedOrder);

@@ -7,6 +7,7 @@ import userDoc from "../models/user";
 import jwt from 'jsonwebtoken';
 import jobDoc from "../models/job";
 import { OrderOnprogressPublisher } from "../events/publishers/order-onprogress-publisher";
+import { MessageNotificationPublisher } from "../events/publishers/notification-publisher";
 
 const router = express.Router();
 
@@ -43,6 +44,12 @@ async (req: Request, res: Response) => {
     new OrderOnprogressPublisher(natsWrapper.client).publish({
         id: updatedOrder.id,
         _v: updatedOrder._v
+    });
+
+    new MessageNotificationPublisher(natsWrapper.client).publish({
+        user_id: order.orderer_id as string,
+        topic: "Pencari Jasa Melakukan Konfirmasi Lokasi",
+        message: "Pencari Jasa pada pesanan dengan id " + order.id + " dan judul " + job.job_title + " telah melakukan konfirmasi bahwa anda sudah berada di lokasi. Anda dapat melakukan pekerjaan anda sekarang."
     });
 
     return res.status(200).send(updatedOrder);
