@@ -8,6 +8,7 @@ import { PaymentSuccessPublisher } from '../publishers/payment-success-publisher
 import { OrderPaymentStatus } from '../../models/order-payment-status';
 import { OrderPaidPendingPublisher } from '../publishers/order-paid-pending-publisher';
 import { OrderPaidPublisher } from '../publishers/order-paid-publisher';
+import { MessageNotificationPublisher } from '../publishers/notification-publisher';
 
 export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
     subject: Subjects.OrderConfirmed = Subjects.OrderConfirmed;
@@ -34,6 +35,18 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
                 id: order_id,
                 _v: _v
             })
+
+            new MessageNotificationPublisher(natsWrapper.client).publish({
+                user_id: orderer_id,
+                topic: "Pembayaran Tertunda",
+                message: "Pencari Jasa pada pesanan dengan id " + order_id + " sejumlah IDR " + total_payment + " gagal dalam melakukan pembayaran. Silahkan menunggu pencari jasa melakukan pembayaran lagi."
+            });
+
+            new MessageNotificationPublisher(natsWrapper.client).publish({
+                user_id: hirer.id,
+                topic: "Pembayaran Tertunda",
+                message: "Anda memiliki pembayaran tertunda pada pesanan dengan id " + order_id + " berjumlah IDR " + total_payment
+            });
             // publish payment failed cause not enough saldo
         }else{
             await userDoc.updateSaldo(hirer.id, parseInt(total_payment) * -1);
@@ -50,6 +63,18 @@ export class OrderConfirmedListener extends Listener<OrderConfirmedEvent> {
                 id: order_id,
                 _v: _v,
             })
+
+            new MessageNotificationPublisher(natsWrapper.client).publish({
+                user_id: orderer_id,
+                topic: "Pembayaran Berhasil",
+                message: "Pencari Jasa pada pesanan dengan id " + order_id + " berhasil melakukan pembayaran sejumlah IDR " + total_payment 
+            });
+
+            new MessageNotificationPublisher(natsWrapper.client).publish({
+                user_id: hirer.id,
+                topic: "Pembayaran Berhasil",
+                message: "Pembayaran berhasil pada pesanan dengan id " + order_id + " dengan jumlah IDR " + total_payment 
+            });
         }
 
         msg.ack();

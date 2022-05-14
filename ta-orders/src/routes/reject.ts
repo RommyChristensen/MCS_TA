@@ -7,6 +7,7 @@ import userDoc from "../models/user";
 import jwt from 'jsonwebtoken';
 import jobDoc from "../models/job";
 import { OrderAcceptedPublisher } from "../events/publishers/order-accepted-publisher";
+import { MessageNotificationPublisher } from "../events/publishers/notification-publisher";
 
 const router = express.Router();
 
@@ -39,11 +40,19 @@ async (req: Request, res: Response) => {
 
     const updatedOrder = await orderDoc.changeStatus(order_id, OrderStatus.Rejected);
 
-    // Emit Accepted Order Event
-    // new OrderAcceptedPublisher(natsWrapper.client).publish({
-    //     id: updatedOrder.id,
-    //     _v: updatedOrder._v
-    // });
+    if(updatedOrder.order_type == 1){
+        new MessageNotificationPublisher(natsWrapper.client).publish({
+            user_id: order.orderer_id as string,
+            topic: "Pesanan Ditolak",
+            message: "Pesanan dengan id " + order_id + " dengan judul " + job.job_title + " telah ditolak oleh pencari jasa."
+        });
+    }else{
+        new MessageNotificationPublisher(natsWrapper.client).publish({
+            user_id: job.job_created_by as string,
+            topic: "Pesanan Ditolak",
+            message: "Pesanan dengan id " + order_id + " dengan judul " + job.job_title + " telah ditolak oleh pencari kerja."
+        });
+    }
 
     return res.status(200).send(updatedOrder);
 });

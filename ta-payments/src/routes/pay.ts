@@ -5,6 +5,7 @@ import userDoc from "../models/user";
 import { OrderPaidPublisher } from "../events/publishers/order-paid-publisher";
 import { natsWrapper } from "../nats-wrapper";
 import { OrderPaymentStatus } from "../models/order-payment-status";
+import { MessageNotificationPublisher } from "../events/publishers/notification-publisher";
 
 const router = express.Router();
 
@@ -40,8 +41,26 @@ async (req: Request, res: Response) => {
             _v: 0,
         })
 
+        new MessageNotificationPublisher(natsWrapper.client).publish({
+            user_id: worker_id,
+            topic: "Pembayaran Berhasil",
+            message: "Pencari Jasa pada pesanan dengan id " + order_id + " berhasil melakukan pembayaran sejumlah IDR " + price 
+        });
+
+        new MessageNotificationPublisher(natsWrapper.client).publish({
+            user_id: hirer_id,
+            topic: "Pembayaran Berhasil",
+            message: "Pembayaran berhasil pada pesanan dengan id " + order_id + " dengan jumlah IDR " + price 
+        });
+
         return res.send({ message: "Sukses" });
     }else{
+        new MessageNotificationPublisher(natsWrapper.client).publish({
+            user_id: hirer_id,
+            topic: "Pembayaran Gagal",
+            message: "Percobaan pembayaran anda pada pesanan dengan id " + order_id + " berjumlah IDR " + price + " gagal karena saldo tidak mencukupi"
+        });
+
         throw new BadRequestError("Saldo Tidak Mencukupi");
     }
 });
