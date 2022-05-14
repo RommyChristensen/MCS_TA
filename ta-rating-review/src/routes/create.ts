@@ -5,6 +5,7 @@ import orderDoc from "../models/order";
 import { natsWrapper } from "../nats-wrapper";
 import ratingReviewDoc from "../models/rating-review";
 import { RatingReviewCreatedPublisher } from "../events/publishers/rating-review-created-publisher";
+import { MessageNotificationPublisher } from "../events/publishers/notification-publisher";
 
 const router = express.Router();
 
@@ -37,6 +38,12 @@ async (req: Request, res: Response) => {
         order_id: order_id,
         _v: order[0]._v
     })
+
+    new MessageNotificationPublisher(natsWrapper.client).publish({
+        user_id: workerId,
+        topic: "Pesanan Diulas",
+        message: "Pesanan dengan id " + order_id + " telah diulas dengan " + rate + " bintang" + review == "" ? " tanpa ulasan" : " dengan ulasan " + review 
+    });
 
     return res.status(201).send(rr);
 });

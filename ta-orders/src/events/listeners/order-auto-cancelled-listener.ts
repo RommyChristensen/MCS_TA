@@ -5,6 +5,8 @@ import orderDoc from '../../models/order';
 import { OrderStatus } from '@ta-vrilance/common';
 import { OrderConfirmedPublisher } from '../publishers/order-confirmed-publisher';
 import { natsWrapper } from '../../nats-wrapper';
+import { MessageNotificationPublisher } from '../publishers/notification-publisher';
+import jobDoc from '../../models/job';
 
 export class OrderAutoCancelledListener extends Listener<OrderAutoCancelledEvent> {
     subject: Subjects.OrderAutoCancelled = Subjects.OrderAutoCancelled;
@@ -17,6 +19,19 @@ export class OrderAutoCancelledListener extends Listener<OrderAutoCancelledEvent
         
         if(order.order_status == OrderStatus.Accepted){
             const updatedOrder = await orderDoc.changeStatus(id, OrderStatus.Cancelled);
+            const job = await jobDoc.findById(order.job_id as string);
+
+            new MessageNotificationPublisher(natsWrapper.client).publish({
+                user_id: order.orderer_id as string,
+                topic: "Pesanan Dibatalkan",
+                message: "Pesanan dengan id " + order.id + " telah dibatalkan"
+            });
+
+            new MessageNotificationPublisher(natsWrapper.client).publish({
+                user_id: job.job_created_by as string,
+                topic: "Pesanan Dibatalkan",
+                message: "Pesanan dengan id " + order.id + " telah dibatalkan"
+            });
         }
 
         msg.ack();
