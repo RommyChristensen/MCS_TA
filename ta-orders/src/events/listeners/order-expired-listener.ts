@@ -15,7 +15,7 @@ export class OrderExpiredListener extends Listener<OrderExpiredEvent> {
         const { id, _v } = data;
 
         const order = await orderDoc.findById(id);
-        const job = await jobDoc.findById(id);
+        const job = await jobDoc.findById(order.job_id as string);
         
         if(order.order_status == OrderStatus.Created){
             await orderDoc.changeStatus(id, OrderStatus.Expired);
