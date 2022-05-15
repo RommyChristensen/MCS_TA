@@ -177,9 +177,7 @@ const changePassword = async (userId: string, oldPassword: string, newPassword: 
     const repo = await getRepository(User);
     const user = await repo.findById(userId);
 
-    const hashedPassword = await Password.toHash(oldPassword);
-
-    if(user.auth_password !== hashedPassword){
+    if(!await Password.compare(user.auth_password, oldPassword)){
         return {
             status: "failed",
             message: "Wrong Old Password"
