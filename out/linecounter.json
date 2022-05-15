@@ -1,0 +1,2908 @@
+{
+    "extension": "linecounter",
+    "version": "0.2.7",
+    "workspace": "/Users/rommy/Developer/MCS_TA",
+    "linecount": [
+        {
+            "version": "0.2.7",
+            "counttime": "2022-05-15 15:19:02",
+            "filesum": 471,
+            "codesum": 76949,
+            "commentsum": 1241,
+            "blanksum": 2003,
+            "statistics": {
+                ".xml": {
+                    "code": 7,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".ts": {
+                    "code": 7755,
+                    "comment": 431,
+                    "blank": 1732
+                },
+                ".json": {
+                    "code": 66271,
+                    "comment": 712,
+                    "blank": 84
+                },
+                "": {
+                    "code": 119,
+                    "comment": 0,
+                    "blank": 24
+                },
+                ".yaml": {
+                    "code": 912,
+                    "comment": 54,
+                    "blank": 30
+                },
+                ".svg": {
+                    "code": 1,
+                    "comment": 0,
+                    "blank": 0
+                },
+                ".js": {
+                    "code": 1761,
+                    "comment": 31,
+                    "blank": 92
+                },
+                ".txt": {
+                    "code": 3,
+                    "comment": 1,
+                    "blank": 0
+                },
+                ".css": {
+                    "code": 45,
+                    "comment": 0,
+                    "blank": 6
+                },
+                ".yml": {
+                    "code": 9,
+                    "comment": 0,
+                    "blank": 2
+                },
+                ".html": {
+                    "code": 28,
+                    "comment": 0,
+                    "blank": 1
+                },
+                ".md": {
+                    "code": 38,
+                    "comment": 12,
+                    "blank": 32
+                }
+            },
+            "filelist": [
+                {
+                    "blank": 3,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-manifests.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-ads.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-auth.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-client.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-expiration.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-jobs-category.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-orders.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-payments.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-rating-review.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": ".github/workflows/deploy-ta-search-recommendations.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": ".github/workflows/tests-auth.yml"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": ".github/workflows/tests-jobs-category.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": ".github/workflows/tests-orders.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": ".github/workflows/tests-rating-review.yaml"
+                },
+                {
+                    "blank": 2,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": ".github/workflows/tests-search-recommendations.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": ".gitignore"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": ".idea/workspace.xml"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "common/.env"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "common/build/errors/bad-request-error.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "common/build/errors/bad-request-error.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/errors/custom-errors.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "common/build/errors/custom-errors.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "common/build/errors/database-connection-error.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "common/build/errors/database-connection-error.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/errors/not-authorized-error.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "common/build/errors/not-authorized-error.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/errors/not-found-error.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "common/build/errors/not-found-error.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "common/build/errors/request-validation-error.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 36,
+                    "comment": 1,
+                    "filename": "common/build/errors/request-validation-error.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "common/build/events/base-listener.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "common/build/events/base-listener.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "common/build/events/base-publisher.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "common/build/events/base-publisher.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "common/build/events/category/category-created-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/category/category-created-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "common/build/events/category/category-deleted-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/category/category-deleted-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "common/build/events/category/category-updated-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/category/category-updated-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "common/build/events/job/job-created-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/job/job-created-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/job/job-deleted-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/job/job-deleted-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "common/build/events/job/job-status-updated-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/job/job-status-updated-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "common/build/events/job/job-updated-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/job/job-updated-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "common/build/events/notification/message-notification-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/notification/message-notification-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-accepted-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-accepted-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-auto-cancelled-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-auto-cancelled-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-auto-confirmed-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-auto-confirmed-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-cancelled-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-cancelled-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-confirmed-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-confirmed-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-created-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-created-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-done-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-done-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-expired-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-expired-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-onlocation-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-onlocation-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-onprogress-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-onprogress-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-paid-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-paid-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-paid-pending-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-paid-pending-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-rejected-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-rejected-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-reviewed-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-reviewed-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 9,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-updated-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/order/order-updated-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "common/build/events/payments/payment-failed-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/payments/payment-failed-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "common/build/events/payments/payment-success-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/payments/payment-success-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/rating-review/rating-review-created-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/rating-review/rating-review-created-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 39,
+                    "comment": 0,
+                    "filename": "common/build/events/subjects.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 44,
+                    "comment": 8,
+                    "filename": "common/build/events/subjects.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "common/build/events/types/order-status.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "common/build/events/types/order-status.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "common/build/events/types/user-role.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/types/user-role.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-completed-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-completed-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-confirmed-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-confirmed-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-created-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-created-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-update-pp-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-update-pp-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-update-profile-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-update-profile-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-updated-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-updated-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-verified-event.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/events/user/user-verified-event.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 47,
+                    "comment": 0,
+                    "filename": "common/build/index.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 59,
+                    "comment": 8,
+                    "filename": "common/build/index.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/middlewares/error-handler.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "common/build/middlewares/error-handler.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/middlewares/validate-header.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 42,
+                    "comment": 0,
+                    "filename": "common/build/middlewares/validate-header.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "common/build/middlewares/validate-request.d.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "common/build/middlewares/validate-request.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1452,
+                    "comment": 0,
+                    "filename": "common/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "common/package.json"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "common/src/errors/bad-request-error.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 8,
+                    "comment": 0,
+                    "filename": "common/src/errors/custom-errors.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "common/src/errors/database-connection-error.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 0,
+                    "filename": "common/src/errors/not-authorized-error.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "common/src/errors/not-found-error.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 1,
+                    "filename": "common/src/errors/request-validation-error.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 43,
+                    "comment": 0,
+                    "filename": "common/src/events/base-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "common/src/events/base-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 1,
+                    "filename": "common/src/events/category/category-created-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "common/src/events/category/category-deleted-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 1,
+                    "filename": "common/src/events/category/category-updated-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 16,
+                    "comment": 3,
+                    "filename": "common/src/events/job/job-created-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/job/job-deleted-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 1,
+                    "filename": "common/src/events/job/job-status-updated-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 1,
+                    "filename": "common/src/events/job/job-updated-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 1,
+                    "filename": "common/src/events/notification/message-notification-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-accepted-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 3,
+                    "filename": "common/src/events/order/order-auto-cancelled-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-auto-confirmed-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 13,
+                    "comment": 2,
+                    "filename": "common/src/events/order/order-cancelled-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-confirmed-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 32,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-created-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-done-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-expired-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 9,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-onlocation-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-onprogress-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-paid-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-paid-pending-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-rejected-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-reviewed-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 1,
+                    "filename": "common/src/events/order/order-updated-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 1,
+                    "filename": "common/src/events/payments/payment-failed-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 10,
+                    "comment": 1,
+                    "filename": "common/src/events/payments/payment-success-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/rating-review/rating-review-created-event.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 39,
+                    "comment": 8,
+                    "filename": "common/src/events/subjects.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "common/src/events/types/order-status.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "common/src/events/types/user-role.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 14,
+                    "comment": 1,
+                    "filename": "common/src/events/user/user-completed-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "common/src/events/user/user-confirmed-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 16,
+                    "comment": 1,
+                    "filename": "common/src/events/user/user-created-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 8,
+                    "comment": 1,
+                    "filename": "common/src/events/user/user-update-pp-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 1,
+                    "filename": "common/src/events/user/user-update-profile-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 19,
+                    "comment": 1,
+                    "filename": "common/src/events/user/user-updated-event.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "common/src/events/user/user-verified-event.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 47,
+                    "comment": 8,
+                    "filename": "common/src/index.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "common/src/middlewares/error-handler.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "common/src/middlewares/validate-header.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 10,
+                    "comment": 0,
+                    "filename": "common/src/middlewares/validate-request.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 12,
+                    "comment": 80,
+                    "filename": "common/tsconfig.json"
+                },
+                {
+                    "blank": 5,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "DEPLOYMENT WORKFLOW"
+                },
+                {
+                    "blank": 0,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "infra/k8s-dev/ingress-srv.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 100,
+                    "comment": 0,
+                    "filename": "infra/k8s-prod/ingress-srv.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "infra/k8s/expiration-redis-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-ads-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 64,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-auth-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 36,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-client-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-expiration-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-jobs-category.yaml"
+                },
+                {
+                    "blank": 1,
+                    "code": 48,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-nats-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 49,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-orders-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-payments-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-rating-review-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 44,
+                    "comment": 0,
+                    "filename": "infra/k8s/ta-search-recommendations-depl.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 54,
+                    "filename": "skaffold.yaml"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 6054,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 53,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/ServiceAccountKey.json"
+                },
+                {
+                    "blank": 12,
+                    "code": 25,
+                    "comment": 4,
+                    "filename": "ta-ads-worker/src/app.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 42,
+                    "comment": 13,
+                    "filename": "ta-ads-worker/src/index.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/src/models/ads-status.ts"
+                },
+                {
+                    "blank": 24,
+                    "code": 93,
+                    "comment": 1,
+                    "filename": "ta-ads-worker/src/models/ads.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/src/nats-wrapper.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/src/routes/create.ts"
+                },
+                {
+                    "blank": 18,
+                    "code": 37,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/src/routes/get.ts"
+                },
+                {
+                    "blank": 10,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/src/routes/update.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-ads-worker/src/test/auth-helper.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 15,
+                    "comment": 2,
+                    "filename": "ta-ads-worker/src/test/setup.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 79,
+                    "filename": "ta-ads-worker/tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-auth/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-auth/Dockerfile"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-auth/INSTALL_PACKAGE"
+                },
+                {
+                    "blank": 0,
+                    "code": 6702,
+                    "comment": 0,
+                    "filename": "ta-auth/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "ta-auth/package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-auth/ServiceAccountKey.json"
+                },
+                {
+                    "blank": 12,
+                    "code": 41,
+                    "comment": 4,
+                    "filename": "ta-auth/src/app.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 15,
+                    "comment": 1,
+                    "filename": "ta-auth/src/events/listeners/message-notification-listener.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-auth/src/events/listeners/queue-group-name.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-auth/src/events/publishers/user-change-pp-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-auth/src/events/publishers/user-change-profile-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-auth/src/events/publishers/user-completed-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-auth/src/events/publishers/user-confirmed-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-auth/src/events/publishers/user-created-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-auth/src/events/publishers/user-verified-publisher.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 51,
+                    "comment": 13,
+                    "filename": "ta-auth/src/index.ts"
+                },
+                {
+                    "blank": 19,
+                    "code": 63,
+                    "comment": 21,
+                    "filename": "ta-auth/src/models/admin.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 55,
+                    "comment": 5,
+                    "filename": "ta-auth/src/models/notifications.ts"
+                },
+                {
+                    "blank": 40,
+                    "code": 186,
+                    "comment": 6,
+                    "filename": "ta-auth/src/models/user.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 66,
+                    "comment": 8,
+                    "filename": "ta-auth/src/models/verification.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-auth/src/nats-wrapper.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-auth/src/routes/__test__/signup.test.ts"
+                },
+                {
+                    "blank": 10,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "ta-auth/src/routes/admin/confirm-user.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 26,
+                    "comment": 0,
+                    "filename": "ta-auth/src/routes/admin/get-user.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 35,
+                    "comment": 1,
+                    "filename": "ta-auth/src/routes/changepassword.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 30,
+                    "comment": 1,
+                    "filename": "ta-auth/src/routes/changeprofile.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 30,
+                    "comment": 3,
+                    "filename": "ta-auth/src/routes/changeprofilepicture.ts"
+                },
+                {
+                    "blank": 9,
+                    "code": 47,
+                    "comment": 4,
+                    "filename": "ta-auth/src/routes/completedata.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 30,
+                    "comment": 1,
+                    "filename": "ta-auth/src/routes/getuser.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 24,
+                    "comment": 0,
+                    "filename": "ta-auth/src/routes/notification.ts"
+                },
+                {
+                    "blank": 23,
+                    "code": 93,
+                    "comment": 7,
+                    "filename": "ta-auth/src/routes/sendmail.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "ta-auth/src/routes/signin.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 62,
+                    "comment": 2,
+                    "filename": "ta-auth/src/routes/signup.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 212,
+                    "comment": 0,
+                    "filename": "ta-auth/src/services/mail-template.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 15,
+                    "comment": 0,
+                    "filename": "ta-auth/src/services/password.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-auth/src/test/auth-helper.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "ta-auth/src/test/setup.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 79,
+                    "filename": "ta-auth/tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-client/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-client/Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 16742,
+                    "comment": 0,
+                    "filename": "ta-client/package-lock.json"
+                },
+                {
+                    "blank": 3,
+                    "code": 47,
+                    "comment": 0,
+                    "filename": "ta-client/package.json"
+                },
+                {
+                    "filename": "ta-client/public/favicon.ico",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 1,
+                    "code": 28,
+                    "comment": 0,
+                    "filename": "ta-client/public/index.html"
+                },
+                {
+                    "filename": "ta-client/public/logo192.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "filename": "ta-client/public/logo512.png",
+                    "isbinaryfile": true,
+                    "blank": 0,
+                    "code": 0,
+                    "comment": 0
+                },
+                {
+                    "blank": 0,
+                    "code": 25,
+                    "comment": 0,
+                    "filename": "ta-client/public/manifest.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 3,
+                    "comment": 1,
+                    "filename": "ta-client/public/robots.txt"
+                },
+                {
+                    "blank": 32,
+                    "code": 38,
+                    "comment": 12,
+                    "filename": "ta-client/README.md"
+                },
+                {
+                    "blank": 5,
+                    "code": 33,
+                    "comment": 0,
+                    "filename": "ta-client/src/App.css"
+                },
+                {
+                    "blank": 2,
+                    "code": 25,
+                    "comment": 2,
+                    "filename": "ta-client/src/App.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "ta-client/src/App.test.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 21,
+                    "comment": 0,
+                    "filename": "ta-client/src/components/AppBar.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 11,
+                    "comment": 0,
+                    "filename": "ta-client/src/components/Authenticate.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-client/src/components/Copyright.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 29,
+                    "comment": 0,
+                    "filename": "ta-client/src/components/Drawer.js"
+                },
+                {
+                    "blank": 4,
+                    "code": 96,
+                    "comment": 0,
+                    "filename": "ta-client/src/components/Sidebar.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "ta-client/src/components/Theme.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-client/src/index.css"
+                },
+                {
+                    "blank": 2,
+                    "code": 12,
+                    "comment": 3,
+                    "filename": "ta-client/src/index.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-client/src/logo.svg"
+                },
+                {
+                    "blank": 12,
+                    "code": 162,
+                    "comment": 3,
+                    "filename": "ta-client/src/pages/category/Categories.js"
+                },
+                {
+                    "blank": 7,
+                    "code": 134,
+                    "comment": 0,
+                    "filename": "ta-client/src/pages/category/CategoryCreate.js"
+                },
+                {
+                    "blank": 3,
+                    "code": 61,
+                    "comment": 0,
+                    "filename": "ta-client/src/pages/Dashboard.js"
+                },
+                {
+                    "blank": 11,
+                    "code": 128,
+                    "comment": 0,
+                    "filename": "ta-client/src/pages/jobs/Jobs.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 67,
+                    "comment": 0,
+                    "filename": "ta-client/src/pages/jobs/JodDetail.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 114,
+                    "comment": 1,
+                    "filename": "ta-client/src/pages/Layout.js"
+                },
+                {
+                    "blank": 7,
+                    "code": 94,
+                    "comment": 0,
+                    "filename": "ta-client/src/pages/SignIn.js"
+                },
+                {
+                    "blank": 5,
+                    "code": 105,
+                    "comment": 0,
+                    "filename": "ta-client/src/pages/UserDetail.js"
+                },
+                {
+                    "blank": 9,
+                    "code": 124,
+                    "comment": 0,
+                    "filename": "ta-client/src/pages/Users.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-client/src/reportWebVitals.js"
+                },
+                {
+                    "blank": 2,
+                    "code": 3,
+                    "comment": 0,
+                    "filename": "ta-client/src/services/Storage.js"
+                },
+                {
+                    "blank": 1,
+                    "code": 2,
+                    "comment": 0,
+                    "filename": "ta-client/src/services/Url.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 4,
+                    "filename": "ta-client/src/setupTests.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-expiration/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-expiration/Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 4498,
+                    "comment": 0,
+                    "filename": "ta-expiration/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "ta-expiration/package.json"
+                },
+                {
+                    "blank": 7,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/listeners/job-created-listener.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/listeners/job-updated-listener.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/listeners/order-accepted-listener.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 19,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/listeners/order-created-listener.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 20,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/listeners/order-done-listener.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/listeners/order-on-location-listener.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/listeners/queue-group-name.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/publishers/job-done-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/publishers/order-auto-cancelled-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/publishers/order-auto-confirm-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/events/publishers/order-expired-publisher.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 37,
+                    "comment": 9,
+                    "filename": "ta-expiration/src/index.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-expiration/src/nats-wrapper.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 5,
+                    "filename": "ta-expiration/src/queues/job-done-queue.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 21,
+                    "comment": 4,
+                    "filename": "ta-expiration/src/queues/order-auto-confirmed-queue.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 24,
+                    "comment": 3,
+                    "filename": "ta-expiration/src/queues/order-awaiting-confirm-on-location-queue.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 24,
+                    "comment": 3,
+                    "filename": "ta-expiration/src/queues/order-awaiting-progress-queue.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 20,
+                    "comment": 8,
+                    "filename": "ta-expiration/src/queues/order-expires-queue.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 79,
+                    "filename": "ta-expiration/tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 6234,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 53,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/ServiceAccountKey.json"
+                },
+                {
+                    "blank": 14,
+                    "code": 37,
+                    "comment": 4,
+                    "filename": "ta-jobs-category/src/app.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 20,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/events/listeners/job-status-updated-listener.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/events/listeners/queue-group-name.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 20,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/events/listeners/user-completed-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/events/listeners/user-confirmed-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/events/listeners/user-created-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/events/listeners/user-verified-listener.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/events/publishers/category-created-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/events/publishers/category-deleted-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/events/publishers/category-updated-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/events/publishers/job-created-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/events/publishers/job-deleted-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/events/publishers/job-status-updated-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/events/publishers/job-updated-publisher.ts"
+                },
+                {
+                    "blank": 14,
+                    "code": 43,
+                    "comment": 13,
+                    "filename": "ta-jobs-category/src/index.ts"
+                },
+                {
+                    "blank": 3,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/middlewares/validate-header-admin.ts"
+                },
+                {
+                    "blank": 24,
+                    "code": 80,
+                    "comment": 5,
+                    "filename": "ta-jobs-category/src/models/category.ts"
+                },
+                {
+                    "blank": 30,
+                    "code": 114,
+                    "comment": 7,
+                    "filename": "ta-jobs-category/src/models/job.ts"
+                },
+                {
+                    "blank": 41,
+                    "code": 176,
+                    "comment": 7,
+                    "filename": "ta-jobs-category/src/models/user.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/nats-wrapper.ts"
+                },
+                {
+                    "blank": 14,
+                    "code": 30,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/routes/category/add-preferred-category.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 30,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/routes/category/create.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 27,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/routes/category/delete.ts"
+                },
+                {
+                    "blank": 15,
+                    "code": 51,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/routes/category/get.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 29,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/routes/category/update.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 64,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/routes/jobs/create.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 29,
+                    "comment": 1,
+                    "filename": "ta-jobs-category/src/routes/jobs/delete.ts"
+                },
+                {
+                    "blank": 12,
+                    "code": 31,
+                    "comment": 3,
+                    "filename": "ta-jobs-category/src/routes/jobs/get.ts"
+                },
+                {
+                    "blank": 20,
+                    "code": 81,
+                    "comment": 3,
+                    "filename": "ta-jobs-category/src/routes/jobs/update.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/test/auth-helper.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "ta-jobs-category/src/test/setup.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 79,
+                    "filename": "ta-jobs-category/tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-orders/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-orders/Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 5982,
+                    "comment": 0,
+                    "filename": "ta-orders/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 53,
+                    "comment": 0,
+                    "filename": "ta-orders/package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-orders/ServiceAccountKey.json"
+                },
+                {
+                    "blank": 12,
+                    "code": 41,
+                    "comment": 4,
+                    "filename": "ta-orders/src/app.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/category-created-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/category-deleted-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/category-updated-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/job-created-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/job-deleted-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/job-status-updated-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/job-updated-listener.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 32,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/listeners/order-auto-cancelled-listener.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 35,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/listeners/order-auto-confirm-listener.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 31,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/listeners/order-expired-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/order-paid-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/order-paid-pending-listener.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/listeners/queue-group-name.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/rating-review-created-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 20,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/user-completed-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/user-confirmed-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/user-created-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-orders/src/events/listeners/user-verified-listener.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/notification-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/order-accepted-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/order-cancelled-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/order-confirmed-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/order-created-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/order-done-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/order-on-location-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/order-onprogress-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-orders/src/events/publishers/order-updated-publisher.ts"
+                },
+                {
+                    "blank": 19,
+                    "code": 79,
+                    "comment": 13,
+                    "filename": "ta-orders/src/index.ts"
+                },
+                {
+                    "blank": 20,
+                    "code": 69,
+                    "comment": 5,
+                    "filename": "ta-orders/src/models/category.ts"
+                },
+                {
+                    "blank": 28,
+                    "code": 110,
+                    "comment": 7,
+                    "filename": "ta-orders/src/models/job.ts"
+                },
+                {
+                    "blank": 31,
+                    "code": 147,
+                    "comment": 5,
+                    "filename": "ta-orders/src/models/order.ts"
+                },
+                {
+                    "blank": 36,
+                    "code": 151,
+                    "comment": 7,
+                    "filename": "ta-orders/src/models/user.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-orders/src/nats-wrapper.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 61,
+                    "comment": 1,
+                    "filename": "ta-orders/src/routes/accept.ts"
+                },
+                {
+                    "blank": 14,
+                    "code": 59,
+                    "comment": 3,
+                    "filename": "ta-orders/src/routes/cancel.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 50,
+                    "comment": 1,
+                    "filename": "ta-orders/src/routes/confirmed.ts"
+                },
+                {
+                    "blank": 12,
+                    "code": 74,
+                    "comment": 2,
+                    "filename": "ta-orders/src/routes/create.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 22,
+                    "comment": 1,
+                    "filename": "ta-orders/src/routes/distance.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 46,
+                    "comment": 1,
+                    "filename": "ta-orders/src/routes/done.ts"
+                },
+                {
+                    "blank": 41,
+                    "code": 120,
+                    "comment": 1,
+                    "filename": "ta-orders/src/routes/get.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 47,
+                    "comment": 1,
+                    "filename": "ta-orders/src/routes/onlocation.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 46,
+                    "comment": 1,
+                    "filename": "ta-orders/src/routes/onprogress.ts"
+                },
+                {
+                    "blank": 10,
+                    "code": 50,
+                    "comment": 0,
+                    "filename": "ta-orders/src/routes/reject.ts"
+                },
+                {
+                    "blank": 10,
+                    "code": 41,
+                    "comment": 1,
+                    "filename": "ta-orders/src/routes/update.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-orders/src/test/auth-helper.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "ta-orders/src/test/setup.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 79,
+                    "filename": "ta-orders/tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-payments/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-payments/Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 6060,
+                    "comment": 0,
+                    "filename": "ta-payments/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 54,
+                    "comment": 0,
+                    "filename": "ta-payments/package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-payments/ServiceAccountKey.json"
+                },
+                {
+                    "blank": 12,
+                    "code": 31,
+                    "comment": 4,
+                    "filename": "ta-payments/src/app.ts"
+                },
+                {
+                    "blank": 2,
+                    "code": 7,
+                    "comment": 1,
+                    "filename": "ta-payments/src/config/app.config.js"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "ta-payments/src/enums/bank.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 67,
+                    "comment": 2,
+                    "filename": "ta-payments/src/events/listeners/order-confirmed-listener.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-payments/src/events/listeners/queue-group-name.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-payments/src/events/listeners/user-created-listener.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-payments/src/events/publishers/notification-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-payments/src/events/publishers/order-paid-pending-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-payments/src/events/publishers/order-paid-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-payments/src/events/publishers/payment-failed-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-payments/src/events/publishers/payment-success-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-payments/src/helpers/v-midtrans-client.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 46,
+                    "comment": 13,
+                    "filename": "ta-payments/src/index.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-payments/src/interfaces/bca-interface.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-payments/src/interfaces/bni-interface.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 18,
+                    "comment": 0,
+                    "filename": "ta-payments/src/interfaces/permata-interface.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "ta-payments/src/models/history-transaction.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 7,
+                    "comment": 0,
+                    "filename": "ta-payments/src/models/order-history.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-payments/src/models/order-payment-status.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 83,
+                    "comment": 2,
+                    "filename": "ta-payments/src/models/request-withdraw.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 5,
+                    "comment": 0,
+                    "filename": "ta-payments/src/models/transaction-status.ts"
+                },
+                {
+                    "blank": 45,
+                    "code": 198,
+                    "comment": 6,
+                    "filename": "ta-payments/src/models/user.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-payments/src/nats-wrapper.ts"
+                },
+                {
+                    "blank": 6,
+                    "code": 22,
+                    "comment": 0,
+                    "filename": "ta-payments/src/routes/complete.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 34,
+                    "comment": 0,
+                    "filename": "ta-payments/src/routes/get.ts"
+                },
+                {
+                    "blank": 13,
+                    "code": 55,
+                    "comment": 0,
+                    "filename": "ta-payments/src/routes/pay.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 68,
+                    "comment": 0,
+                    "filename": "ta-payments/src/routes/top-up.ts"
+                },
+                {
+                    "blank": 5,
+                    "code": 38,
+                    "comment": 2,
+                    "filename": "ta-payments/src/routes/update-payments.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 64,
+                    "comment": 0,
+                    "filename": "ta-payments/src/routes/withdraw.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-payments/src/test/auth-helper.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 15,
+                    "comment": 2,
+                    "filename": "ta-payments/src/test/setup.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 79,
+                    "filename": "ta-payments/tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-rating-review/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-rating-review/Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 5913,
+                    "comment": 0,
+                    "filename": "ta-rating-review/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 52,
+                    "comment": 0,
+                    "filename": "ta-rating-review/package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-rating-review/ServiceAccountKey.json"
+                },
+                {
+                    "blank": 10,
+                    "code": 23,
+                    "comment": 4,
+                    "filename": "ta-rating-review/src/app.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/events/listeners/order-confirmed-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/events/listeners/order-created-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-rating-review/src/events/listeners/order-done-listener.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/events/listeners/queue-group-name.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/events/publishers/notification-publisher.ts"
+                },
+                {
+                    "blank": 1,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/events/publishers/rating-review-created-publisher.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 46,
+                    "comment": 13,
+                    "filename": "ta-rating-review/src/index.ts"
+                },
+                {
+                    "blank": 22,
+                    "code": 109,
+                    "comment": 5,
+                    "filename": "ta-rating-review/src/models/order.ts"
+                },
+                {
+                    "blank": 15,
+                    "code": 57,
+                    "comment": 5,
+                    "filename": "ta-rating-review/src/models/rating-review.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/nats-wrapper.ts"
+                },
+                {
+                    "blank": 11,
+                    "code": 39,
+                    "comment": 1,
+                    "filename": "ta-rating-review/src/routes/create.ts"
+                },
+                {
+                    "blank": 14,
+                    "code": 38,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/routes/get.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/test/auth-helper.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 17,
+                    "comment": 0,
+                    "filename": "ta-rating-review/src/test/setup.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 79,
+                    "filename": "ta-rating-review/tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/.dockerignore"
+                },
+                {
+                    "blank": 2,
+                    "code": 6,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/Dockerfile"
+                },
+                {
+                    "blank": 0,
+                    "code": 5926,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/package-lock.json"
+                },
+                {
+                    "blank": 1,
+                    "code": 53,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/package.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 12,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/ServiceAccountKey.json"
+                },
+                {
+                    "blank": 12,
+                    "code": 25,
+                    "comment": 4,
+                    "filename": "ta-search-recommendations/src/app.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 15,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/job-created-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/job-deleted-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 18,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/job-status-updated-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/job-updated-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/order-confirmed-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 14,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/order-created-listener.ts"
+                },
+                {
+                    "blank": 0,
+                    "code": 1,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/src/events/listeners/queue-group-name.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/user-change-pp-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 20,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/user-completed-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/user-confirmed-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/user-created-listener.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 13,
+                    "comment": 1,
+                    "filename": "ta-search-recommendations/src/events/listeners/user-verified-listener.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 65,
+                    "comment": 13,
+                    "filename": "ta-search-recommendations/src/index.ts"
+                },
+                {
+                    "blank": 32,
+                    "code": 123,
+                    "comment": 7,
+                    "filename": "ta-search-recommendations/src/models/job.ts"
+                },
+                {
+                    "blank": 14,
+                    "code": 59,
+                    "comment": 2,
+                    "filename": "ta-search-recommendations/src/models/order-history.ts"
+                },
+                {
+                    "blank": 39,
+                    "code": 163,
+                    "comment": 7,
+                    "filename": "ta-search-recommendations/src/models/user.ts"
+                },
+                {
+                    "blank": 7,
+                    "code": 23,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/src/nats-wrapper.ts"
+                },
+                {
+                    "blank": 17,
+                    "code": 46,
+                    "comment": 4,
+                    "filename": "ta-search-recommendations/src/routes/nearby.ts"
+                },
+                {
+                    "blank": 16,
+                    "code": 57,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/src/routes/recommendations.ts"
+                },
+                {
+                    "blank": 19,
+                    "code": 35,
+                    "comment": 16,
+                    "filename": "ta-search-recommendations/src/routes/search.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 16,
+                    "comment": 0,
+                    "filename": "ta-search-recommendations/src/test/auth-helper.ts"
+                },
+                {
+                    "blank": 4,
+                    "code": 15,
+                    "comment": 2,
+                    "filename": "ta-search-recommendations/src/test/setup.ts"
+                },
+                {
+                    "blank": 8,
+                    "code": 13,
+                    "comment": 79,
+                    "filename": "ta-search-recommendations/tsconfig.json"
+                },
+                {
+                    "blank": 0,
+                    "code": 4,
+                    "comment": 0,
+                    "filename": "TODOS"
+                }
+            ]
+        }
+    ]
+}
