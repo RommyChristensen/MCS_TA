@@ -37,7 +37,7 @@ async (req: Request, res: Response) => {
         const token = generateToken();
 
         const oAuth2Client = new google.auth.OAuth2(process.env.G_CLIENT_ID, process.env.G_CLIENT_SECRET, process.env.G_REDIRECT_URI);
-        oAuth2Client.setCredentials({refresh_token: "1//047XeFDyb7EjlCgYIARAAGAQSNwF-L9IrlKei0rnt9UYHVXAkBDg46wR87myAA2AJlNyaYQ03GNfX3O2GA3E-5-srn3Sn2VBmk5Q"});
+        oAuth2Client.setCredentials({refresh_token: "1//04VYwvkw6HOKVCgYIARAAGAQSNwF-L9IrmVed8d6nbAM3F5AvEFgxVDfUGCX1XBo51Bes2fFzfLCs66OhnUrW_k9mpGnv3hAGYXQ"});
         
         console.log("abc");
         
@@ -55,8 +55,8 @@ async (req: Request, res: Response) => {
                 user: 'rommycy00@gmail.com',
                 clientId: process.env.G_CLIENT_ID,
                 clientSecret: process.env.G_CLIENT_SECRET,
-                refreshToken: "1//047XeFDyb7EjlCgYIARAAGAQSNwF-L9IrlKei0rnt9UYHVXAkBDg46wR87myAA2AJlNyaYQ03GNfX3O2GA3E-5-srn3Sn2VBmk5Q", // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
-                accessToken: "ya29.A0ARrdaM-jWayqajQBQMB-bC0ZyQZBkAzA01Y1r3sU2xxTBx_ZVtEfMgkPJk5gZgOkvl0OyTkDOsATzi_cLAAe4ZqcytSGQruLR9NSJ3P3-zMIAu9Vrp8BFJMMYUNuNDEqu_IN1ucFRaCWWCirbeO7Gbcv5rKR",
+                refreshToken: "1//04VYwvkw6HOKVCgYIARAAGAQSNwF-L9IrmVed8d6nbAM3F5AvEFgxVDfUGCX1XBo51Bes2fFzfLCs66OhnUrW_k9mpGnv3hAGYXQ", // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
+                accessToken: "ya29.A0ARrdaM9-BUreavD5PZFijUffkbfr-pIB5eOP7Pmq4h9vp5_UHVssOGLMOJz_z5M8B-_zSswCGgFyLt8_m0AAdD3DoBGKydIpOgcpFmAQDrIpvP9PsxnCQcHHKaHQXS__8bF7vkkODNaEV8PbFIskvE92h8yA",
             }
         } as SMTPTransport.Options);
 
