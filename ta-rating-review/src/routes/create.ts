@@ -42,7 +42,7 @@ async (req: Request, res: Response) => {
     new MessageNotificationPublisher(natsWrapper.client).publish({
         user_id: workerId,
         topic: "Pesanan Diulas",
-        message: "Pesanan dengan id " + order_id + " telah diulas dengan " + rate + " bintang" + review == "" ? " tanpa ulasan" : " dengan ulasan " + review 
+        message: "Pesanan dengan id " + order_id + " telah diulas dengan " + rate + " bintang" + (review == "" ? " tanpa ulasan" : " dengan ulasan " + review)
     });
 
     return res.status(201).send(rr);
