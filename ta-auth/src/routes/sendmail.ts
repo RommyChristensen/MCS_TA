@@ -38,7 +38,13 @@ async (req: Request, res: Response) => {
 
         const oAuth2Client = new google.auth.OAuth2(process.env.G_CLIENT_ID, process.env.G_CLIENT_SECRET, process.env.G_REDIRECT_URI);
         oAuth2Client.setCredentials({refresh_token: "1//04p5O6RWsIF70CgYIARAAGAQSNwF-L9Ir6w4aKbKPFp8k0qxI3JiU7mXlc6mrKCSp8ljnnDYBs49ryfu0JLmTV_89gxGAa_ZGfOE"});
+        
+        console.log("abc");
+        
         const accessToken = await oAuth2Client.getAccessToken();
+
+        console.log(accessToken);
+        console.log(oAuth2Client);
 
         const transporter = nodemailer.createTransport({
             host: "smtp.gmail.com",
