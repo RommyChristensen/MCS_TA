@@ -99,7 +99,7 @@ const updateUser = async (userId: string, data: UserCompleteData) => {
 
     console.log(data);
 
-    user.auth_address == data.address as string;
+    user.auth_address = data.address as string;
     user.auth_phone = data.phone;
     user.auth_profile = data.profile;
     user.auth_completed = false;
