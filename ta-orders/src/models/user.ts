@@ -99,12 +99,12 @@ const updateUser = async (userId: string, data: UserCompleteData) => {
 
     console.log(data);
 
+    user.auth_address == data.address as string;
     user.auth_phone = data.phone;
     user.auth_profile = data.profile;
     user.auth_completed = false;
     user.auth_gender = data.gender;
     user.auth_birthdate = data.birthdate;
-    user.auth_address == data.address;
 
     const updatedUser = await repo.update(user);
     return updatedUser;
