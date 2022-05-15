@@ -183,7 +183,7 @@ const changePassword = async (userId: string, oldPassword: string, newPassword: 
             message: "Wrong Old Password"
         }
     }else{
-        user.auth_password = newPassword;
+        user.auth_password = await Password.toHash(newPassword);
         await repo.update(user);
 
         return {
