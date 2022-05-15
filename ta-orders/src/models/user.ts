@@ -97,6 +97,8 @@ const updateUser = async (userId: string, data: UserCompleteData) => {
     const repo = await getRepository(User);
     const user = await repo.findById(userId);
 
+    console.log(data);
+
     user.auth_phone = data.phone;
     user.auth_profile = data.profile;
     user.auth_completed = false;
