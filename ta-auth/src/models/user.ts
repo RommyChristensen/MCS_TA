@@ -1,6 +1,7 @@
 import { Collection, getRepository } from 'fireorm';
 import mongoose from 'mongoose';
 import { UserRole } from '@ta-vrilance/common';
+import { Password } from '../services/password';
 
 // definition model firestore
 @Collection()
@@ -176,7 +177,9 @@ const changePassword = async (userId: string, oldPassword: string, newPassword: 
     const repo = await getRepository(User);
     const user = await repo.findById(userId);
 
-    if(user.auth_password !== oldPassword){
+    const hashedPassword = await Password.toHash(oldPassword);
+
+    if(user.auth_password !== hashedPassword){
         return {
             status: "failed",
             message: "Wrong Old Password"
