@@ -52,7 +52,7 @@ async (req: Request, res: Response) => {
             secure: false,
             auth: {
                 type: 'OAuth2',
-                user: 'ta.vrilance3@gmail.com',
+                user: 'rommycy00@gmail.com',
                 clientId: process.env.G_CLIENT_ID,
                 clientSecret: process.env.G_CLIENT_SECRET,
                 refreshToken: "1//04p5O6RWsIF70CgYIARAAGAQSNwF-L9Ir6w4aKbKPFp8k0qxI3JiU7mXlc6mrKCSp8ljnnDYBs49ryfu0JLmTV_89gxGAa_ZGfOE", // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
