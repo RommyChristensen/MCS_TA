@@ -53,6 +53,9 @@ async (req: Request, res: Response) => {
 
     let response = await axios.get(url);
 
+    console.log(url);
+    console.log(response.data);
+
     const resMap = response.data.rows[0].elements.map((e: any, i: number) => {
         let d = e;
         d["user_id"] = users[i].id;
