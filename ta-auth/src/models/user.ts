@@ -187,7 +187,7 @@ const changePassword = async (userId: string, oldPassword: string, newPassword: 
         await repo.update(user);
 
         return {
-            status: "failed",
+            status: "success",
             message: "Change Password Success"
         }
     }
