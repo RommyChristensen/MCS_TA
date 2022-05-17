@@ -31,6 +31,12 @@ async (req: Request, res: Response) => {
     const addresses = completed.map(u => {
         return u.auth_address;
     });
+    
+    console.log(completed.length);
+    console.log(addresses.length);
+
+    console.log(completed);
+    console.log(addresses);
 
     let idxOrigin = 0;
     // console.log("completed");
