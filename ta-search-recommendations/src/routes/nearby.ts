@@ -33,31 +33,31 @@ async (req: Request, res: Response) => {
     });
 
     let idxOrigin = 0;
-    console.log("completed");
-    console.log(completed);
-    console.log(addresses, users);
+    // console.log("completed");
+    // console.log(completed);
+    // console.log(addresses, users);
 
-    addresses.forEach((a, i) => {
-        console.log(i);
-        if(a != originId){
-            destinations += "place_id:" + a + (i != addresses.length - 1 ? "|" : "");
-        }else{
-            idxOrigin = i;
-        }
-    });
+    // addresses.forEach((a, i) => {
+    //     console.log(i);
+    //     if(a != originId){
+    //         destinations += "place_id:" + a + (i != addresses.length - 1 ? "|" : "");
+    //     }else{
+    //         idxOrigin = i;
+    //     }
+    // });
 
-    addresses.splice(idxOrigin, 1);
-    users.splice(idxOrigin, 1);
+    // addresses.splice(idxOrigin, 1);
+    // users.splice(idxOrigin, 1);
     
-    console.log(destinations);
-    console.log(addresses, users);
+    // console.log(destinations);
+    // console.log(addresses, users);
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
 
     let response = await axios.get(url);
 
-    console.log(url);
-    console.log(response.data);
+    // console.log(url);
+    // console.log(response.data);
 
     const resMap = response.data.rows[0].elements.map((e: any, i: number) => {
         let d = e;
