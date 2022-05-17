@@ -14,6 +14,7 @@ import { OrderConfirmedListener } from './events/listeners/order-confirmed-liste
 import { JobStatusUpdatedListener } from './events/listeners/job-status-updated-listener';
 import { JobUpdatedListener } from './events/listeners/job-updated-listener';
 import { JobDeletedListener } from './events/listeners/job-deleted-listener';
+import { UserUpdatedListener } from './events/listeners/user-updated-listener';
 const start = async () => {
     console.log("starting search recommendations service....");
     // ENV VARIABLES
@@ -72,6 +73,7 @@ const start = async () => {
         new UserVerifiedListener(natsWrapper.client).listen();
         new UserUpdatePPListener(natsWrapper.client).listen();
         new UserCompletedListener(natsWrapper.client).listen();
+        new UserUpdatedListener(natsWrapper.client).listen();
         new JobCreatedListener(natsWrapper.client).listen();
         new OrderCreatedListener(natsWrapper.client).listen();
         new OrderConfirmedListener(natsWrapper.client).listen();

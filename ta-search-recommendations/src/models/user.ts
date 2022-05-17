@@ -142,6 +142,7 @@ const changepp = async (userId: string, path: string) => {
 interface changeProfileData {
     firstname: string | null;
     lastname: string | null;
+    address: string | null;
     phone: string | null;
 }
 
@@ -152,6 +153,7 @@ const changeProfile = async (userId: string, userData: changeProfileData) => {
     if(userData.firstname !== null) user.auth_firstname = userData.firstname;
     if(userData.lastname !== null) user.auth_lastname = userData.lastname;
     if(userData.phone !== null) user.auth_phone = userData.phone;
+    if(userData.address !== null) user.auth_address = userData.address;
 
     const updatedUser = await repo.update(user);
     return updatedUser;
