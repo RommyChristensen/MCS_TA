@@ -50,7 +50,11 @@ async (req: Request, res: Response) => {
         category_description: category.category_description
     }
 
+    console.log("test create");
+
     const job = await jobDoc.create(title, description, date, user_id, price, c, dateNow);
+
+    console.log(job);
 
     // EMIT JOB CREATED EVENT
     await new JobCreatedPublisher(natsWrapper.client).publish({
