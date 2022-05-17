@@ -9,6 +9,7 @@ import { errorHandler, NotFoundError } from '@ta-vrilance/common';
 import { createAdsRouter } from './routes/create';
 import { getAdsRouter } from './routes/get';
 import { updateAdsRouter } from './routes/update';
+import { confirmAdsRouter } from './routes/confirm';
 
 // END IMPORT ROUTERS
 
@@ -29,6 +30,7 @@ app.use(
 app.use(createAdsRouter);
 app.use(getAdsRouter);
 app.use(updateAdsRouter);
+app.use(confirmAdsRouter);
 
 // END USE ROUTERS
 

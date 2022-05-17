@@ -18,7 +18,6 @@ interface JwtPayload {
 
 router.post('/api/auth/completedata', 
 validateHeader,
-// upload.single('profile'),
 body('bio').notEmpty(),
 body('address').notEmpty(),
 body('phone').isNumeric().isLength({min: 10, max: 15}).withMessage('Please Enter a Valid Phone Number'),

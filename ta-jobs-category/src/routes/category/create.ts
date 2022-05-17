@@ -18,7 +18,6 @@ async (req: Request, res: Response) => {
     const { name, desc } = req.body;
     const newCat = await categoryDoc.create(name, desc);
 
-    // EMIT CATEGORY CREATED EVENT
     new CategoryCreatedPublisher(natsWrapper.client).publish({
         id: newCat.id,
         category_name: name,
