@@ -60,6 +60,8 @@ async (req: Request, res: Response) => {
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
 
+    console.log(url);
+
     let response = await axios.get(url);
 
     // console.log(url);
@@ -72,6 +74,8 @@ async (req: Request, res: Response) => {
         d["place_id"] = addresses[i];
         return d;
     });
+
+    console.log(resMap);
 
     return res.send({elements: response.data.rows[0].elements, resMap});
 });
