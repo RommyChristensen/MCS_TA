@@ -20,7 +20,7 @@ import { JobDeletedListener } from './events/listeners/job-deleted-listener';
 import { OrderAutoCancelledListener } from './events/listeners/order-auto-cancelled-listener';
 import { OrderPaidListener } from './events/listeners/order-paid-listener';
 import { OrderPaidPendingListener } from './events/listeners/order-paid-pending-listener';
-import { UserUpdatedListener } from './events/listeners/user-updated-listener';
+import { UserChangeProfileListener } from './events/listeners/user-change-profile-listener';
 const start = async () => {
     console.log("starting orders service.....");
     // ENV VARIABLES
@@ -82,7 +82,7 @@ const start = async () => {
         new UserVerifiedListener(natsWrapper.client).listen();
         new UserConfirmedListener(natsWrapper.client).listen();
         new UserCompletedListener(natsWrapper.client).listen();
-        new UserUpdatedListener(natsWrapper.client).listen();
+        new UserChangeProfileListener(natsWrapper.client).listen();
         new JobCreatedListener(natsWrapper.client).listen();
         new JobUpdatedListener(natsWrapper.client).listen();
         new JobStatusUpdatedListener(natsWrapper.client).listen();
