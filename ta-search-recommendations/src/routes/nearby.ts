@@ -25,7 +25,7 @@ async (req: Request, res: Response) => {
     origins = "place_id:" + originId;
 
     const users = await userDoc.getAll();
-    const completed = users.filter(u => u.auth_confirmed == true);
+    const completed = users.filter(u => u.auth_confirmed == true && u.auth_role == "worker");
     const addresses = completed.map(u => {
         return u.auth_address;
     });
