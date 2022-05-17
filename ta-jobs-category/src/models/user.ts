@@ -142,7 +142,7 @@ const changepp = async (userId: string, path: string) => {
     return updatedUser;
 }
 
-interface changeProfileData {
+export interface changeProfileData {
     firstname: string | null;
     lastname: string | null;
     address: string | null;
