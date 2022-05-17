@@ -25,13 +25,16 @@ async (req: Request, res: Response) => {
     origins = "place_id:" + originId;
 
     const users = await userDoc.getAll();
-    const completed = users.filter(u => u.auth_confirmed == true && u.auth_role == "worker");
+    const completed = users.filter(u => {
+        return u.auth_confirmed == true && u.auth_role == "worker"
+    });
     const addresses = completed.map(u => {
         return u.auth_address;
     });
 
     let idxOrigin = 0;
-
+    console.log("completed");
+    console.log(completed);
     console.log(addresses, users);
 
     addresses.forEach((a, i) => {
