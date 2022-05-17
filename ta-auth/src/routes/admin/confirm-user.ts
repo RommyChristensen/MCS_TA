@@ -21,7 +21,7 @@ const checkHeader = (req: Request, res: Response, next: NextFunction) => {
     next();
 }
 
-router.post('/api/auth/admin/users/onfirm/:userId', checkHeader, async (req: Request, res: Response) => {
+router.post('/api/auth/admin/users/confirm/:userId', checkHeader, async (req: Request, res: Response) => {
     const { userId } = req.params;
 
     if(!await userDoc.findById(userId)){
