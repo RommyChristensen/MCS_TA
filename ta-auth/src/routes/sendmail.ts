@@ -31,6 +31,7 @@ const rToken = "1//04BL4wHrSxLthCgYIARAAGAQSNwF-L9IrLgEdGB0vhaoXVoVDr4hOJl8u7oHP
 const aToken = "ya29.a0ARrdaM9gkFoeHDHXJ0wtu4uCoLTDhXUd9847GHt4Z-iWGKbpDLoII5-DadI1r9UnTWxHQ4mteHejkrs0Ysw5GHZ53IdRKd8Extf17FbSCTPGsbz-muUhVj0h_KOLMPZBaWqreb68O7VmMK2dUJuI-TtEN-C4Xw";
 const userMail = "ta.vrilance3@gmail.com";
 
+
 router.post('/api/auth/sendverification', 
 validateHeader,
 async (req: Request, res: Response) => {
