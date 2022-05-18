@@ -31,36 +31,16 @@ async (req: Request, res: Response) => {
     const addresses = completed.map(u => {
         return u.auth_address;
     });
-    
-    console.log(completed.length);
-    console.log(addresses.length);
-
-    console.log(completed);
-    console.log(addresses);
-
-    let idxOrigin = 0;
-    // console.log("completed");
-    // console.log(completed);
-    // console.log(addresses, users);
 
     addresses.forEach((a, i) => {
         destinations += "place_id:" + a + (i != addresses.length - 1 ? "|" : "");
     });
-
-    // addresses.splice(idxOrigin, 1);
-    // users.splice(idxOrigin, 1);
-    
-    // console.log(destinations);
-    // console.log(addresses, users);
 
     let url = `https://maps.googleapis.com/maps/api/distancematrix/json?origins=${origins}&destinations=${destinations}&key=${key}`;
 
     console.log(url);
 
     let response = await axios.get(url);
-
-    // console.log(url);
-    // console.log(response.data);
 
     const resMap = response.data.rows[0].elements.map((e: any, i: number) => {
         let d = e;
@@ -69,8 +49,6 @@ async (req: Request, res: Response) => {
         d["place_id"] = addresses[i];
         return d;
     });
-
-    console.log(resMap);
 
     return res.send({elements: response.data.rows[0].elements, resMap});
 });
