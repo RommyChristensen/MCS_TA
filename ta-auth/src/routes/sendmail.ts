@@ -28,7 +28,7 @@ const generateToken = () => {
 }
 
 const rToken = "1//04BL4wHrSxLthCgYIARAAGAQSNwF-L9IrLgEdGB0vhaoXVoVDr4hOJl8u7oHPud6W_AEP28ovQ_KY0MNNY9ollpf6b8p6gJ1EU94";
-const aToken = "ya29.a0ARrdaM9Z1DZL67-LJHXnT_XwLEhgo3kOVZBUszbqfvBAUIxRg1uTEdxZH5nX5l3eZ-HJoP6uBcEQEWlVuTjEsf1MLUJCiq-5gp6t3BDMZIVUHfcopAgV73qqUKw8NKOWBzYTs8m9wsQ_Yn7QBpj9Ayn49j-0Kg";
+const aToken = "ya29.a0ARrdaM9gkFoeHDHXJ0wtu4uCoLTDhXUd9847GHt4Z-iWGKbpDLoII5-DadI1r9UnTWxHQ4mteHejkrs0Ysw5GHZ53IdRKd8Extf17FbSCTPGsbz-muUhVj0h_KOLMPZBaWqreb68O7VmMK2dUJuI-TtEN-C4Xw";
 const userMail = "ta.vrilance3@gmail.com";
 
 router.post('/api/auth/sendverification', 
