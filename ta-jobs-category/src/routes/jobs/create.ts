@@ -12,7 +12,7 @@ const router = express.Router();
 router.post('/api/jobscat/job', 
 body('title').notEmpty().withMessage('Title is Required'),
 body('description').notEmpty().withMessage('Description is Required'),
-body('description').isLength({ min: 100 }).withMessage('Please describe more than 100 characters'),
+body('description').isLength({ min: 50 }).withMessage('Please describe more than 100 characters'),
 body('date').notEmpty().withMessage('Date is required'),
 body('date').custom(val => {
     let enteredDate = new Date(val);
