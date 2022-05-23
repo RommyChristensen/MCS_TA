@@ -72,4 +72,23 @@ router.post('/api/auth/signup', [
     res.status(201).send({ _token });
 });
 
+router.post('/api/auth/testcreate', async (req, res) => {
+    // EMIT USER CREATED EVENT
+    new UserCreatedPublisher(natsWrapper.client).publish({
+        id: "test",
+        auth_firstname: "test",
+        auth_lastname: "test",
+        auth_email: "test",
+        auth_username: "test",
+        auth_password: "test",
+        auth_verified: false,
+        auth_confirmed: false,
+        auth_role: "test",
+        _v: 0
+    })
+    // END EMIT USER CREATED EVENT
+
+    res.status(201).send({ message: "crash created"});
+});
+
 export { router as signUpRouter };
