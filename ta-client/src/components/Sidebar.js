@@ -64,7 +64,7 @@ export const mainListItems = (
       </ListItemIcon>
       <ListItemText primary="Reports" />
     </ListItem>
-    <Link to="/admin" style={linkStyle}>
+    <Link to="/report" style={linkStyle}>
       <ListItem button onClick={() => deleteStorage()}>
         <ListItemIcon>
           <LogoutIcon />

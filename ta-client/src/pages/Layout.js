@@ -29,6 +29,7 @@ import UserDetail from './UserDetail';
 import Categories from './category/Categories';
 import CategoryCreate from './category/CategoryCreate';
 import JobDetail from './jobs/JodDetail';
+import Report from './report/Report';
 
 const Layout = () => {
     const [open, setOpen] = React.useState(true);
@@ -102,6 +103,7 @@ const Layout = () => {
                         <Route path="/users" element={<Users />} />
                         <Route path="/jobs" element={<Jobs />} />
                         <Route path="/dashboard" element={<Dashboard />} />
+                        <Route path="/report" element={<Report />} />
                         <Route path="/user-detail" element={<UserDetail />} />
                         <Route path="/category" element={<Categories />} />
                         <Route path="/category/create" element={<CategoryCreate />} />
