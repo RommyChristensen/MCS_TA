@@ -17,7 +17,7 @@ import { orderGetRouter } from './routes/get';
 import { orderOnLocationRouter } from './routes/onlocation';
 import { orderOnprogressRouter } from './routes/onprogress';
 import { getDistancePlacesRouter } from './routes/distance';
-// import { orderReportRouter } from './routes/report';
+import { orderReportRouter } from './routes/report';
 
 // END IMPORT ROUTERS
 
@@ -46,7 +46,7 @@ app.use(orderGetRouter);
 app.use(orderOnLocationRouter);
 app.use(getDistancePlacesRouter);
 app.use(orderOnprogressRouter);
-// app.use(orderReportRouter);
+app.use(orderReportRouter);
 
 // END USE ROUTERS
 
