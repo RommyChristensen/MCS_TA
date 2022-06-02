@@ -148,19 +148,19 @@ const update = async (orderId: string, price: number) => {
     return updatedOrder;
 }
 
-// const getByMonth = async (month: number) => {
-//     const repo = await getRepository(Order);
-//     const order = await repo.find();
+const getByMonth = async (month: number) => {
+    const repo = await getRepository(Order);
+    const order = await repo.find();
 
-//     const filtered = order.filter(o => {
-//         const date = new Date(o.order_created_at);
-//         const m = date.getMonth();
+    const filtered = order.filter(o => {
+        const date = new Date(o.order_created_at);
+        const m = date.getMonth();
 
-//         return m === month;
-//     });
+        return m === month;
+    });
 
-//     return filtered;
-// }
+    return filtered;
+}
 
 // --------------------- End custom functions ------------------------------ //
 
@@ -178,7 +178,7 @@ class OrderDoc {
     getWorkerType2: (workerId: string) => Promise<Order[]>;
     getType2: () => Promise<Order[]>;
     getType1: () => Promise<Order[]>;
-    // getByMonth: (month: number) => Promise<Order[]>;
+    getByMonth: (month: number) => Promise<Order[]>;
 }
 
 // declare functions
@@ -194,6 +194,6 @@ orderDoc.update = update;
 orderDoc.getWorkerType2 = getWorkerType2;
 orderDoc.getType2 = getType2;
 orderDoc.getType1 = getType1;
-// orderDoc.getByMonth = getByMonth;
+orderDoc.getByMonth = getByMonth;
 
 export default orderDoc;
