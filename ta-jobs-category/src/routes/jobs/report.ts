@@ -7,7 +7,7 @@ import { natsWrapper } from "../../nats-wrapper";
 
 const router = express.Router();
 
-router.delete('/api/jobscat/job', 
+router.get('/api/jobscat/admin/reportjob', 
 body('month').notEmpty().withMessage('Month is Required'),
 validateHeader, 
 validateRequest,
