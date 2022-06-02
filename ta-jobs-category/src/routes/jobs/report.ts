@@ -20,7 +20,7 @@ async (req: Request, res: Response) => {
     return res.send(jobByMonth);
 });
 
-router.get('/api/jobcat/admin/reportcategory', async (req: Request, res: Response) => {
+router.get('/api/jobscat/admin/reportcategory', async (req: Request, res: Response) => {
     const cat = await categoryDoc.getAll();
 
     await Promise.all(cat.map(async (c) => {
