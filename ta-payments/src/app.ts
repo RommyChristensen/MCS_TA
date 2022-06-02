@@ -12,6 +12,7 @@ import { getRouter } from './routes/get';
 import { payRouter } from './routes/pay';
 import { completePaymentDataRouter } from './routes/complete';
 import { withdrawRouter } from './routes/withdraw';
+import { reportUserRouter } from './routes/report';
 
 // END IMPORT ROUTERS
 
@@ -35,6 +36,7 @@ app.use(getRouter);
 app.use(payRouter);
 app.use(completePaymentDataRouter);
 app.use(withdrawRouter);
+app.use(reportUserRouter);
 
 // END USE ROUTERS
 

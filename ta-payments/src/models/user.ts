@@ -210,6 +210,13 @@ const getPaymentData = async (userId: string) => {
     } as DetailPaymentData;
 }
 
+const getBySaldo = async () => {
+    const repo = await getRepository(User);
+    const user = await repo.orderByDescending('auth_saldo').find();
+
+    return user;
+}
+
 
 // --------------------- End custom functions ------------------------------ //
 
@@ -228,6 +235,7 @@ class UserDoc {
     updateOrderHistory: (orderId: string, userId: string) => Promise<User>;
     updatePaymentData: (userId: string, card_name: string, card_number: string, bank: string) => Promise<User>;
     getPaymentData: (userId: string) => Promise<DetailPaymentData>;
+    getBySaldo: () => Promise<User[]>;
 }
 
 // declare functions
@@ -245,5 +253,6 @@ userDoc.addOrderHistory = addOrderHistory;
 userDoc.updateOrderHistory = updateOrderHistory;
 userDoc.updatePaymentData = updatePaymentData;
 userDoc.getPaymentData = getPaymentData;
+userDoc.getBySaldo = getBySaldo;
 
 export default userDoc;
