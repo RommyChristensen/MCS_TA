@@ -121,6 +121,20 @@ const updateStatusJob = async (jobId: string, status: JobStatus) => {
     return updatedJob;
 }
 
+const getByMonth = async (month: number) => {
+    const repo = await getRepository(Job);
+    const job = await repo.find();
+
+    const filtered = job.filter(j => {
+        const date = new Date(j.job_created_at);
+        const m = date.getMonth();
+
+        return m === month;
+    });
+
+    return filtered;
+}
+
 // --------------------- End custom functions ------------------------------ //
 
 // make class JobDoc singleton
@@ -133,6 +147,7 @@ class JobDoc {
     deleteById: (jobId: string) => Promise<false | Job>;
     updateJob: (jobId: string, title: string, description: string, price: number, date: Date) => Promise<Job>;
     updateStatusJob: (jobId: string, status: JobStatus) => Promise<Job>;
+    getByMonth: (month: number) => Promise<Job[]>;
 }
 
 // declare functions
@@ -145,5 +160,6 @@ jobDoc.deleteAll = deleteAll;
 jobDoc.deleteById = deleteById;
 jobDoc.updateJob = updateJob;
 jobDoc.updateStatusJob = updateStatusJob;
+jobDoc.getByMonth = getByMonth;
 
 export default jobDoc;

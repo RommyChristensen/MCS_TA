@@ -16,6 +16,7 @@ import { createCategoryRouter } from './routes/category/create';
 import { updateCategoryRouter } from './routes/category/update';
 import { deleteCategoryRouter } from './routes/category/delete';
 import { addPreferredCategoryRouter } from './routes/category/add-preferred-category';
+import { reportJobRouter } from './routes/jobs/report';
 
 // END IMPORT ROUTERS
 
@@ -43,6 +44,7 @@ app.use(createCategoryRouter);
 app.use(updateCategoryRouter);
 app.use(deleteCategoryRouter);
 app.use(addPreferredCategoryRouter);
+app.use(reportJobRouter);
 
 // END USE ROUTERS
 
