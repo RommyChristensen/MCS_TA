@@ -21,6 +21,7 @@ import { OrderAutoCancelledListener } from './events/listeners/order-auto-cancel
 import { OrderPaidListener } from './events/listeners/order-paid-listener';
 import { OrderPaidPendingListener } from './events/listeners/order-paid-pending-listener';
 import { UserChangeProfileListener } from './events/listeners/user-change-profile-listener';
+
 const start = async () => {
     console.log("starting orders service.....");
     // ENV VARIABLES
