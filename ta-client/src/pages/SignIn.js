@@ -36,6 +36,7 @@ export default function SignIn() {
         navigate('/admin/dashboard');
       }
     }catch(error){
+      console.log(error);
       Swal.fire({
         title: "Login",
         text: error.response.data.errors[0].message,

@@ -14,7 +14,6 @@
     "@testing-library/user-event": "^12.8.3",
     "axios": "^0.24.0",
     "chart.js": "^3.8.0",
-    "cors": "^2.8.5",
     "encrypt-storage": "^2.2.3",
     "react": "^17.0.2",
     "react-chartjs-2": "^4.1.0",
@@ -29,7 +28,8 @@
     "start": "react-scripts --openssl-legacy-provider start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "dev": "react-scripts start"
   },
   "eslintConfig": {
     "extends": [

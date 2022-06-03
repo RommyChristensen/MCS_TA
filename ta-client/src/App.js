@@ -7,8 +7,6 @@ import {
 import SignIn from './pages/SignIn';
 import Layout from './pages/Layout';
 import Authenticate from './components/Authenticate';
-// import Dashboard from './pages/Dashboard';
-// import Users from './pages/Users';
 
 function App() {
   console.log("app client...");
