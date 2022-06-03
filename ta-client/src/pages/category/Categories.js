@@ -8,11 +8,32 @@ import Swal from 'sweetalert2';
 import { Link } from 'react-router-dom';
 import { useNavigate } from 'react-router';
 
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
+
 const Categories = () => {
     const [categories, setCategories] = useState([]);
     const [catReport, setCatReport] = useState([]);
     const [rows, setRows] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [reportLoading, setReportLoading] = useState(true);
     const value = encryptStorage.getItem('admin-session-key');
     const navigate = useNavigate();
 
@@ -35,6 +56,33 @@ const Categories = () => {
                 }))
                 setLoading(false);
                 setCategories(data);
+            }
+        })
+        
+        return () => {
+            componentMounted = false;
+        }
+    }, []);
+
+    useEffect(() => {
+        let componentMounted = true;
+        fetch('/api/jobscat/admin/reportcategory', {
+            headers: {
+                'x-auth-token': value
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(componentMounted){
+                setRows(data.map(c => {
+                    return {
+                        id: c.category_id,
+                        category_name: c.category_name,
+                        value: c.number
+                    }
+                }))
+                setReportLoading(false);
+                setCatReport(data);
             }
         })
         
@@ -172,20 +220,37 @@ const Categories = () => {
                 </div>
             </mui.Grid>
         </mui.Container>
-        <mui.Box sx={{ m: 2 }} />
-        <mui.FormControl fullWidth>
-            <mui.InputLabel id="demo-simple-select-label">Age</mui.InputLabel>
-            <mui.Select
-                labelId="demo-simple-select-label"
-                id="demo-simple-select"
-                value=""
-                label="Age"
-            >
-                <mui.MenuItem value={10}>Ten</mui.MenuItem>
-                <mui.MenuItem value={20}>Twenty</mui.MenuItem>
-                <mui.MenuItem value={30}>Thirty</mui.MenuItem>
-            </mui.Select>
-            </mui.FormControl>
+        <mui.Box sx={{ m: 4 }} />
+        <mui.Container sx={{
+            backgroundColor: (theme) =>
+                theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
+                padding: 4
+                }}>
+            <mui.Grid>
+                <mui.Typography fontWeight={500} variant="h5">Most Popular Category</mui.Typography>
+            </mui.Grid>
+            <mui.Grid mt={4}>
+                {
+                    !reportLoading ? 
+                    <Bar 
+                        width={400}
+                        height={300}
+                        data={
+                            {
+                                labels: catReport.map(c => c.category_name),
+                                datasets: catReport.map(c => {
+                                    return {
+                                        label: c.category_name,
+                                        data: parseInt(c.value),
+                                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                    }
+                                })
+                            }
+                        }
+                    /> : "Loading..."
+                }
+            </mui.Grid>
+        </mui.Container>
         </>
     )
 }
