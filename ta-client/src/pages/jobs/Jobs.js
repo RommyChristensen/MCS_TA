@@ -55,7 +55,7 @@ const Jobs = () => {
             const data = res.data;
             const labels = [];
             data.forEach(d => {
-                if(labels.includes(d.category.category_name) == false) labels.push(d.category_name);
+                if(!labels.includes(d.category.category_name)) labels.push(d.category_name);
             });
 
             setJobReport({
@@ -234,7 +234,10 @@ const Jobs = () => {
                                 height={300}
                                 data={
                                     {
-                                        labels: jobReport.labels
+                                        labels: jobReport.labels,
+                                        data: 
+                                        jobReport.labels.map(l => 1),
+                                        backgroundColor: 'rgba(255, 99, 132, 0.5)',
                                     }
                                 }
                             /> 
