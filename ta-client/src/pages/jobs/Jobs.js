@@ -54,12 +54,20 @@ const Jobs = () => {
 
             const data = res.data;
             const labels = [];
+            const values = [];
             data.forEach(d => {
                 if(!labels.includes(d.job_category.category_name)) labels.push(d.job_category.category_name);
             });
 
+            data.forEach(d => {
+                let idx = labels.findIndex(d.job_category.category_name);
+                if(values[idx]) values[idx]++;
+                else values[idx] = 1;
+            })
+
             setJobReport({
-                labels: labels
+                labels: labels,
+                data: values
             })
 
             setReportLoading(false);
@@ -237,8 +245,8 @@ const Jobs = () => {
                                         labels: jobReport.labels,
                                         datasets: [
                                             {
-                                                label: "number",
-                                                data: jobReport.labels.map(l => 1),
+                                                label: "Number of Jobs",
+                                                data: jobReport.data,
                                                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                                             }
                                         ]
