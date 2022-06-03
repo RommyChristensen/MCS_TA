@@ -18,7 +18,7 @@ const Jobs = () => {
     const value = encryptStorage.getItem('admin-session-key');
 
     const handleMonthChange = async (event) => {
-        let data = {
+        let d = {
             month: event.target.value
         }
         let axiosConfig = {
