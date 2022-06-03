@@ -9,7 +9,7 @@ import { natsWrapper } from "../../nats-wrapper";
 
 const router = express.Router();
 
-router.get('/api/jobscat/admin/reportjob', 
+router.post('/api/jobscat/admin/reportjob', 
 body('month').notEmpty().withMessage('Month is Required'),
 validateHeader, 
 validateRequest,

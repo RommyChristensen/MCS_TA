@@ -24,11 +24,10 @@ const Jobs = () => {
         let axiosConfig = {
             headers: {
                 'x-auth-token': value
-            },
-            data: d
+            }
         }
         setReportLoading(true);
-        const res = await axios.get('/api/jobscat/admin/reportjob', axiosConfig);
+        const res = await axios.post('/api/jobscat/admin/reportjob', d, axiosConfig);
 
         console.log(res.data);
 
