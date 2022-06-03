@@ -55,7 +55,7 @@ const Jobs = () => {
             const data = res.data;
             const labels = [];
             data.forEach(d => {
-                if(!labels.includes(d.category.category_name)) labels.push(d.category_name);
+                if(!labels.includes(d.job_category.category_name)) labels.push(d.job_category.category_name);
             });
 
             setJobReport({
