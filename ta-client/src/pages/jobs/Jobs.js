@@ -79,6 +79,7 @@ const Jobs = () => {
             setReportLoading(false);
             setSelectedMonth(event.target.value);
         }catch(ex){
+            console.log(ex);
             setReportLoading(false);
             setSelectedMonth(event.target.value);
         }
