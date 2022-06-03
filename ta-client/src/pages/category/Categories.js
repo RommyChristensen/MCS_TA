@@ -10,6 +10,7 @@ import { useNavigate } from 'react-router';
 
 const Categories = () => {
     const [categories, setCategories] = useState([]);
+    const [catReport, setCatReport] = useState([]);
     const [rows, setRows] = useState([]);
     const [loading, setLoading] = useState(true);
     const value = encryptStorage.getItem('admin-session-key');
@@ -144,6 +145,7 @@ const Categories = () => {
     ];
 
     return (
+        <>
         <mui.Container sx={{
             backgroundColor: (theme) =>
                 theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
@@ -170,6 +172,21 @@ const Categories = () => {
                 </div>
             </mui.Grid>
         </mui.Container>
+        <mui.Box sx={{ m: 2 }} />
+        <mui.FormControl fullWidth>
+            <mui.InputLabel id="demo-simple-select-label">Age</mui.InputLabel>
+            <mui.Select
+                labelId="demo-simple-select-label"
+                id="demo-simple-select"
+                value=""
+                label="Age"
+            >
+                <mui.MenuItem value={10}>Ten</mui.MenuItem>
+                <mui.MenuItem value={20}>Twenty</mui.MenuItem>
+                <mui.MenuItem value={30}>Thirty</mui.MenuItem>
+            </mui.Select>
+            </mui.FormControl>
+        </>
     )
 }
 
