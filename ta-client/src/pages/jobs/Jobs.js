@@ -20,7 +20,7 @@ const Jobs = () => {
     const handleMonthChange = async (event) => {
         let axiosConfig = {
             headers: {
-                'x-auth-token': encryptStorage.getItem('admin-session-key')
+                'x-auth-token': value
             },
         }
         let data = {
