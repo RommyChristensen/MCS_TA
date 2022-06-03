@@ -238,7 +238,7 @@ const Jobs = () => {
                                         datasets: [
                                             {
                                                 label: "number",
-                                                data: [jobReport.labels.map(l => 1)],
+                                                data: jobReport.labels.map(l => 1),
                                                 backgroundColor: 'rgba(255, 99, 132, 0.5)',
                                             }
                                         ]
