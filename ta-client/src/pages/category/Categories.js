@@ -237,13 +237,14 @@ const Categories = () => {
                         data={
                             {
                                 labels: catReport.map(c => c.category_name),
-                                datasets: catReport.map(c => {
-                                    return {
-                                        label: c.category_name,
-                                        data: [parseInt(c.value)],
+                                datasets: [
+                                    {
+                                        label: "Number of Worker",
+                                        data: 
+                                        catReport.map(c => c.value),
                                         backgroundColor: 'rgba(255, 99, 132, 0.5)',
                                     }
-                                })
+                                ]
                             }
                         }
                     /> : "Loading..."
