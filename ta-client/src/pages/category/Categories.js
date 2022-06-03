@@ -74,15 +74,14 @@ const Categories = () => {
         .then(res => res.json())
         .then(data => {
             if(componentMounted){
-                setRows(data.map(c => {
+                setReportLoading(false);
+                setCatReport(data.map(c => {
                     return {
                         id: c.category_id,
                         category_name: c.category_name,
                         value: c.number
                     }
-                }))
-                setReportLoading(false);
-                setCatReport(data);
+                }));
             }
         })
         
@@ -241,7 +240,7 @@ const Categories = () => {
                                 datasets: catReport.map(c => {
                                     return {
                                         label: c.category_name,
-                                        data: parseInt(c.number),
+                                        data: parseInt(c.value),
                                         backgroundColor: 'rgba(255, 99, 132, 0.5)',
                                     }
                                 })
