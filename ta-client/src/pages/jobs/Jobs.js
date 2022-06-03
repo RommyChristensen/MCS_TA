@@ -6,10 +6,32 @@ import encryptStorage from '../../services/Storage';
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
+
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     const [rows, setRows] = useState([]);
-    const [jobReport, setJobReport] = useState([]);
+    const [jobReport, setJobReport] = useState({
+        labels: []
+    });
     const [reportLoading, setReportLoading] = useState(false);
     const [selectedMonth, setSelectedMonth] = useState('');
     const [loading, setLoading] = useState(true);
@@ -29,6 +51,17 @@ const Jobs = () => {
         setReportLoading(true);
         try{
             const res = await axios.post('/api/jobscat/admin/reportjob', d, axiosConfig);
+
+            const data = res.data;
+            const labels = [];
+            data.forEach(d => {
+                if(labels.includes(d.category.category_name) == false) labels.push(d.category_name);
+            });
+
+            setJobReport({
+                labels: labels
+            })
+
             setReportLoading(false);
             setSelectedMonth(event.target.value);
         }catch(ex){
@@ -170,29 +203,43 @@ const Jobs = () => {
                 </mui.Grid>
                 <mui.Grid mt={4}>
                     {
-                        !reportLoading ? <mui.FormControl fullWidth>
-                        <mui.InputLabel id="select-month">Month</mui.InputLabel>
-                        <mui.Select
-                            labelId="select-month"
-                            id="select-month-component"
-                            value={selectedMonth}
-                            label="Month"
-                            onChange={handleMonthChange}
-                        >
-                            <mui.MenuItem value={0}>January</mui.MenuItem>
-                            <mui.MenuItem value={1}>February</mui.MenuItem>
-                            <mui.MenuItem value={2}>March</mui.MenuItem>
-                            <mui.MenuItem value={3}>April</mui.MenuItem>
-                            <mui.MenuItem value={4}>May</mui.MenuItem>
-                            <mui.MenuItem value={5}>June</mui.MenuItem>
-                            <mui.MenuItem value={6}>July</mui.MenuItem>
-                            <mui.MenuItem value={7}>August</mui.MenuItem>
-                            <mui.MenuItem value={8}>September</mui.MenuItem>
-                            <mui.MenuItem value={9}>October</mui.MenuItem>
-                            <mui.MenuItem value={10}>November</mui.MenuItem>
-                            <mui.MenuItem value={11}>December</mui.MenuItem>
-                        </mui.Select>
-                    </mui.FormControl> : "Loading..."
+                        !reportLoading ? 
+                        <>
+                            <mui.FormControl fullWidth>
+                                <mui.InputLabel id="select-month">Month</mui.InputLabel>
+                                <mui.Select
+                                    labelId="select-month"
+                                    id="select-month-component"
+                                    value={selectedMonth}
+                                    label="Month"
+                                    onChange={handleMonthChange}
+                                >
+                                    <mui.MenuItem value={0}>January</mui.MenuItem>
+                                    <mui.MenuItem value={1}>February</mui.MenuItem>
+                                    <mui.MenuItem value={2}>March</mui.MenuItem>
+                                    <mui.MenuItem value={3}>April</mui.MenuItem>
+                                    <mui.MenuItem value={4}>May</mui.MenuItem>
+                                    <mui.MenuItem value={5}>June</mui.MenuItem>
+                                    <mui.MenuItem value={6}>July</mui.MenuItem>
+                                    <mui.MenuItem value={7}>August</mui.MenuItem>
+                                    <mui.MenuItem value={8}>September</mui.MenuItem>
+                                    <mui.MenuItem value={9}>October</mui.MenuItem>
+                                    <mui.MenuItem value={10}>November</mui.MenuItem>
+                                    <mui.MenuItem value={11}>December</mui.MenuItem>
+                                </mui.Select>
+                            </mui.FormControl>
+
+                            <Bar 
+                                width={400}
+                                height={300}
+                                data={
+                                    {
+                                        labels: jobReport.labels
+                                    }
+                                }
+                            /> 
+                        </> 
+                        : "Loading..."
                     }
                 </mui.Grid>
             </mui.Container>
