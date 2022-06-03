@@ -30,7 +30,8 @@ const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     const [rows, setRows] = useState([]);
     const [jobReport, setJobReport] = useState({
-        labels: []
+        labels: [],
+        values: []
     });
     const [reportLoading, setReportLoading] = useState(false);
     const [selectedMonth, setSelectedMonth] = useState('');
@@ -63,7 +64,7 @@ const Jobs = () => {
             });
 
             data.forEach(d => {
-                let idx = labels.findIndex(d.job_category.category_name);
+                let idx = labels.indexOf(d.job_category.category_name);
                 values[idx]++;
             })
             
