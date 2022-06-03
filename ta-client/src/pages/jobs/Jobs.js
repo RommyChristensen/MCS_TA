@@ -18,16 +18,17 @@ const Jobs = () => {
     const value = encryptStorage.getItem('admin-session-key');
 
     const handleMonthChange = async (event) => {
+        let data = {
+            month: event.target.value
+        }
         let axiosConfig = {
             headers: {
                 'x-auth-token': value
             },
-        }
-        let data = {
-            month: event.target.value
+            data: d
         }
         setReportLoading(true);
-        const res = await axios.get('/api/jobscat/admin/reportjob', data, axiosConfig);
+        const res = await axios.get('/api/jobscat/admin/reportjob', axiosConfig);
 
         console.log(res.data);
 
