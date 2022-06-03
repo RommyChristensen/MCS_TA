@@ -4,19 +4,34 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useState, useEffect } from 'react';
 import encryptStorage from '../../services/Storage';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     const [rows, setRows] = useState([]);
     const [jobReport, setJobReport] = useState([]);
-    const [reportLoading, setReportLoading] = useState(true);
+    const [reportLoading, setReportLoading] = useState(false);
     const [selectedMonth, setSelectedMonth] = useState('');
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     const value = encryptStorage.getItem('admin-session-key');
 
-    const handleMonthChange = (event) => {
+    const handleMonthChange = async (event) => {
+        let axiosConfig = {
+            headers: {
+                'x-auth-token': encryptStorage.getItem('admin-session-key')
+            },
+        }
+        let data = {
+            month: event.target.value
+        }
+        setReportLoading(true);
+        const res = await axios.get('/api/jobscat/admin/reportjob', data, axiosConfig);
+
+        console.log(res.data);
+
+        setReportLoading(false);
         setSelectedMonth(event.target.value);
       };
     
@@ -152,7 +167,8 @@ const Jobs = () => {
                     <mui.Typography fontWeight={500} variant="h5">Job Report</mui.Typography>
                 </mui.Grid>
                 <mui.Grid mt={4}>
-                    <mui.FormControl fullWidth>
+                    {
+                        !reportLoading ? <mui.FormControl fullWidth>
                         <mui.InputLabel id="select-month">Month</mui.InputLabel>
                         <mui.Select
                             labelId="select-month"
@@ -174,7 +190,8 @@ const Jobs = () => {
                             <mui.MenuItem value={11}>November</mui.MenuItem>
                             <mui.MenuItem value={12}>December</mui.MenuItem>
                         </mui.Select>
-                    </mui.FormControl>
+                    </mui.FormControl> : "Loading..."
+                    }
                 </mui.Grid>
             </mui.Container>
         </>
