@@ -58,13 +58,15 @@ export const mainListItems = (
         <ListItemText primary="Jobs" />
       </ListItem>
     </Link>
-    <ListItem button>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
-    </ListItem>
     <Link to="/admin/report" style={linkStyle}>
+      <ListItem button>
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        <ListItemText primary="Reports" />
+      </ListItem>
+    </Link>
+    <Link to="/admin" style={linkStyle}>
       <ListItem button onClick={() => deleteStorage()}>
         <ListItemIcon>
           <LogoutIcon />

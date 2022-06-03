@@ -241,7 +241,7 @@ const Categories = () => {
                                 datasets: catReport.map(c => {
                                     return {
                                         label: c.category_name,
-                                        data: parseInt(c.value),
+                                        data: parseInt(c.number),
                                         backgroundColor: 'rgba(255, 99, 132, 0.5)',
                                     }
                                 })
