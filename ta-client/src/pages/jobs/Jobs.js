@@ -8,10 +8,18 @@ import { useNavigate } from 'react-router';
 const Jobs = () => {
     const [jobs, setJobs] = useState([]);
     const [rows, setRows] = useState([]);
+    const [jobReport, setJobReport] = useState([]);
+    const [reportLoading, setReportLoading] = useState(true);
+    const [selectedMonth, setSelectedMonth] = useState('');
     const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
 
     const value = encryptStorage.getItem('admin-session-key');
+
+    const handleMonthChange = (event) => {
+        setSelectedMonth(event.target.value);
+      };
+    
 
     useEffect(() => {
         let componentMounted = true;
@@ -111,28 +119,65 @@ const Jobs = () => {
     ];
 
     return (
-        <mui.Container sx={{
-            backgroundColor: (theme) =>
-                theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
-                padding: 4
-                }}>
-            <mui.Grid>
-                <mui.Typography fontWeight={500} variant="h5">Jobs Page</mui.Typography>
-            </mui.Grid>
+        <>
+            <mui.Container sx={{
+                backgroundColor: (theme) =>
+                    theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
+                    padding: 4
+                    }}>
+                <mui.Grid>
+                    <mui.Typography fontWeight={500} variant="h5">Jobs Page</mui.Typography>
+                </mui.Grid>
 
-            <mui.Grid mt={4}>
-                <div style={{ height: 400, width: '100%' }}>
-                    <DataGrid
-                        rows={rows}
-                        columns={columns}
-                        loading={loading}
-                        pageSize={5}
-                        rowsPerPageOptions={[5]}
-                        checkboxSelection
-                    />
-                </div>
-            </mui.Grid>
-        </mui.Container>
+                <mui.Grid mt={4}>
+                    <div style={{ height: 400, width: '100%' }}>
+                        <DataGrid
+                            rows={rows}
+                            columns={columns}
+                            loading={loading}
+                            pageSize={5}
+                            rowsPerPageOptions={[5]}
+                            checkboxSelection
+                        />
+                    </div>
+                </mui.Grid>
+            </mui.Container>
+            <mui.Box sx={{ m: 4 }} />
+            <mui.Container sx={{
+                backgroundColor: (theme) =>
+                    theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
+                    padding: 4
+                    }}>
+                <mui.Grid>
+                    <mui.Typography fontWeight={500} variant="h5">Job Report</mui.Typography>
+                </mui.Grid>
+                <mui.Grid mt={4}>
+                    <mui.FormControl fullWidth>
+                        <mui.InputLabel id="select-month">Month</mui.InputLabel>
+                        <mui.Select
+                            labelId="select-month"
+                            id="select-month-component"
+                            value={selectedMonth}
+                            label="Month"
+                            onChange={handleMonthChange}
+                        >
+                            <mui.MenuItem value={1}>January</mui.MenuItem>
+                            <mui.MenuItem value={2}>February</mui.MenuItem>
+                            <mui.MenuItem value={3}>March</mui.MenuItem>
+                            <mui.MenuItem value={4}>April</mui.MenuItem>
+                            <mui.MenuItem value={5}>May</mui.MenuItem>
+                            <mui.MenuItem value={6}>June</mui.MenuItem>
+                            <mui.MenuItem value={7}>July</mui.MenuItem>
+                            <mui.MenuItem value={8}>August</mui.MenuItem>
+                            <mui.MenuItem value={9}>September</mui.MenuItem>
+                            <mui.MenuItem value={10}>October</mui.MenuItem>
+                            <mui.MenuItem value={11}>November</mui.MenuItem>
+                            <mui.MenuItem value={12}>December</mui.MenuItem>
+                        </mui.Select>
+                    </mui.FormControl>
+                </mui.Grid>
+            </mui.Container>
+        </>
     )
 }
 
