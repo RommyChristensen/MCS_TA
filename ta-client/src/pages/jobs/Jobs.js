@@ -56,14 +56,19 @@ const Jobs = () => {
             const labels = [];
             const values = [];
             data.forEach(d => {
-                if(!labels.includes(d.job_category.category_name)) labels.push(d.job_category.category_name);
+                if(!labels.includes(d.job_category.category_name)) {
+                    labels.push(d.job_category.category_name);
+                    values.push(0);
+                };
             });
 
             data.forEach(d => {
                 let idx = labels.findIndex(d.job_category.category_name);
-                if(values[idx]) values[idx]++;
-                else values[idx] = 1;
+                values[idx]++;
             })
+            
+            console.log(labels);
+            console.log(values);
 
             setJobReport({
                 labels: labels,
