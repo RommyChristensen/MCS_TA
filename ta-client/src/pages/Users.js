@@ -31,6 +31,8 @@ const Users = () => {
     const [users, setUsers] = useState([]);
     const [rows, setRows] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [loadingReportSaldo, setLoadingReportSaldo] = useState(true);
+    const [reportSaldo, setReportSaldo] = useState([]);
     const value = encryptStorage.getItem('admin-session-key');
 
     useEffect(() => {
@@ -57,6 +59,41 @@ const Users = () => {
                 setUsers(userData);
                 setRows(userRow);
                 setLoading(false);
+            }
+        });
+
+        return () => {
+            componentMounted = false;
+        }
+    }, []);
+
+    useEffect(() => {
+        let componentMounted = true;
+        fetch('/api/payments/admin/reportuser', {
+            headers: {
+                'x-auth-token': value
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            const userData = [];
+            data.forEach(d => {
+                if(d.auth_saldo != 0) {
+                    userData.push(
+                        {
+                            id: d.id,
+                            name: d.auth_firstname + " " + d.auth_lastname,
+                            saldo: d.auth_saldo
+                        }
+                    )
+                }
+            })
+
+            console.log(userData);
+
+            if(componentMounted){
+                setReportSaldo(userData.reverse());
+                setLoadingReportSaldo(false);
             }
         });
 
