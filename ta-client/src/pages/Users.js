@@ -1,6 +1,5 @@
 import * as mui from '@mui/material';
 import { DataGrid } from '@mui/x-data-grid';
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import encryptStorage from '../services/Storage';
 import VisibilityIcon from '@mui/icons-material/Visibility';
@@ -8,7 +7,7 @@ import { useNavigate } from 'react-router';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
-import { FixedSizeList } from 'react-window';
+import { List } from '@mui/material';
 
 import {
     Chart as ChartJS,
@@ -198,11 +197,10 @@ const Users = () => {
                 <mui.Grid container spacing={2}>
                     <mui.Grid item xs={6}>
                         <mui.Typography fontWeight={500} variant="h5">User With Most Balance</mui.Typography>
-                        <FixedSizeList
-                            height={100}
-                            itemSize={46}
-                            itemCount={reportSaldo.length}
-                        >
+                        <List
+                            sx={{ width: '100%', maxWidth: 360, maxHeight: 360, bgcolor: 'background.paper' }}
+                            aria-label="contacts"
+                            >
                             {
                                 reportSaldo.map((r, i) => {
                                     return <ListItem key={i} component="div">
@@ -212,7 +210,7 @@ const Users = () => {
                                     </ListItem>;
                                 })
                             }
-                        </FixedSizeList>
+                        </List>
                     </mui.Grid>
                     <mui.Grid item xs={6}>
                         <mui.Typography fontWeight={500} variant="h5">User With Most Stars</mui.Typography>
