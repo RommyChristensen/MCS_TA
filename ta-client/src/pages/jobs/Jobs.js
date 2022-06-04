@@ -245,7 +245,7 @@ const Jobs = () => {
                             </mui.FormControl>
 
                             <Bar 
-                                width={400}
+                                width={300}
                                 height={300}
                                 data={
                                     {
