@@ -191,29 +191,27 @@ const Users = () => {
                     theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
                     padding: 4
                     }}>
-                <mui.Grid>
-                    <mui.Typography fontWeight={500} variant="h5">User Report</mui.Typography>
-                </mui.Grid>
                 <mui.Grid container spacing={2}>
                     <mui.Grid item xs={6}>
-                        <mui.Typography fontWeight={500} variant="h3">User With Most Balance</mui.Typography>
-                        <Bar 
-                            data={
-                                {
-                                    labels: ["a", "b"],
-                                    datasets: [
-                                        {
-                                            label: "Number",
-                                            data: [1, 2],
-                                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
-                                        }
-                                    ]
-                                }
+                        <mui.Typography fontWeight={500} variant="h5">User With Most Balance</mui.Typography>
+                        <FixedSizeList
+                            height={100}
+                            itemSize={46}
+                            itemCount={reportSaldo.length}
+                        >
+                            {
+                                reportSaldo.map((r, i) => {
+                                    return <ListItem key={i} component="div">
+                                        <ListItemButton>
+                                            <ListItemText primary={`Item ${i + 1}`} />
+                                        </ListItemButton>
+                                    </ListItem>;
+                                })
                             }
-                        />
+                        </FixedSizeList>
                     </mui.Grid>
                     <mui.Grid item xs={6}>
-                        <mui.Typography fontWeight={500} variant="h3">User With Most Stars</mui.Typography>
+                        <mui.Typography fontWeight={500} variant="h5">User With Most Stars</mui.Typography>
                         <Bar 
                             data={
                                 {
