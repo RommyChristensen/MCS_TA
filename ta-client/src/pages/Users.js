@@ -6,6 +6,26 @@ import encryptStorage from '../services/Storage';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import { useNavigate } from 'react-router';
 
+import {
+    Chart as ChartJS,
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend,
+  } from 'chart.js';
+import { Bar } from 'react-chartjs-2';
+
+ChartJS.register(
+    CategoryScale,
+    LinearScale,
+    BarElement,
+    Title,
+    Tooltip,
+    Legend
+);
+
 const Users = () => {
     const navigate = useNavigate();
     const [users, setUsers] = useState([]);
@@ -137,12 +157,42 @@ const Users = () => {
                 <mui.Grid>
                     <mui.Typography fontWeight={500} variant="h5">User Report</mui.Typography>
                 </mui.Grid>
-                <mui.Grid mt={4}>
-                    <mui.Typography fontWeight={500} variant="h5">User With Most Balance</mui.Typography>
-                </mui.Grid>
-                <mui.Grid mt={4}>
-                    <mui.Typography fontWeight={500} variant="h5">User With Most Stars</mui.Typography>
-                </mui.Grid>
+                <Grid container spacing={2}>
+                    <Grid item xs={6}>
+                        <mui.Typography fontWeight={500} variant="h5">User With Most Balance</mui.Typography>
+                        <Bar 
+                            data={
+                                {
+                                    labels: ["a", "b"],
+                                    datasets: [
+                                        {
+                                            label: "Number",
+                                            data: [1, 2],
+                                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                        }
+                                    ]
+                                }
+                            }
+                        />
+                    </Grid>
+                    <Grid item xs={6}>
+                        <mui.Typography fontWeight={500} variant="h5">User With Most Stars</mui.Typography>
+                        <Bar 
+                            data={
+                                {
+                                    labels: ["a", "b"],
+                                    datasets: [
+                                        {
+                                            label: "Number",
+                                            data: [1, 2],
+                                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                        }
+                                    ]
+                                }
+                            }
+                        />
+                    </Grid>
+                </Grid>
             </mui.Container>
         </>
     )

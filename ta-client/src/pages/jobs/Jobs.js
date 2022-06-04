@@ -244,9 +244,7 @@ const Jobs = () => {
                                 </mui.Select>
                             </mui.FormControl>
 
-                            <Bar 
-                                width={300}
-                                height={300}
+                            <Bar
                                 data={
                                     {
                                         labels: jobReport.labels,
