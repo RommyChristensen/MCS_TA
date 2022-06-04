@@ -198,12 +198,16 @@ const Users = () => {
                     <mui.Grid item xs={6}>
                         <mui.Typography fontWeight={500} variant="h5">User With Most Balance</mui.Typography>
                         <List
-                            sx={{ width: '100%', maxWidth: 360, maxHeight: 200, overflow: "auto", bgcolor: 'background.paper' }}
+                            sx={{ width: '100%', maxHeight: 360, overflow: "auto", bgcolor: 'background.paper' }}
                             aria-label="contacts"
                             >
                             {
                                 reportSaldo.map((r, i) => {
-                                    return <ListItem key={i} component="div" disablePadding>
+                                    return <ListItem key={i} component="div" disablePadding
+                                        secondaryAction={
+                                            <mui.Typography>IDR {r.saldo}</mui.Typography>
+                                        }
+                                    >
                                         <ListItemButton>
                                             <ListItemText primary={`${r.name}`} />
                                         </ListItemButton>
