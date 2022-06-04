@@ -159,7 +159,7 @@ const Users = () => {
                 </mui.Grid>
                 <mui.Grid container spacing={2}>
                     <mui.Grid item xs={6}>
-                        <mui.Typography fontWeight={500} variant="h5">User With Most Balance</mui.Typography>
+                        <mui.Typography fontWeight={500} variant="h3">User With Most Balance</mui.Typography>
                         <Bar 
                             data={
                                 {
@@ -176,7 +176,7 @@ const Users = () => {
                         />
                     </mui.Grid>
                     <mui.Grid item xs={6}>
-                        <mui.Typography fontWeight={500} variant="h5">User With Most Stars</mui.Typography>
+                        <mui.Typography fontWeight={500} variant="h3">User With Most Stars</mui.Typography>
                         <Bar 
                             data={
                                 {
