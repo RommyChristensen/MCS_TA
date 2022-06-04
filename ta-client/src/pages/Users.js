@@ -106,27 +106,45 @@ const Users = () => {
     }
 
     return (
-        <mui.Container sx={{
-            backgroundColor: (theme) =>
-                theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
-                padding: 4
-                }}>
-            <mui.Grid>
-                <mui.Typography fontWeight={500} variant="h5">Users Page</mui.Typography>
-            </mui.Grid>
+        <>
+            <mui.Container sx={{
+                backgroundColor: (theme) =>
+                    theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
+                    padding: 4
+                    }}>
+                <mui.Grid>
+                    <mui.Typography fontWeight={500} variant="h5">Users Page</mui.Typography>
+                </mui.Grid>
 
-            <mui.Grid mt={4}>
-                <div style={{ height: 400, width: '100%' }}>
-                    <DataGrid
-                        loading={loading}
-                        rows={rows}
-                        columns={columns}
-                        pageSize={5}
-                        rowsPerPageOptions={[5]}
-                    />
-                </div>
-            </mui.Grid>
-        </mui.Container>
+                <mui.Grid mt={4}>
+                    <div style={{ height: 400, width: '100%' }}>
+                        <DataGrid
+                            loading={loading}
+                            rows={rows}
+                            columns={columns}
+                            pageSize={5}
+                            rowsPerPageOptions={[5]}
+                        />
+                    </div>
+                </mui.Grid>
+            </mui.Container>
+            <mui.Box sx={{ m: 4 }} />
+            <mui.Container sx={{
+                backgroundColor: (theme) =>
+                    theme.palette.mode === 'light' ? "#ffffff" : theme.palette.grey[900],
+                    padding: 4
+                    }}>
+                <mui.Grid>
+                    <mui.Typography fontWeight={500} variant="h5">User Report</mui.Typography>
+                </mui.Grid>
+                <mui.Grid mt={4}>
+                    <mui.Typography fontWeight={500} variant="h5">User With Most Balance</mui.Typography>
+                </mui.Grid>
+                <mui.Grid mt={4}>
+                    <mui.Typography fontWeight={500} variant="h5">User With Most Stars</mui.Typography>
+                </mui.Grid>
+            </mui.Container>
+        </>
     )
 }
 
