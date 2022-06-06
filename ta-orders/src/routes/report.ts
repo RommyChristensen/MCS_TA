@@ -5,7 +5,7 @@ import orderDoc from "../models/order";
 
 const router = express.Router();
 
-router.get('/api/orders/admin/reportorder',
+router.post('/api/orders/admin/reportorder',
 validateHeader, 
 body('month').notEmpty().withMessage('Month Required'),
 validateRequest,
