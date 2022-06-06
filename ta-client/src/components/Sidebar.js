@@ -10,6 +10,8 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 import CategoryIcon from '@mui/icons-material/Category';
 import LogoutIcon from '@mui/icons-material/Logout';
+import NewspaperIcon from '@mui/icons-material/Newspaper';
+import PaymentIcon from '@mui/icons-material/Payment';
 import encryptStorage from '../services/Storage';
 import {
   Link
@@ -56,6 +58,22 @@ export const mainListItems = (
           <WorkIcon />
         </ListItemIcon>
         <ListItemText primary="Jobs" />
+      </ListItem>
+    </Link>
+    <Link to="/admin/ads" style={linkStyle}>
+      <ListItem button>
+        <ListItemIcon>
+          <NewspaperIcon />
+        </ListItemIcon>
+        <ListItemText primary="Ads" />
+      </ListItem>
+    </Link>
+    <Link to="/admin/withdraw" style={linkStyle}>
+      <ListItem button>
+        <ListItemIcon>
+          <PaymentIcon />
+        </ListItemIcon>
+        <ListItemText primary="Withdraw" />
       </ListItem>
     </Link>
     <Link to="/admin/report" style={linkStyle}>
