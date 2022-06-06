@@ -141,7 +141,7 @@ const Users = () => {
         });
 
         const finalRatings = filtered.map(f => {
-            const name = "";
+            let name = "";
             userNames.forEach(u => {
                 if(u.id == f.userId){
                     name = u.auth_firstname + " " + u.auth_lastname;
