@@ -181,7 +181,7 @@ const Report = () => {
                         }
 
                         {
-                            reportType == 0 ? <Bar
+                            reportType == "byMonth" ? <Bar
                             data={
                                 {
                                     labels: jobReport.labels,
