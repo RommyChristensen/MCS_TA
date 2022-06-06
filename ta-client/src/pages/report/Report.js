@@ -44,6 +44,7 @@ const Report = () => {
             }
         }
         setReportLoading(true);
+        setSelectedRange(event.target.value);
         try{
             const res = await axios.post('/api/orders/admin/reportorder/by6Month/' + event.target.value, [], axiosConfig);
 
@@ -67,11 +68,10 @@ const Report = () => {
             })
 
             setReportLoading(false);
-            setSelectedMonth(event.target.value);
         }catch(ex){
             console.log(ex);
             setReportLoading(false);
-            setSelectedMonth(event.target.value);
+            setSelectedRange(event.target.value);
         }
 
         setSelectedRange(event.target.value);
