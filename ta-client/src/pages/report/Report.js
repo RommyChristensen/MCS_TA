@@ -41,7 +41,7 @@ const Report = () => {
         }
         setReportLoading(true);
         try{
-            const res = await axios.post('/api/orders/admin/reportorder/by6Month/' + event.target.value, d, axiosConfig);
+            const res = await axios.post('/api/orders/admin/reportorder/by6Month/' + event.target.value, axiosConfig);
 
             const data = res.data;
 
