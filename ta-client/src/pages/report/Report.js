@@ -76,11 +76,38 @@ const Report = () => {
             const res = await axios.post('/api/orders/admin/reportorder/byMonth', d, axiosConfig);
 
             const data = res.data;
+            const dates = [];
+            const datas = [];
 
-            console.log(data);
+            if(event.target.value == 0 || event.target.value == 2 || event.target.value == 4 || event.target.value == 6 || event.target.value == 7 || event.target.value == 9 || event.target.value == 11){
+                for(let i = 1; i <= 31; i++){
+                    dates.push(i);
+                    datas.push(0);
+                }
+            }else if(event.target.value == 1){
+                for(let i = 1; i <= 28; i++){
+                    dates.push(i);
+                    datas.push(0);
+                }
+            }else{
+                for(let i = 1; i <= 30; i++){
+                    dates.push(i);
+                    datas.push(0);
+                }
+            }
+
+            data.forEach(d => {
+                const orderDate = new Date(d.order_created_at);
+                const date = orderDate.getDate();
+                datas[date]++;
+            })
 
             setReportLoading(false);
             setSelectedMonth(event.target.value);
+            setJobReport({
+                labels: dates,
+                values: datas
+            })
         }catch(ex){
             console.log(ex);
             setReportLoading(false);
@@ -153,7 +180,21 @@ const Report = () => {
                             </mui.FormControl>
                         }
 
-                        {/* <Bar
+                        {
+                            reportType == 0 ? <Bar
+                            data={
+                                {
+                                    labels: jobReport.labels,
+                                    datasets: [
+                                        {
+                                            label: "Number of Orders",
+                                            data: jobReport.data,
+                                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                        }
+                                    ]
+                                }
+                            }
+                        /> : <Bar
                             data={
                                 {
                                     labels: jobReport.labels,
@@ -166,7 +207,8 @@ const Report = () => {
                                     ]
                                 }
                             }
-                        />  */}
+                        /> 
+                        }
                     </> 
                     : "Loading..."
                 }
