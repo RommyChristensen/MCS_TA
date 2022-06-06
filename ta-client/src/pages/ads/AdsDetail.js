@@ -1,7 +1,8 @@
-import { Typography } from '@mui/material';
+import { Container, Grid, Typography, Avatar, Button } from "@mui/material";
 import { useLocation } from 'react-router';
-import { Container } from '@mui/material';
-import { Grid } from '@mui/material';
+import { useEffect, useState } from 'react';
+import encryptStorage from '../services/Storage';
+import axios from 'axios';
 
 const AdsDetail = () => {
     const { state } = useLocation();
