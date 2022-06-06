@@ -54,7 +54,7 @@ const Report = () => {
 
             data.forEach(d => {
                 const orderDate = new Date(d.order_created_at);
-                const date = orderDate.getMonth() - 1;
+                const date = orderDate.getMonth();
                 datas[date]++;
             })
 
