@@ -28,7 +28,7 @@ const Report = () => {
         values: []
     });
     const [reportLoading, setReportLoading] = useState(false);
-    const [reportType, setReportType] = useState('byMonth');
+    const [reportType, setReportType] = useState('');
     const [selectedMonth, setSelectedMonth] = useState('');
     const [selectedRange, setSelectedRange] = useState(0);
     const value = encryptStorage.getItem('admin-session-key');
@@ -41,7 +41,7 @@ const Report = () => {
         }
         setReportLoading(true);
         try{
-            const res = await axios.post('/api/orders/admin/reportorder/by6Month/' + event.target.value, axiosConfig);
+            const res = await axios.post('/api/orders/admin/reportorder/by6Month/' + event.target.value, [], axiosConfig);
 
             const data = res.data;
 
