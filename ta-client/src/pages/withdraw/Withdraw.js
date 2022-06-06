@@ -101,7 +101,7 @@ const Withdraw = () => {
                 </mui.Button>
             </>
         }
-    },
+    },]
 
     return (
         <mui.Container sx={{
