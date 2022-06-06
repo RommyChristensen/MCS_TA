@@ -8,7 +8,7 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
-import { Line } from 'react-chartjs-2';
+import { Line, Bar } from 'react-chartjs-2';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import encryptStorage from '../../services/Storage';
