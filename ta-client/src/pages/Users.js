@@ -66,7 +66,11 @@ const Users = () => {
                 setUsers(userData);
                 setRows(userRow);
                 setLoading(false);
-                reqReportUser();
+
+                const userIds = userData.map(u => {
+                    return u.id;
+                });
+                reqReportUser(userIds);
             }
         });
 
@@ -110,11 +114,7 @@ const Users = () => {
         }
     }, []);
 
-    const reqReportUser = async () => {
-        const userIds = users.map(u => {
-            return u.id;
-        });
-
+    const reqReportUser = async (userIds) => {
         let data = {
             users: userIds
         }
