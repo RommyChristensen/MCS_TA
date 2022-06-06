@@ -8,6 +8,7 @@ import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemText from '@mui/material/ListItemText';
 import { List } from '@mui/material';
+import axios from 'axios';
 
 import {
     Chart as ChartJS,
@@ -36,6 +37,8 @@ const Users = () => {
     const [loading, setLoading] = useState(true);
     const [loadingReportSaldo, setLoadingReportSaldo] = useState(true);
     const [reportSaldo, setReportSaldo] = useState([]);
+    const [loadingReportRating, setLoadingReportRating] = useState(true);
+    const [reportRating, setReportRating] = useState([]);
     const value = encryptStorage.getItem('admin-session-key');
 
     useEffect(() => {
@@ -48,6 +51,7 @@ const Users = () => {
         .then(res => res.json())
         .then(data => {
             const userData = data;
+
             const userRow = data.map(user => {
                 return {
                     id: user.id,
@@ -62,6 +66,7 @@ const Users = () => {
                 setUsers(userData);
                 setRows(userRow);
                 setLoading(false);
+                reqReportUser();
             }
         });
 
@@ -104,6 +109,26 @@ const Users = () => {
             componentMounted = false;
         }
     }, []);
+
+    const reqReportUser = async () => {
+        const userIds = users.map(u => {
+            return u.id;
+        });
+
+        let data = {
+            users: userIds
+        }
+
+        let axiosConfig = {
+            headers: {
+                'x-auth-token': value
+            }
+        }
+
+        const res = await axios.post('/api/ratingreview/admin/reportuser', data, axiosConfig);
+
+        console.log(res);
+    }
 
     const columns = [{
             field: 'id',
