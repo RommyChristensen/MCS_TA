@@ -65,7 +65,7 @@ const AdsDetail = () => {
                 <Grid item xs={12} md={6} mt={3}>
                 </Grid>
                 {
-                    state.ads.status == "Diminta" ?
+                    !confirmed ?
                     <>
                         <Button sx={{ marginTop: 3 }} onClick={() => verifyAds('Aktif')} variant="contained" color='success' disabled={confirmed}>Accept</Button>&nbsp;
                         <Button sx={{ marginTop: 3 }} onClick={() => verifyAds('Ditolak')} variant="contained" color='info' disabled={confirmed}>Reject</Button>
