@@ -5,6 +5,16 @@ import ratingReviewDoc from "../models/rating-review";
 
 const router = express.Router();
 
+function compareByRating( a: any, b: any ) {
+    if ( a.rate < b.rate ){
+      return -1;
+    }
+    if ( a.rate > b.rate ){
+      return 1;
+    }
+    return 0;
+}
+
 router.post('/api/ratingreview/admin/reportuser',
 body('users').notEmpty().withMessage('List of Users Required'),
 validateRequest,
@@ -23,12 +33,12 @@ async (req: Request, res: Response) => {
         if(ratings.length > 0){
             const r = {
                 userId: u,
-                rate: stars
+                rate: stars / ratings.length
             }
             return r;
         }
     })).then(result => {
-        return res.status(200).send(result);
+        return res.status(200).send(result.sort(compareByRating).reverse());
     })
 });
 
