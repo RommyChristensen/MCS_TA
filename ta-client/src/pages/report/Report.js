@@ -44,7 +44,6 @@ const Report = () => {
             }
         }
         setReportLoading(true);
-        setSelectedRange(event.target.value);
         try{
             const res = await axios.post('/api/orders/admin/reportorder/by6Month/' + event.target.value, [], axiosConfig);
 
@@ -55,7 +54,7 @@ const Report = () => {
 
             data.forEach(d => {
                 const orderDate = new Date(d.order_created_at);
-                const date = orderDate.getMonth();
+                const date = orderDate.getMonth() - 1;
                 datas[date]++;
             })
 
