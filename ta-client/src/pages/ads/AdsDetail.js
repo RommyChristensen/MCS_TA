@@ -62,7 +62,12 @@ const AdsDetail = () => {
                         {state.ads.status}
                     </Typography>
                 </Grid>
-                <Button sx={{ marginTop: 3 }} onClick={() => verifyAds('Aktif')} variant="contained" color='success' disabled={confirmed}>Accept</Button> <Button sx={{ marginTop: 3 }} onClick={() => verifyAds('Ditolak')} variant="contained" color='danger' disabled={confirmed}>Reject</Button>
+                {
+                    state.ads.status == "Diminta" ?
+                    <>
+                        <Button sx={{ marginTop: 3 }} onClick={() => verifyAds('Aktif')} variant="contained" color='success' disabled={confirmed}>Accept</Button> <Button sx={{ marginTop: 3 }} onClick={() => verifyAds('Ditolak')} variant="contained" color='danger' disabled={confirmed}>Reject</Button>
+                    </> : ""
+                }
             </Grid>
         </Container>
     )
