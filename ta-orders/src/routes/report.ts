@@ -23,9 +23,9 @@ async (req: Request, res: Response) => {
     const { type } = req.params;
     const orderBy6Month = await orderDoc.getAll();
 
-    const a = new Date(`01/01/${new Date().getFullYear}`);
-    const b = new Date(`07/01/${new Date().getFullYear}`);
-    const c = new Date(`12/31/${new Date().getFullYear}`);
+    const a = new Date(new Date().getFullYear(), 0, 1);
+    const b = new Date(new Date().getFullYear(), 5, 1);
+    const c = new Date(new Date().getFullYear(), 11, 31);
 
     const filtered = orderBy6Month.filter(o => {
         const d = new Date(o.order_created_at);
