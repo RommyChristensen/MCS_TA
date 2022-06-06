@@ -85,7 +85,7 @@ const Report = () => {
                     <mui.RadioGroup
                         aria-labelledby="demo-controlled-radio-buttons-group"
                         name="controlled-radio-buttons-group"
-                        value={radioValue}
+                        value={reportType}
                         onChange={handleRadioChange}
                     >
                         <mui.FormControlLabel value="byMonth" control={<mui.Radio />} label="By Month" />
