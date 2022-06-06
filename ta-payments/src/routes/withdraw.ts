@@ -77,12 +77,9 @@ router.get('/api/payments/withdraw/byId/:id', validateHeader, async (req: Reques
 });
 
 router.put('/api/payments/withdraw/accept/:id',
-body('transfer_prove').notEmpty().withMessage("Bukti Wajib Diisikan"),
 validateHeader,
-validateRequest,
 async (req: Request, res: Response) => {
     const { id } = req.params;
-    const { transfer_prove } = req.body;
     if(!id) throw new BadRequestError('ID Wajib Diisi');
 
     const withdraw = await withdrawDoc.updateStatus(id, WithdrawalStatus.accepted);
