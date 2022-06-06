@@ -80,18 +80,18 @@ const Report = () => {
                 <mui.Typography fontWeight={500} variant="h5">Order Report</mui.Typography>
             </mui.Grid>
             <mui.Grid>
-            <FormControl>
-                <FormLabel id="demo-controlled-radio-buttons-group">Report Type</FormLabel>
-                    <RadioGroup
+            <mui.FormControl>
+                <mui.FormLabel id="demo-controlled-radio-buttons-group">Report Type</mui.FormLabel>
+                    <mui.RadioGroup
                         aria-labelledby="demo-controlled-radio-buttons-group"
                         name="controlled-radio-buttons-group"
                         value={radioValue}
                         onChange={handleRadioChange}
                     >
-                        <FormControlLabel value="byMonth" control={<Radio />} label="By Month" />
-                        <FormControlLabel value="by6Month" control={<Radio />} label="By 6 Month" />
-                    </RadioGroup>
-                </FormControl>
+                        <mui.FormControlLabel value="byMonth" control={<mui.Radio />} label="By Month" />
+                        <mui.FormControlLabel value="by6Month" control={<mui.Radio />} label="By 6 Month" />
+                    </mui.RadioGroup>
+                </mui.FormControl>
             </mui.Grid>
             <mui.Grid mt={4}>
                 {
