@@ -30,11 +30,11 @@ const Withdraw = () => {
             if(componentMounted){
                 setRows(data.map(c => {
                     return {
-                        id: c.id,
+                        id: c.withdraw.id,
                         username: c.username,
-                        amount: c.amount,
-                        status: c.status,
-                        date: c.request_at
+                        amount: c.withdraw.amount,
+                        status: c.withdraw.status,
+                        date: c.withdraw.request_at
                     }
                 }))
                 setLoading(false);
@@ -81,7 +81,7 @@ const Withdraw = () => {
                     sx={{
                         marginLeft: 1
                     }}
-                    onClick={() => handleChange(params.row.id)} 
+                    onClick={() => handleChange(params.row.withdraw.id)} 
                     aria-label="verify"
                     >
                         Accept

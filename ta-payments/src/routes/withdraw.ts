@@ -17,8 +17,10 @@ async (req: Request, res: Response) => {
     await Promise.all(filtered.map(async (f) => {
         const user = await userDoc.findById(f.user_id);
 
-        f["username"] = user.auth_firstname + " " + user.auth_lastname;
-        return f;
+        return {
+            withdraw: f,
+            username: user.auth_firstname + " " + user.auth_lastname,
+        }
     })).then(result => {
         return res.status(200).send(result);
     })
