@@ -112,6 +112,17 @@ const Withdraw = () => {
             <mui.Grid>
                 <mui.Typography fontWeight={500} variant="h5">Withdraw</mui.Typography>
             </mui.Grid>
+            <mui.Grid mt={4}>
+                <div style={{ height: 400, width: '100%' }}>
+                    <DataGrid
+                        loading={loading}
+                        rows={rows}
+                        columns={columns}
+                        pageSize={10}
+                        rowsPerPageOptions={[10]}
+                    />
+                </div>
+            </mui.Grid>
         </mui.Container>
     )
 }
