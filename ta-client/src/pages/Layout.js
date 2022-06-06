@@ -30,6 +30,8 @@ import Categories from './category/Categories';
 import CategoryCreate from './category/CategoryCreate';
 import JobDetail from './jobs/JodDetail';
 import Report from './report/Report';
+import Ads from './ads/Ads';
+import Withdraw from './withdraw/Withdraw';
 
 const Layout = () => {
     const [open, setOpen] = React.useState(true);
@@ -104,6 +106,8 @@ const Layout = () => {
                         <Route path="/jobs" element={<Jobs />} />
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/report" element={<Report />} />
+                        <Route path="/ads" element={<Ads />} />
+                        <Route path="/withdraw" element={<Withdraw />} />
                         <Route path="/user-detail" element={<UserDetail />} />
                         <Route path="/category" element={<Categories />} />
                         <Route path="/category/create" element={<CategoryCreate />} />
