@@ -277,10 +277,10 @@ const Users = () => {
                             {
                                 reportRating.map((r, i) => {
                                     return <ListItem key={i} component="div" disablePadding
-                                        secondaryAction={
-                                            <mui.Typography>{r.name} with {r.rating} stars</mui.Typography>
-                                        }
                                     >
+                                        <ListItemButton>
+                                            <ListItemText primary={`${r.name} with ${r.rating} stars`} />
+                                        </ListItemButton>
                                     </ListItem>;
                                 })
                             }
