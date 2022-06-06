@@ -102,6 +102,9 @@ const Report = () => {
                 datas[date]++;
             })
 
+            console.log(dates);
+            console.log(datas);
+
             setReportLoading(false);
             setSelectedMonth(event.target.value);
             setJobReport({
