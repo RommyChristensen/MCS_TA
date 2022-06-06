@@ -1,7 +1,7 @@
 import { Container, Grid, Typography, Avatar, Button } from "@mui/material";
 import { useLocation } from 'react-router';
 import { useEffect, useState } from 'react';
-import encryptStorage from '../services/Storage';
+import encryptStorage from '../../services/Storage';
 import axios from 'axios';
 
 const AdsDetail = () => {
