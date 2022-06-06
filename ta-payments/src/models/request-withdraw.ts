@@ -60,8 +60,6 @@ const updateStatus = async (id: string, status: WithdrawalStatus) => {
     const withdraw = await repo.findById(id);
 
     if(status == WithdrawalStatus.accepted){
-        if(transfer_prove == null) return;
-
         withdraw.accepted_at = new Date(new Date().toLocaleString('en-US', {timeZone: "Asia/Jakarta"}));
     }else if(status == WithdrawalStatus.rejected){
         withdraw.rejected_at = new Date(new Date().toLocaleString('en-US', {timeZone: "Asia/Jakarta"}));
