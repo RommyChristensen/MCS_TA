@@ -70,7 +70,14 @@ const Users = () => {
                 const userIds = userData.map(u => {
                     return u.id;
                 });
-                reqReportUser(userIds);
+                const userNames = userData.map(u => {
+                    return {
+                        id: u.id,
+                        auth_firstname: u.auth_firstname,
+                        auth_lastname: u.auth_lastname
+                    }
+                });
+                reqReportUser(userIds, userNames);
             }
         });
 
@@ -114,7 +121,7 @@ const Users = () => {
         }
     }, []);
 
-    const reqReportUser = async (userIds) => {
+    const reqReportUser = async (userIds, userNames) => {
         let data = {
             users: userIds
         }
@@ -135,7 +142,7 @@ const Users = () => {
 
         const finalRatings = filtered.map(f => {
             const name = "";
-            users.forEach(u => {
+            userNames.forEach(u => {
                 if(u.id == f.userId){
                     name = u.auth_firstname + " " + u.auth_lastname;
                 }
