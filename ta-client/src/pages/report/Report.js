@@ -50,7 +50,7 @@ const Report = () => {
 
             const data = res.data;
 
-            const dates = selectedRange == 0 ? ["January", "February", "March", "April", "May", "June"] : ["July", "August", "September", "October", "November", "December"];
+            const dates = event.target.value == 0 ? ["January", "February", "March", "April", "May", "June"] : ["July", "August", "September", "October", "November", "December"];
             const datas = [0,0,0,0,0,0];
 
             data.forEach(d => {
@@ -61,6 +61,7 @@ const Report = () => {
 
             console.log(dates);
             console.log(datas);
+            console.log(res.data);
 
             setJobReport({
                 labels: dates,
