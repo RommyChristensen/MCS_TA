@@ -8,7 +8,7 @@ import {
     Tooltip,
     Legend,
   } from 'chart.js';
-import { Bar } from 'react-chartjs-2';
+import { Line } from 'react-chartjs-2';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import encryptStorage from '../../services/Storage';
@@ -181,14 +181,14 @@ const Report = () => {
                         }
 
                         {
-                            reportType == "byMonth" ? <Bar
+                            reportType == "byMonth" ? <Line
                             data={
                                 {
                                     labels: jobReport.labels,
                                     datasets: [
                                         {
                                             label: "Number of Orders",
-                                            data: jobReport.data,
+                                            data: jobReport.values,
                                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
                                         }
                                     ]
