@@ -12,10 +12,15 @@ const Withdraw = () => {
     const [rows, setRows] = useState([]);
     const [loading, setLoading] = useState(true);
     const value = encryptStorage.getItem('admin-session-key');
-    const navigate = useNavigate();
 
-    const handleChange = async (id) => {
-        console.log(id);
+    const handleChange = async (id, status) => {
+        const data = await axios.put(`/api/payments/withdraw/${status}/${id}`, {}, 
+        {
+            headers: {
+                'x-auth-token': value
+            }
+        });
+        window.location.reload();
     }
 
     useEffect(() => {
@@ -81,7 +86,7 @@ const Withdraw = () => {
                     sx={{
                         marginLeft: 1
                     }}
-                    onClick={() => handleChange(params.row.withdraw.id)} 
+                    onClick={() => handleChange(params.row.id, "accept")} 
                     aria-label="verify"
                     >
                         Accept
@@ -94,7 +99,7 @@ const Withdraw = () => {
                     sx={{
                         marginLeft: 1
                     }}
-                    onClick={() => handleChange(params.row.id)} 
+                    onClick={() => handleChange(params.row.id, "reject")} 
                     aria-label="verify"
                     >
                         Reject
