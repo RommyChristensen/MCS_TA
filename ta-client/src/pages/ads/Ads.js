@@ -13,6 +13,20 @@ const Ads = () => {
     const [loading, setLoading] = useState(true);
     const value = encryptStorage.getItem('admin-session-key');
 
+    const handleDetail = (ads_id) => {
+        let adsState = ads.filter(a => {
+            if(a.id === ads_id){
+                return a;
+            }
+        });
+
+        navigate('/admin/ads/ads-detail', {
+            state: {
+                ads: adsState[0]
+            }
+        })
+    }
+
     useEffect(() => {
         let componentMounted = true;
         fetch('/api/ads/all', {
@@ -63,6 +77,11 @@ const Ads = () => {
         width: 200
     },
     {
+        field: 'status',
+        headerName: 'Status',
+        width: 200
+    },
+    {
         field: 'action',
         headerName: 'Action',
         width: 200,
@@ -72,11 +91,12 @@ const Ads = () => {
                     size="small" 
                     variant="contained" 
                     disableElevation
-                    onClick={ () => {} }
                     color="info"
                     sx={{
                         marginLeft: 1
                     }}
+                    onClick={() => handleDetail(params.row.id)} 
+                    aria-label="verify"
                     >
                         Detail
                 </mui.Button>

@@ -32,6 +32,7 @@ import JobDetail from './jobs/JodDetail';
 import Report from './report/Report';
 import Ads from './ads/Ads';
 import Withdraw from './withdraw/Withdraw';
+import AdsDetail from './ads/AdsDetail';
 
 const Layout = () => {
     const [open, setOpen] = React.useState(true);
@@ -107,6 +108,7 @@ const Layout = () => {
                         <Route path="/dashboard" element={<Dashboard />} />
                         <Route path="/report" element={<Report />} />
                         <Route path="/ads" element={<Ads />} />
+                        <Route path="/ads/ads-detail" element={<AdsDetail />} />
                         <Route path="/withdraw" element={<Withdraw />} />
                         <Route path="/user-detail" element={<UserDetail />} />
                         <Route path="/category" element={<Categories />} />
