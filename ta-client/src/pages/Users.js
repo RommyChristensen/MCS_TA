@@ -154,7 +154,7 @@ const Users = () => {
             }
         });
 
-        console.log(finalRatings);
+        setReportRating(finalRatings);
     }
 
     const columns = [{
@@ -251,7 +251,7 @@ const Users = () => {
                         <mui.Typography fontWeight={500} variant="h5">User With Most Balance</mui.Typography>
                         <List
                             sx={{ width: '100%', maxHeight: 360, overflow: "auto", bgcolor: 'background.paper' }}
-                            aria-label="contacts"
+                            aria-label="balances"
                             >
                             {
                                 reportSaldo.map((r, i) => {
@@ -270,20 +270,21 @@ const Users = () => {
                     </mui.Grid>
                     <mui.Grid item xs={6}>
                         <mui.Typography fontWeight={500} variant="h5">User With Most Stars</mui.Typography>
-                        <Bar 
-                            data={
-                                {
-                                    labels: ["a", "b"],
-                                    datasets: [
-                                        {
-                                            label: "Number",
-                                            data: [1, 2],
-                                            backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                        <List
+                            sx={{ width: '100%', maxHeight: 360, overflow: "auto", bgcolor: 'background.paper' }}
+                            aria-label="ratings"
+                            >
+                            {
+                                reportRating.map((r, i) => {
+                                    return <ListItem key={i} component="div" disablePadding
+                                        secondaryAction={
+                                            <mui.Typography>{r.name} with {r.rating} stars</mui.Typography>
                                         }
-                                    ]
-                                }
+                                    >
+                                    </ListItem>;
+                                })
                             }
-                        />
+                        </List>
                     </mui.Grid>
                 </mui.Grid>
             </mui.Container>
