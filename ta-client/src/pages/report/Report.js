@@ -49,7 +49,22 @@ const Report = () => {
 
             const data = res.data;
 
-            console.log(data);
+            const dates = selectedRange == 0 ? ["January", "February", "March", "April", "May", "June"] : ["July", "August", "September", "October", "November", "December"];
+            const datas = [0,0,0,0,0,0];
+
+            data.forEach(d => {
+                const orderDate = new Date(d.order_created_at);
+                const date = orderDate.getMonth();
+                datas[date]++;
+            })
+
+            console.log(dates);
+            console.log(datas);
+
+            setJobReport({
+                labels: dates,
+                values: datas
+            })
 
             setReportLoading(false);
             setSelectedMonth(event.target.value);
@@ -197,19 +212,21 @@ const Report = () => {
                                             label: "Number of Orders",
                                             data: jobReport.values,
                                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                            borderColor: 'rgb(255, 99, 132)',
                                         }
                                     ]
                                 }
                             }
-                        /> : <Bar
+                        /> : <Line
                             data={
                                 {
                                     labels: jobReport.labels,
                                     datasets: [
                                         {
-                                            label: "Number of Jobs",
-                                            data: jobReport.data,
+                                            label: "Number of Orders",
+                                            data: jobReport.values,
                                             backgroundColor: 'rgba(255, 99, 132, 0.5)',
+                                            borderColor: 'rgb(255, 99, 132)',
                                         }
                                     ]
                                 }
