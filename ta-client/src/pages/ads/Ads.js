@@ -12,6 +12,7 @@ const Ads = () => {
     const [rows, setRows] = useState([]);
     const [loading, setLoading] = useState(true);
     const value = encryptStorage.getItem('admin-session-key');
+    const navigate = useNavigate();
 
     const handleDetail = (ads_id) => {
         let adsState = ads.filter(a => {
