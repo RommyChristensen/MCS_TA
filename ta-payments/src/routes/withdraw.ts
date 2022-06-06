@@ -6,6 +6,26 @@ import userDoc from "../models/user";
 
 const router = express.Router();
 
+router.get('/api/payments/admin/request/withdraw', 
+validateHeader,
+async (req: Request, res: Response) => {
+    const withdraws = await withdrawDoc.getAll();
+    const filtered = withdraws.filter(w => {
+        return w.status == WithdrawalStatus.pending
+    });
+
+    await Promise.all(filtered.map(async (f) => {
+        const user = await userDoc.findById(f.user_id);
+
+        f["username"] = user.auth_firstname + " " + user.auth_lastname;
+        return f;
+    })).then(result => {
+        return res.status(200).send(result);
+    })
+
+    return res.send(filtered);
+});
+
 router.post('/api/payments/request/withdraw/:userId', 
 body('amount').notEmpty().withMessage('Jumlah Wajib Diisi'),
 validateHeader,

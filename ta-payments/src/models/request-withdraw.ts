@@ -55,7 +55,7 @@ const getAll = async () => {
     return withdraws;
 }
 
-const updateStatus = async (id: string, status: WithdrawalStatus, transfer_prove?: string) => {
+const updateStatus = async (id: string, status: WithdrawalStatus) => {
     const repo = await getRepository(Withdraw);
     const withdraw = await repo.findById(id);
 
@@ -63,7 +63,6 @@ const updateStatus = async (id: string, status: WithdrawalStatus, transfer_prove
         if(transfer_prove == null) return;
 
         withdraw.accepted_at = new Date(new Date().toLocaleString('en-US', {timeZone: "Asia/Jakarta"}));
-        withdraw.transfer_prove = transfer_prove;
     }else if(status == WithdrawalStatus.rejected){
         withdraw.rejected_at = new Date(new Date().toLocaleString('en-US', {timeZone: "Asia/Jakarta"}));
     }
@@ -86,7 +85,7 @@ class WithdrawDoc {
     getByUserId: (user_id: string) => Promise<Withdraw[]>;
     getById: (id: string) => Promise<Withdraw>;
     getAll: () => Promise<Withdraw[]>;
-    updateStatus: (id: string, status: WithdrawalStatus, transfer_prove?: string) => Promise<Withdraw | undefined>;
+    updateStatus: (id: string, status: WithdrawalStatus) => Promise<Withdraw | undefined>;
     getPendingRequest: (user_id: string) => Promise<Withdraw[]>;
 }
 

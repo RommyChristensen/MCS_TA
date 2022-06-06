@@ -1,8 +1,108 @@
 import * as mui from '@mui/material';
-import { useState, useEffect } from 'react';
+import { DataGrid } from '@mui/x-data-grid';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
 import encryptStorage from '../../services/Storage';
+import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router';
 
 const Withdraw = () => {
+    const [withdraws, setWithdraws] = useState([]);
+    const [rows, setRows] = useState([]);
+    const [loading, setLoading] = useState(true);
+    const value = encryptStorage.getItem('admin-session-key');
+    const navigate = useNavigate();
+
+    const handleChange = async (id) => {
+        console.log(id);
+    }
+
+    useEffect(() => {
+        let componentMounted = true;
+        fetch('/api/payments/admin/request/withdraw', {
+            headers: {
+                'x-auth-token': value
+            }
+        })
+        .then(res => res.json())
+        .then(data => {
+            if(componentMounted){
+                setRows(data.map(c => {
+                    return {
+                        id: c.id,
+                        username: c.username,
+                        amount: c.amount,
+                        status: c.status,
+                        date: c.request_at
+                    }
+                }))
+                setLoading(false);
+                setWithdraws(data);
+            }
+        })
+        
+        return () => {
+            componentMounted = false;
+        }
+    }, []);
+
+    const columns = [{
+        field: 'id',
+        headerName: 'ID',
+        width: 150
+    },
+    {
+        field: 'username',
+        headerName: 'Name',
+        width: 200
+    },
+    {
+        field: 'amount',
+        headerName: 'Amount',
+        width: 200
+    },
+    {
+        field: 'date',
+        headerName: 'Request At',
+        width: 200
+    },
+    {
+        field: 'action',
+        headerName: 'Action',
+        width: 200,
+        renderCell: (params) => {
+            return <>
+                <mui.Button 
+                    size="small" 
+                    variant="contained" 
+                    disableElevation
+                    color="success"
+                    sx={{
+                        marginLeft: 1
+                    }}
+                    onClick={() => handleChange(params.row.id)} 
+                    aria-label="verify"
+                    >
+                        Accept
+                </mui.Button> &nbsp; 
+                <mui.Button 
+                    size="small" 
+                    variant="contained" 
+                    disableElevation
+                    color="info"
+                    sx={{
+                        marginLeft: 1
+                    }}
+                    onClick={() => handleChange(params.row.id)} 
+                    aria-label="verify"
+                    >
+                        Reject
+                </mui.Button>
+            </>
+        }
+    },
+
     return (
         <mui.Container sx={{
             backgroundColor: (theme) =>
