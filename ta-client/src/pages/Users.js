@@ -127,7 +127,27 @@ const Users = () => {
 
         const res = await axios.post('/api/ratingreview/admin/reportuser', data, axiosConfig);
 
-        console.log(res);
+        const ratings = res.data;
+        
+        const filtered = ratings.filter(r => {
+            return r != null;
+        });
+
+        const finalRatings = filtered.map(f => {
+            const name = "";
+            users.forEach(u => {
+                if(u.id == f.userId){
+                    name = u.auth_firstname + " " + u.auth_lastname;
+                }
+            });
+
+            return {
+                name: name,
+                rating: f.rate
+            }
+        });
+
+        console.log(finalRatings);
     }
 
     const columns = [{
