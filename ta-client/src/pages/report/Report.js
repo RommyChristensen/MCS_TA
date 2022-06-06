@@ -31,16 +31,34 @@ const Report = () => {
     const [reportType, setReportType] = useState('byMonth');
     const [selectedMonth, setSelectedMonth] = useState('');
     const [selectedRange, setSelectedRange] = useState(0);
-    const [radioValue, setRadioValue] = useState('byMonth')
     const value = encryptStorage.getItem('admin-session-key');
 
     const handleRangeChange = async (event) => {
-        console.log(event.target.value);
+        let axiosConfig = {
+            headers: {
+                'x-auth-token': value
+            }
+        }
+        setReportLoading(true);
+        try{
+            const res = await axios.post('/api/orders/admin/reportorder/by6Month/' + event.target.value, d, axiosConfig);
+
+            const data = res.data;
+
+            console.log(data);
+
+            setReportLoading(false);
+            setSelectedMonth(event.target.value);
+        }catch(ex){
+            console.log(ex);
+            setReportLoading(false);
+            setSelectedMonth(event.target.value);
+        }
+
         setSelectedRange(event.target.value);
     }
 
     const handleRadioChange = (event) => {
-        console.log(event.target.value);
         setReportType(event.target.value);
     }
 
@@ -55,7 +73,7 @@ const Report = () => {
         }
         setReportLoading(true);
         try{
-            const res = await axios.post('/api/orders/admin/reportorder', d, axiosConfig);
+            const res = await axios.post('/api/orders/admin/reportorder/byMonth', d, axiosConfig);
 
             const data = res.data;
 
