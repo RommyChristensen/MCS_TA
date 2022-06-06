@@ -83,7 +83,7 @@ const Jobs = () => {
             setReportLoading(false);
             setSelectedMonth(event.target.value);
         }
-      };
+    };
     
 
     useEffect(() => {
