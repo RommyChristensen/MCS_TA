@@ -27,9 +27,9 @@ const generateToken = () => {
     return output;
 }
 
-const rToken = "1//04SyWq9lC3Ka8CgYIARAAGAQSNwF-L9Irpy0kztYBpVQZkD3oyUDfNNnEX3uwq64utM4y-x0E2x-bpUFYqRl7Ozd5L7nW-mGRAxA";
-const aToken = "ya29.a0ARrdaM-oS9okdPNXkSk6vLhkqGKPAxq_aRO0AjyMo_b8zWij-SzEFmyW2XQ7SOzQAEDllGwuhT1GMDjAyHklXUBR5jneIdE4VQcMa1ZwRIYV9dBLDzxCvMJRhBVsfZqJx6Vim-B3_6G9UerZBCu82xDL4Svd";
-const userMail = "ta.vrilance3@gmail.com";
+export const rToken = "1//04SyWq9lC3Ka8CgYIARAAGAQSNwF-L9Irpy0kztYBpVQZkD3oyUDfNNnEX3uwq64utM4y-x0E2x-bpUFYqRl7Ozd5L7nW-mGRAxA";
+export const aToken = "ya29.a0ARrdaM-oS9okdPNXkSk6vLhkqGKPAxq_aRO0AjyMo_b8zWij-SzEFmyW2XQ7SOzQAEDllGwuhT1GMDjAyHklXUBR5jneIdE4VQcMa1ZwRIYV9dBLDzxCvMJRhBVsfZqJx6Vim-B3_6G9UerZBCu82xDL4Svd";
+export const userMail = "ta.vrilance3@gmail.com";
 
 
 router.post('/api/auth/sendverification', 

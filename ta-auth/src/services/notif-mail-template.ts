@@ -78,14 +78,14 @@ export const template = `
                             <tr>
                               <td align='center' style='font-size:0px;padding:10px 25px;word-break:break-word;'>
                                 <div style='color:#4d4d4d;font-family:Oxygen, Helvetica neue, sans-serif;font-size:32px;font-weight:700;line-height:37px;text-align:center;'>
-                                  Halo, {{ firstname }}!
+                                  {{ title }}
                                 </div>
                               </td>
                             </tr>
                             <tr>
                               <td align='center' style='font-size:0px;padding:10px 25px;word-break:break-word;'>
                                 <div style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:21px;text-align:center;'>
-                                  Selamat Datang di Vrilance
+                                  {{ subtitle }}
                                 </div>
                               </td>
                             </tr>
@@ -125,17 +125,8 @@ export const template = `
                                       <td align='center' style='font-size:0px;padding:10px 25px;word-break:break-word;'>
                                         <div style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:21px;text-align:center;'>
                                           <span>
-                                            Untuk melakukan aktivasi aku, mohon mengisikan 6 digit angka berikut.
+                                            {{ message }}
                                           </span>
-                                        </div>
-                                      </td>
-                                    </tr>
-                                    <tr>
-                                      <td align='center' style='font-size:0px;padding:10px 25px;word-break:break-word;'>
-                                        <div style='color:#777777;font-family:Oxygen, Helvetica neue, sans-serif;font-size:14px;line-height:21px;text-align:center;'>
-                                          <p style='padding: 10px 0; border: 1px solid #cccccc; color: #4d4d4d; font-weight: bold; font-size: 18px; text-align: center;'>
-                                            {{ token }}
-                                          </p>
                                         </div>
                                       </td>
                                     </tr>
