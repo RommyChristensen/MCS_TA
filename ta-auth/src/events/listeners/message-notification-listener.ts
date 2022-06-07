@@ -31,7 +31,7 @@ export class MessageNotificationListener extends Listener<MessageNotificationEve
             const token = generateToken();
     
             const oAuth2Client = new google.auth.OAuth2(process.env.G_CLIENT_ID, process.env.G_CLIENT_SECRET, process.env.G_REDIRECT_URI);
-            oAuth2Client.setCredentials({refresh_token: rToken});
+            oAuth2Client.setCredentials({refresh_token: process.env.G_REFRESH_TOKEN});
     
             const transporter = nodemailer.createTransport({
                 host: "smtp.gmail.com",
@@ -42,8 +42,8 @@ export class MessageNotificationListener extends Listener<MessageNotificationEve
                     user: userMail,
                     clientId: process.env.G_CLIENT_ID,
                     clientSecret: process.env.G_CLIENT_SECRET,
-                    refreshToken: rToken, // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
-                    accessToken: aToken,
+                    refreshToken: process.env.G_REFRESH_TOKEN, // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
+                    accessToken: process.env.G_ACCESS_TOKEN,
                 }
             } as SMTPTransport.Options);
     
