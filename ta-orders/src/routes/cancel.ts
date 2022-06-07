@@ -55,7 +55,7 @@ async (req: Request, res: Response) => {
         // TODO: tambah remainder hari
         new OrderCancelledPublisher(natsWrapper.client).publish({
             id: updatedOrder.id,
-            _v: updatedOrder._v,
+            _v: updatedOrder.order_price,
             user_id: user.auth_role == UserRole.Hirer ? user.id + "|" + order.orderer_id : user.id,
             diffDays: diffDays.toString(), 
             diffHour: diffHour.toString(), 
