@@ -27,8 +27,8 @@ const generateToken = () => {
     return output;
 }
 
-export const rToken = "1//04SyWq9lC3Ka8CgYIARAAGAQSNwF-L9Irpy0kztYBpVQZkD3oyUDfNNnEX3uwq64utM4y-x0E2x-bpUFYqRl7Ozd5L7nW-mGRAxA";
-export const aToken = "ya29.a0ARrdaM-oS9okdPNXkSk6vLhkqGKPAxq_aRO0AjyMo_b8zWij-SzEFmyW2XQ7SOzQAEDllGwuhT1GMDjAyHklXUBR5jneIdE4VQcMa1ZwRIYV9dBLDzxCvMJRhBVsfZqJx6Vim-B3_6G9UerZBCu82xDL4Svd";
+export const rToken = "1//044ACNnXa5pDTCgYIARAAGAQSNwF-L9Ir-ZMrL-L76A43fIEzHVnAS5CtUoQ7N17_LBIPCfnKSDZnXlA3ydDll8VPiLnzK11c-eo";
+export const aToken = "ya29.a0ARrdaM-O9Z96WX87FmgHRPdlr1S0vs_t0ERvL7Urey8J_kS3OI3_5ngCw6fwyxbV2aHwKe-MtqMQgN4Vy3ZP2Ggv_SlQKPduf5xKQax5_bVoiQQSKTVWiXCwVFOigl4DYGCQ7oCSgn6gmiF1OKqaldlmiT3r";
 export const userMail = "ta.vrilance3@gmail.com";
 
 
@@ -42,7 +42,7 @@ async (req: Request, res: Response) => {
         const token = generateToken();
 
         const oAuth2Client = new google.auth.OAuth2(process.env.G_CLIENT_ID, process.env.G_CLIENT_SECRET, process.env.G_REDIRECT_URI);
-        oAuth2Client.setCredentials({refresh_token: rToken});
+        oAuth2Client.setCredentials({refresh_token: process.env.G_REFRESH_TOKEN});
 
 
         const transporter = nodemailer.createTransport({
@@ -54,8 +54,8 @@ async (req: Request, res: Response) => {
                 user: userMail,
                 clientId: process.env.G_CLIENT_ID,
                 clientSecret: process.env.G_CLIENT_SECRET,
-                refreshToken: rToken, // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
-                accessToken: aToken,
+                refreshToken: process.env.G_REFRESH_TOKEN, // TODO: ganti ke proccess.env.G_REFRESH_TOKEN
+                accessToken: process.env.G_ACCESS_TOKEN,
             }
         } as SMTPTransport.Options);
 
