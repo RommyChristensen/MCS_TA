@@ -29,9 +29,9 @@ async (req: Request, res: Response) => {
         throw new BadRequestError('Order cannot be cancelled!');
     }
 
-    if(order.orderer_id !== user.id){
-        throw new NotAuthorizedError();
-    }
+    // if(order.orderer_id !== user.id){
+    //     throw new NotAuthorizedError();
+    // }
 
     if(user.auth_verified === false){
         throw new BadRequestError('User must be verified!');
@@ -51,7 +51,6 @@ async (req: Request, res: Response) => {
 
     if((diffDays > 0) || (diffDays == 0 && diffHour >= 3)){
         const updatedOrder = await orderDoc.changeStatus(order_id, OrderStatus.Cancelled);
-
 
         // TODO: tambah remainder hari
         new OrderCancelledPublisher(natsWrapper.client).publish({

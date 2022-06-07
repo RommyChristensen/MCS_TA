@@ -13,7 +13,6 @@ export class OrderCancelledListener extends Listener<OrderCancelledEvent> {
 
         if(user_id.indexOf("|") != -1){
             const users = user_id.split("|");
-            
         }else{
             const order = await orderDoc.findById(id);
             if(user_id == order.user.id){
