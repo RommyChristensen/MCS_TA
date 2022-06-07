@@ -10,12 +10,12 @@ export class OrderCancelledListener extends Listener<OrderCancelledEvent> {
     async onMessage(data: OrderCancelledEvent['data'], msg: Message){
         const { id, diffDays, diffHour, user_id } = data;
 
-        const user = await userDoc.findById(user_id);
-        if(user.auth_role == UserRole.Hirer){
-            if(parseInt(diffDays) == 0 && parseInt(diffHour) <= 3) {
-
-            }else{
-
+        if(user_id.indexOf("|") != -1){
+            const users = user_id.split("|");
+            const hirer = await userDoc.findById(users[0]);
+            const worker = await userDoc.findById(users[1]);
+            if(parseInt(diffDays) == 0) {
+                console.log(hirer, worker);
             }
         }
 
