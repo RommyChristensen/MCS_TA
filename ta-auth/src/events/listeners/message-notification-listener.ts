@@ -27,6 +27,7 @@ export class MessageNotificationListener extends Listener<MessageNotificationEve
             const title = topic;
             const subtitle = new Date(new Date().toLocaleString('en-US', { timeZone: "Asia/Jakarta"})).toDateString();
             const message = message;
+            const email = user.auth_email;
             const token = generateToken();
     
             const oAuth2Client = new google.auth.OAuth2(process.env.G_CLIENT_ID, process.env.G_CLIENT_SECRET, process.env.G_REDIRECT_URI);
