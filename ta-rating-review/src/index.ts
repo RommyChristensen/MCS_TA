@@ -5,6 +5,7 @@ const serviceAccount = require('../ServiceAccountKey.json');
 import { natsWrapper } from './nats-wrapper';
 import { OrderCreatedListener } from './events/listeners/order-created-listener';
 import { OrderConfirmedListener } from './events/listeners/order-confirmed-listener';
+import { OrderCancelledListener } from './events/listeners/order-cancelled-listener';
 const start = async () => {
     console.log("starting rating review service....");
     // ENV VARIABLES
@@ -59,6 +60,7 @@ const start = async () => {
         // LISTENERS
         new OrderCreatedListener(natsWrapper.client).listen();
         new OrderConfirmedListener(natsWrapper.client).listen();
+        new OrderCancelledListener(natsWrapper.client).listen();
 
     }catch(err){
         console.log(err);
