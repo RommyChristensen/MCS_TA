@@ -8,6 +8,7 @@ import jwt from 'jsonwebtoken';
 import jobDoc from "../models/job";
 import { OrderConfirmedPublisher } from "../events/publishers/order-confirmed-publisher";
 import { MessageNotificationPublisher } from "../events/publishers/notification-publisher";
+import { JobStatusUpdatedListener } from "../events/listeners/job-status-updated-listener";
 
 const router = express.Router();
 
