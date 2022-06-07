@@ -1,6 +1,6 @@
 import { body } from "express-validator";
 import express, { Request, Response } from "express";
-import { BadRequestError, NotAuthorizedError, OrderStatus, validateHeader, validateRequest } from "@ta-vrilance/common";
+import { BadRequestError, NotAuthorizedError, OrderStatus, UserRole, validateHeader, validateRequest } from "@ta-vrilance/common";
 import orderDoc from "../models/order";
 import { natsWrapper } from "../nats-wrapper";
 import userDoc from "../models/user";
@@ -52,11 +52,12 @@ async (req: Request, res: Response) => {
     if((diffDays > 0) || (diffDays == 0 && diffHour >= 3)){
         const updatedOrder = await orderDoc.changeStatus(order_id, OrderStatus.Cancelled);
 
+
         // TODO: tambah remainder hari
         new OrderCancelledPublisher(natsWrapper.client).publish({
             id: updatedOrder.id,
             _v: updatedOrder._v,
-            user_id: user.id,
+            user_id: user.auth_role == UserRole.Hirer ? user.id + "|" + order.orderer_id : user.id,
             diffDays: diffDays.toString(), 
             diffHour: diffHour.toString(), 
             diffMinutes: diffMinutes.toString(), 
