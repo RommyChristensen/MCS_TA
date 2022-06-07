@@ -38,7 +38,7 @@ async (req: Request, res: Response) => {
             payment_type: payment_type,
             transaction_details: {
                 order_id: newOrderId,
-                gross_amount: value
+                gross_amount: value + 1000
             },
             bank_transfer: {
                 bank: payment_type_detail
