@@ -66,3 +66,11 @@ export class MessageNotificationListener extends Listener<MessageNotificationEve
         msg.ack();
     }
 }
+
+// kubectl delete secret g-refresh-token
+
+// kubectl create secret generic g-refresh-token --from-literal=G_REFRESH_TOKEN=1//04LSzNZF8-VgOCgYIARAAGAQSNwF-L9Ire50A3hLEs_eisU6oLaOTjysBXZ_Yv08Q2xCdcznuNYDVyAkG37ImfGYY-4Sdvpj6GAg
+
+// kubectl delete secret g-access-token
+
+// kubectl create secret generic g-access-token --from-literal=G_ACCESS_TOKEN=ya29.a0ARrdaM_Jwkd0jVh5jsWTKdr4vlSeNu-GXAzbb2_t0RgybWTD6qgIuajuiMPtPEe_uscoeEi89JisJhBQEYWms0jd1MUWZhkJ4Zb1MxYVKVpQhaJxpnbRxEMMl-HThr5L0OxHsXMULI_Z5v8rmQXZ5S_ubXF4
