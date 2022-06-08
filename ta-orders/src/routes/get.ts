@@ -61,7 +61,7 @@ router.get('/api/orders/type2/hirer/:hirerId/:all?', validateHeader, async (req:
 
             console.log(job);
     
-            if(job.job_created_by == hirerId) return order;
+            if(job != null && job.job_created_by == hirerId) return order;
             else return null;
         })).then(result => {
             const r = result.filter(re => {
