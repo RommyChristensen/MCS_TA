@@ -225,7 +225,7 @@ const Users = () => {
                     padding: 4
                     }}>
                 <mui.Grid>
-                    <mui.Typography fontWeight={500} variant="h5">Users Page</mui.Typography>
+                    <mui.Typography fontWeight={500} variant="h5">List Users Page</mui.Typography>
                 </mui.Grid>
 
                 <mui.Grid mt={4}>
