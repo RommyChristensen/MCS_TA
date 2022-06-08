@@ -58,6 +58,8 @@ router.get('/api/orders/type2/hirer/:hirerId/:all?', validateHeader, async (req:
             let job = await jobDoc.findById(order.job_id.toString());
     
             order["job_id"] = job;
+
+            console.log(job);
     
             if(job.job_created_by == hirerId) return order;
             else return null;
