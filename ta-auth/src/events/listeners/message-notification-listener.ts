@@ -73,4 +73,4 @@ export class MessageNotificationListener extends Listener<MessageNotificationEve
 
 // kubectl delete secret g-access-token
 
-// kubectl create secret generic g-access-token --from-literal=G_ACCESS_TOKEN=ya29.a0ARrdaM_Jwkd0jVh5jsWTKdr4vlSeNu-GXAzbb2_t0RgybWTD6qgIuajuiMPtPEe_uscoeEi89JisJhBQEYWms0jd1MUWZhkJ4Zb1MxYVKVpQhaJxpnbRxEMMl-HThr5L0OxHsXMULI_Z5v8rmQXZ5S_ubXF4
+// kubectl create secret generic g-access-token --from-literal=G_ACCESS_TOKEN=ya29.a0ARrdaM9waKZtVvjycBicHMPa64MzmkkOrliCoOMYJt0o8gjJYf6FRM79Yk-8wGDzrO9DdN4fekpupNYnNJqpmCTimhSMkpV0sbccGxVXqivZtjZX2igVHTYUEp4i3FPhxM1i-Y01-xYpPTQcx1jeziZ7rfseXQ
