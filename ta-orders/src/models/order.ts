@@ -70,6 +70,13 @@ const getType1 = async () => {
     return order;
 }
 
+const getByJobId = async (jobId: string) => {
+    const repo = await getRepository(Order);
+    const order = await repo.whereEqualTo('order_type', 1).whereEqualTo('job_id', jobId).whereEqualTo('order_status', OrderStatus.Created).find();
+
+    return order;
+}
+
 const getWorkerType2 = async (workerId: string) => {
     const repo = await getRepository(Order);
     const order = await repo.whereEqualTo('order_type', 2).whereEqualTo('orderer_id', workerId).find();
@@ -179,6 +186,7 @@ class OrderDoc {
     getType2: () => Promise<Order[]>;
     getType1: () => Promise<Order[]>;
     getByMonth: (month: number) => Promise<Order[]>;
+    getByJobId: (jobId: string) => Promise<Order[]>;
 }
 
 // declare functions
@@ -195,5 +203,6 @@ orderDoc.getWorkerType2 = getWorkerType2;
 orderDoc.getType2 = getType2;
 orderDoc.getType1 = getType1;
 orderDoc.getByMonth = getByMonth;
+orderDoc.getByJobId = getByJobId;
 
 export default orderDoc;
