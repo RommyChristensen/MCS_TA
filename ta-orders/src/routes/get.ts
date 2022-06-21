@@ -114,7 +114,15 @@ async (req: Request, res: Response) => {
             o["job_id"] = job;
             return o;
         });
-        return res.send(r);
+
+        await Promise.all(r.map(async (order) => {
+            let user = await userDoc.findById(order.orderer_id.toString());
+            order['orderer_id'] = user;
+    
+            return order;
+        })).then(result => {
+            return res.status(200).send(result);
+        });
     }
     return res.send(order);
 });
