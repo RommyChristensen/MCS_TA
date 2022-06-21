@@ -107,13 +107,16 @@ async (req: Request, res: Response) => {
     const job = await jobDoc.findById(order.job_id as string);
     order["job_id"] = job;
 
-    let orders = await orderDoc.getByJobId(job.id);
+    if(order.order_status == OrderStatus.Created){
+        let orders = await orderDoc.getByJobId(job.id);
 
-    const r  = orders.map(o => {
-        o["job_id"] = job;
-        return o;
-    });
-    return res.send(r);
+        const r  = orders.map(o => {
+            o["job_id"] = job;
+            return o;
+        });
+        return res.send(r);
+    }
+    return res.send(order);
 });
 
 router.get('/api/orders/hirer/:hirerId', validateHeader, async (req: Request, res: Response) => {
