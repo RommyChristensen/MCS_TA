@@ -37,7 +37,7 @@ const start = async () => {
         process.on('SIGTERM', () => natsWrapper.client.close());
 
         // LISTENERS
-        new OrderCreatedListener(natsWrapper.client).listen();
+        // new OrderCreatedListener(natsWrapper.client).listen();
         new OrderDoneListener(natsWrapper.client).listen();
         new OrderAcceptedListener(natsWrapper.client).listen();
         new OrderOnLocationListener(natsWrapper.client).listen();
