@@ -30,7 +30,7 @@ const start = async () => {
         throw new Error('REFRESH TOKEN must be defined');
     }
 
-    if(!process.env.G_ACCESS_TOKE){
+    if(!process.env.G_ACCESS_TOKEN){
         throw new Error('ACCESS TOKEN must be defined');
     }
 
